@@ -7,6 +7,7 @@
     "dev": "npx concurrently \"npm run server\" \"npm run client\"",
     "server": "npx nodemon server/index.js",
     "client": "npm run dev --prefix client",
+    "build": "npm run build --prefix client",
     "seed": "node server/seed.js",
     "install-all": "npm install && npm install --prefix client"
   },

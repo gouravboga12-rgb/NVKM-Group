@@ -66,7 +66,6 @@ export default function Footer() {
             <li className="flex items-start gap-2.5 text-slate-400"><i className="fa-solid fa-location-dot text-secondary mt-0.5 text-xs"></i><span>NVKM GROUP Manufacturing,<br />Andhra Pradesh, India</span></li>
             <li className="flex items-center gap-2.5 text-slate-400"><i className="fa-solid fa-phone text-secondary text-xs"></i><a href="tel:9014274293" className="hover:text-secondary transition-colors">+91 90142 74293</a></li>
             <li className="flex items-center gap-2.5 text-slate-400"><i className="fa-solid fa-phone text-secondary text-xs"></i><a href="tel:7075604700" className="hover:text-secondary transition-colors">+91 70756 04700</a></li>
-            <li className="flex items-center gap-2.5 text-slate-400"><i className="fa-brands fa-whatsapp text-secondary text-xs"></i><a href="https://wa.me/9014274293" target="_blank" rel="noreferrer" className="hover:text-secondary transition-colors">WhatsApp Order</a></li>
           </ul>
         </div>
       </div>

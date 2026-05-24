@@ -37,8 +37,12 @@ if (process.env.NODE_ENV === 'production') {
   });
 }
 
-const PORT = process.env.PORT || 5000;
-app.listen(PORT, () => {
-  console.log(`🚀 NVKM Server running on port ${PORT}`);
-  console.log(`📡 API available at http://localhost:${PORT}/api`);
-});
+if (require.main === module || !process.env.VERCEL) {
+  const PORT = process.env.PORT || 5000;
+  app.listen(PORT, () => {
+    console.log(`🚀 NVKM Server running on port ${PORT}`);
+    console.log(`📡 API available at http://localhost:${PORT}/api`);
+  });
+}
+
+module.exports = app;
