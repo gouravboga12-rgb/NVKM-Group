@@ -29,8 +29,8 @@ app.get('/api/health', (req, res) => {
   res.json({ status: 'ok', message: 'NVKM GROUP API is running' });
 });
 
-// Serve React frontend in production
-if (process.env.NODE_ENV === 'production') {
+// Serve React frontend in production (only when not running on Vercel)
+if (process.env.NODE_ENV === 'production' && !process.env.VERCEL) {
   app.use(express.static(path.join(__dirname, '..', 'client', 'dist')));
   app.get('*', (req, res) => {
     res.sendFile(path.join(__dirname, '..', 'client', 'dist', 'index.html'));
