@@ -120,7 +120,7 @@ export default function Home() {
             <span className="inline-flex items-center gap-2 bg-emerald-800/40 border border-emerald-700/40 px-4 py-1.5 rounded-full text-xs font-bold tracking-wider text-[#4ADE80] shadow-sm animate-pulse-glow">
               <i className="fa-solid fa-leaf text-xs" /> 100% Pure, Organic &amp; Chemical-Free
             </span>
-            <h1 className="font-heading font-extrabold text-3xl sm:text-5xl lg:text-6xl leading-[1.15] tracking-tight">
+            <h1 className="font-heading font-extrabold text-3xl sm:text-5xl lg:text-6xl leading-[1.15] tracking-tight text-white">
               Premium Natural Fruit &amp; <span className="bg-gradient-to-r from-[#4ADE80] via-[#22C55E] to-[#86EFAC] bg-clip-text text-transparent">Vegetable Powders</span>
             </h1>
             <p className="text-xs sm:text-sm text-slate-300 max-w-xl mx-auto lg:mx-0 font-medium leading-relaxed">
