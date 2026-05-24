@@ -14,7 +14,7 @@ export default function ProductDetail() {
   const [product, setProduct] = useState(null);
   const [relatedProducts, setRelatedProducts] = useState([]);
   const [loading, setLoading] = useState(true);
-  
+
   const [selectedWeight, setSelectedWeight] = useState('');
   const [selectedImage, setSelectedImage] = useState('');
   const [qty, setQty] = useState(1);
@@ -168,11 +168,10 @@ export default function ProductDetail() {
                   <div
                     key={idx}
                     onClick={() => setSelectedImage(img)}
-                    className={`border-2 rounded-xl sm:rounded-2xl overflow-hidden aspect-square cursor-pointer transition-all duration-300 hover:scale-105 ${
-                      isSelected 
-                        ? 'border-primary bg-emerald-50 shadow-md shadow-emerald-950/5' 
+                    className={`border-2 rounded-xl sm:rounded-2xl overflow-hidden aspect-square cursor-pointer transition-all duration-300 hover:scale-105 ${isSelected
+                        ? 'border-primary bg-emerald-50 shadow-md shadow-emerald-950/5'
                         : 'border-slate-200 bg-white hover:border-slate-350'
-                    }`}
+                      }`}
                   >
                     <img src={img} alt={`View ${idx + 1}`} className="w-full h-full object-cover" />
                   </div>
@@ -187,7 +186,7 @@ export default function ProductDetail() {
           <div>
             <span className="text-xs font-bold text-accent tracking-widest uppercase">{product.category}</span>
             <h1 className="font-heading font-extrabold text-2xl xs:text-3xl sm:text-4xl text-darkText mt-1 tracking-tight">{product.name}</h1>
-            
+
             <div className="flex items-center space-x-2 mt-2">
               <StarRating rating={product.rating} />
               <span className="text-xs font-bold text-darkText">{product.rating}</span>
@@ -208,7 +207,7 @@ export default function ProductDetail() {
             )}
 
             <p className="text-sm text-lightText mt-5 leading-relaxed font-medium text-slate-650">{product.longDesc}</p>
-            
+
             {/* Weight variations */}
             <div className="mt-6">
               <span className="block text-xs font-bold text-darkText mb-3 uppercase tracking-wider"><i className="fa-solid fa-weight-hanging text-accent mr-1.5"></i> Available Weights / Sizes:</span>
@@ -225,11 +224,10 @@ export default function ProductDetail() {
                         onChange={() => setSelectedWeight(v.weight)}
                         className="sr-only"
                       />
-                      <div className={`border-2 rounded-xl xs:rounded-2xl py-2 px-2 xs:py-3 xs:px-3 text-center transition-all duration-300 transform active:scale-95 shadow-sm ${
-                        isChecked 
-                          ? 'border-primary bg-emerald-50/40 shadow-md shadow-emerald-950/5 scale-[1.02]' 
+                      <div className={`border-2 rounded-xl xs:rounded-2xl py-2 px-2 xs:py-3 xs:px-3 text-center transition-all duration-300 transform active:scale-95 shadow-sm ${isChecked
+                          ? 'border-primary bg-emerald-50/40 shadow-md shadow-emerald-950/5 scale-[1.02]'
                           : 'border-slate-200 bg-white hover:border-slate-350 hover:bg-slate-50/50'
-                      }`}>
+                        }`}>
                         <span className="block text-sm font-bold text-darkText">{v.weight}</span>
                         <span className="block text-xs text-accent font-bold mt-0.5">₹{v.discountPrice}</span>
                       </div>
@@ -292,11 +290,10 @@ export default function ProductDetail() {
               <button
                 key={tab}
                 onClick={() => setActiveTab(tab)}
-                className={`flex-1 py-2.5 sm:py-3 px-1 sm:px-4 text-center rounded-xl xs:rounded-2xl transition-all duration-300 ${
-                  isActive 
-                    ? 'bg-gradient-to-r from-primary to-emerald-800 text-white shadow-sm font-bold' 
+                className={`flex-1 py-2.5 sm:py-3 px-1 sm:px-4 text-center rounded-xl xs:rounded-2xl transition-all duration-300 ${isActive
+                    ? 'bg-gradient-to-r from-primary to-emerald-800 text-white shadow-sm font-bold'
                     : 'text-slate-500 hover:text-slate-800 hover:bg-slate-100/50 font-semibold'
-                }`}
+                  }`}
               >
                 {label}
               </button>

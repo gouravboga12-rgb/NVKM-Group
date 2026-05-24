@@ -275,11 +275,10 @@ export default function Contact() {
           {faqs.map(({ q, a }, i) => (
             <div
               key={i}
-              className={`border rounded-2xl overflow-hidden transition-all duration-300 ${
-                openFaq === i
+              className={`border rounded-2xl overflow-hidden transition-all duration-300 ${openFaq === i
                   ? 'border-emerald-200 bg-emerald-50/15 shadow-md shadow-emerald-800/5'
                   : 'border-slate-100 bg-white hover:border-slate-200'
-              }`}
+                }`}
             >
               <button
                 type="button"
@@ -288,14 +287,12 @@ export default function Contact() {
               >
                 <span className="text-xs sm:text-sm font-bold text-slate-800 pr-4">{q}</span>
                 <div
-                  className={`w-7 h-7 rounded-full flex-shrink-0 flex items-center justify-center transition-all duration-300 ${
-                    openFaq === i ? 'bg-gradient-to-tr from-[#14532d] to-[#22c55e] text-white' : 'bg-slate-50 text-slate-400'
-                  }`}
+                  className={`w-7 h-7 rounded-full flex-shrink-0 flex items-center justify-center transition-all duration-300 ${openFaq === i ? 'bg-gradient-to-tr from-[#14532d] to-[#22c55e] text-white' : 'bg-slate-50 text-slate-400'
+                    }`}
                 >
                   <i
-                    className={`fa-solid fa-chevron-down text-[10px] transition-transform duration-300 ${
-                      openFaq === i ? 'rotate-180' : ''
-                    }`}
+                    className={`fa-solid fa-chevron-down text-[10px] transition-transform duration-300 ${openFaq === i ? 'rotate-180' : ''
+                      }`}
                   />
                 </div>
               </button>

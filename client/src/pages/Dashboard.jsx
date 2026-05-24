@@ -6,9 +6,9 @@ import api from '../api/api';
 
 const STATUS_CONFIG = {
   'Order Placed': { textClass: 'text-amber-600', bgClass: 'bg-amber-50 border-amber-250/40', step: 1, icon: 'fa-box' },
-  'Processing':   { textClass: 'text-blue-600', bgClass: 'bg-blue-50 border-blue-250/40', step: 2, icon: 'fa-gear' },
-  'Shipped':      { textClass: 'text-violet-600', bgClass: 'bg-violet-50 border-violet-250/40', step: 3, icon: 'fa-truck' },
-  'Delivered':    { textClass: 'text-emerald-600', bgClass: 'bg-emerald-50 border-emerald-250/40', step: 4, icon: 'fa-circle-check' }
+  'Processing': { textClass: 'text-blue-600', bgClass: 'bg-blue-50 border-blue-250/40', step: 2, icon: 'fa-gear' },
+  'Shipped': { textClass: 'text-violet-600', bgClass: 'bg-violet-50 border-violet-250/40', step: 3, icon: 'fa-truck' },
+  'Delivered': { textClass: 'text-emerald-600', bgClass: 'bg-emerald-50 border-emerald-250/40', step: 4, icon: 'fa-circle-check' }
 };
 const STEPS = ['Order Placed', 'Processing', 'Shipped', 'Delivered'];
 
@@ -136,9 +136,8 @@ export default function Dashboard() {
                 </div>
                 <div className="overflow-hidden">
                   <span className="text-[9px] text-slate-400 font-extrabold uppercase tracking-wider block">{label}</span>
-                  <span className={`text-[0.82rem] font-bold block mt-0.5 overflow-hidden text-ellipsis whitespace-nowrap ${
-                    green ? 'text-emerald-600' : 'text-slate-800'
-                  }`}>
+                  <span className={`text-[0.82rem] font-bold block mt-0.5 overflow-hidden text-ellipsis whitespace-nowrap ${green ? 'text-emerald-600' : 'text-slate-800'
+                    }`}>
                     {value}
                   </span>
                 </div>
@@ -210,11 +209,10 @@ export default function Dashboard() {
                             <i className={`fa-solid ${ord.paymentMethod === 'Razorpay' ? 'fa-credit-card text-emerald-600' : 'fa-truck text-amber-600'} text-[10px]`} />
                             {ord.paymentMethod === 'Razorpay' ? 'Paid Online' : 'Cash on Delivery'}
                           </span>
-                          <span className={`inline-flex items-center gap-1 border font-extrabold text-[8px] px-2.5 py-0.5 rounded-full uppercase tracking-wider ${
-                            ord.paymentStatus === 'Paid'
+                          <span className={`inline-flex items-center gap-1 border font-extrabold text-[8px] px-2.5 py-0.5 rounded-full uppercase tracking-wider ${ord.paymentStatus === 'Paid'
                               ? 'text-emerald-700 bg-emerald-50 border-emerald-200'
                               : 'text-amber-705 bg-amber-50 border-amber-200'
-                          }`}>
+                            }`}>
                             {ord.paymentStatus === 'Paid' ? 'PAID' : 'COD PENDING'}
                           </span>
                         </div>
@@ -240,28 +238,24 @@ export default function Dashboard() {
                             <div key={step} className="flex-1 flex flex-row sm:flex-col items-center gap-4 sm:gap-0 relative w-full sm:w-auto">
                               {/* Connector line - Horizontal for desktop */}
                               {i < STEPS.length - 1 && (
-                                <div className={`hidden sm:block absolute top-4 left-1/2 w-full h-[3px] transition-all duration-300 z-0 ${
-                                  i + 1 < currentStep
+                                <div className={`hidden sm:block absolute top-4 left-1/2 w-full h-[3px] transition-all duration-300 z-0 ${i + 1 < currentStep
                                     ? 'bg-gradient-to-r from-emerald-900 to-emerald-500'
                                     : 'bg-slate-200'
-                                }`} />
+                                  }`} />
                               )}
                               {/* Connector line - Vertical for mobile */}
                               {i < STEPS.length - 1 && (
-                                <div className={`sm:hidden absolute left-4 top-8 w-[3px] h-[calc(100%+16px)] -translate-x-1/2 transition-all duration-300 z-0 ${
-                                  i + 1 < currentStep
+                                <div className={`sm:hidden absolute left-4 top-8 w-[3px] h-[calc(100%+16px)] -translate-x-1/2 transition-all duration-300 z-0 ${i + 1 < currentStep
                                     ? 'bg-gradient-to-b from-emerald-900 to-emerald-500'
                                     : 'bg-slate-200'
-                                }`} />
+                                  }`} />
                               )}
                               {/* Node */}
-                              <div className={`w-8 h-8 rounded-full z-10 flex items-center justify-center transition-all duration-300 border-2 shrink-0 ${
-                                isActive
+                              <div className={`w-8 h-8 rounded-full z-10 flex items-center justify-center transition-all duration-300 border-2 shrink-0 ${isActive
                                   ? 'bg-gradient-to-br from-emerald-900 to-emerald-500 border-transparent shadow shadow-emerald-950/20'
                                   : 'bg-white border-slate-200'
-                              } ${
-                                isCurrent ? 'ring-4 ring-emerald-500/25 scale-110' : ''
-                              }`}>
+                                } ${isCurrent ? 'ring-4 ring-emerald-500/25 scale-110' : ''
+                                }`}>
                                 {isActive ? (
                                   <i className={`fa-solid ${sCfg.icon} text-white text-[10px]`} />
                                 ) : (
@@ -269,9 +263,8 @@ export default function Dashboard() {
                                 )}
                               </div>
                               {/* Label */}
-                              <span className={`text-[10px] sm:text-[9px] sm:mt-2 text-left sm:text-center font-bold tracking-tight transition-colors duration-300 ${
-                                isActive ? 'text-emerald-900 font-extrabold' : 'text-slate-400'
-                              }`}>
+                              <span className={`text-[10px] sm:text-[9px] sm:mt-2 text-left sm:text-center font-bold tracking-tight transition-colors duration-300 ${isActive ? 'text-emerald-900 font-extrabold' : 'text-slate-400'
+                                }`}>
                                 {step}
                               </span>
                             </div>

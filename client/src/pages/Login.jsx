@@ -196,11 +196,10 @@ export default function Login() {
               <button
                 key={tab}
                 onClick={() => setActiveTab(tab)}
-                className={`flex-1 py-2.5 rounded-xl cursor-pointer text-[0.82rem] font-extrabold transition-all duration-200 flex items-center justify-center gap-1.5 ${
-                  activeTab === tab
+                className={`flex-1 py-2.5 rounded-xl cursor-pointer text-[0.82rem] font-extrabold transition-all duration-200 flex items-center justify-center gap-1.5 ${activeTab === tab
                     ? 'bg-white text-emerald-900 shadow-sm border border-slate-100/50'
                     : 'bg-transparent text-slate-400 hover:text-slate-600'
-                }`}
+                  }`}
               >
                 {tab === 'login' ? (
                   <i className="fa-solid fa-arrow-right-to-bracket text-xs" />
@@ -245,11 +244,10 @@ export default function Login() {
                   key={method}
                   type="button"
                   onClick={() => { setLoginMethod(method); setOtpSent(false); }}
-                  className={`flex-1 py-2 rounded-lg cursor-pointer text-[0.78rem] font-bold transition-all duration-200 flex items-center justify-center gap-1.5 ${
-                    loginMethod === method
+                  className={`flex-1 py-2 rounded-lg cursor-pointer text-[0.78rem] font-bold transition-all duration-200 flex items-center justify-center gap-1.5 ${loginMethod === method
                       ? 'bg-white text-emerald-950 shadow-sm'
                       : 'bg-transparent text-slate-400 hover:text-slate-650'
-                  }`}
+                    }`}
                 >
                   <i className={`fa-solid ${icon} text-[11px]`} /> {label}
                 </button>
@@ -328,9 +326,8 @@ export default function Login() {
                 <button
                   type="submit"
                   disabled={submittingPhone}
-                  className={`w-full bg-gradient-to-r from-emerald-900 to-emerald-600 text-white font-extrabold py-3.5 px-4 rounded-2xl text-[0.85rem] cursor-pointer shadow-lg shadow-emerald-950/20 transition-all duration-200 hover:-translate-y-0.5 hover:shadow-xl hover:shadow-emerald-950/30 active:translate-y-0 tracking-wide mt-2 flex items-center justify-center gap-2 ${
-                    submittingPhone ? 'opacity-70 cursor-not-allowed' : ''
-                  }`}
+                  className={`w-full bg-gradient-to-r from-emerald-900 to-emerald-600 text-white font-extrabold py-3.5 px-4 rounded-2xl text-[0.85rem] cursor-pointer shadow-lg shadow-emerald-950/20 transition-all duration-200 hover:-translate-y-0.5 hover:shadow-xl hover:shadow-emerald-950/30 active:translate-y-0 tracking-wide mt-2 flex items-center justify-center gap-2 ${submittingPhone ? 'opacity-70 cursor-not-allowed' : ''
+                    }`}
                 >
                   {submittingPhone ? (
                     <>

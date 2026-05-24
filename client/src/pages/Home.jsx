@@ -96,7 +96,7 @@ export default function Home() {
         const featured = res.data.filter(p => featuredSlugs.includes(p.id));
         if (featured.length > 0) setFeaturedProducts(featured);
       })
-      .catch(() => {/* silently use fallback */})
+      .catch(() => {/* silently use fallback */ })
       .finally(() => setLoading(false));
   }, []);
 
@@ -114,7 +114,7 @@ export default function Home() {
         {/* Soft background decor blurs */}
         <div className="absolute top-0 left-0 w-96 h-96 bg-emerald-500/10 rounded-full blur-[120px] pointer-events-none" />
         <div className="absolute bottom-0 right-0 w-96 h-96 bg-[#4ADE80]/10 rounded-full blur-[120px] pointer-events-none" />
-        
+
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center relative z-10 px-4 xs:px-6 sm:px-12 lg:px-16">
           <div className="lg:col-span-7 space-y-6 lg:space-y-7 text-center lg:text-left">
             <span className="inline-flex items-center gap-2 bg-emerald-800/40 border border-emerald-700/40 px-4 py-1.5 rounded-full text-xs font-bold tracking-wider text-[#4ADE80] shadow-sm animate-pulse-glow">
@@ -134,10 +134,10 @@ export default function Home() {
                 <i className="fa-brands fa-whatsapp text-base text-emerald-400" /> Contact on WhatsApp
               </a>
             </div>
-            
+
             {/* Trust badges */}
             <div className="flex flex-wrap justify-center lg:justify-start gap-4 sm:gap-6 pt-4 border-t border-white/10 mt-4">
-              {[['fa-certificate','FSSAI Certified'],['fa-leaf','Zero Preservatives'],['fa-truck','Fast Delivery'],['fa-shield-halved','Quality Tested']].map(([icon, label]) => (
+              {[['fa-certificate', 'FSSAI Certified'], ['fa-leaf', 'Zero Preservatives'], ['fa-truck', 'Fast Delivery'], ['fa-shield-halved', 'Quality Tested']].map(([icon, label]) => (
                 <div key={label} className="flex items-center gap-2 text-[11px] text-slate-300 font-semibold">
                   <i className={`${icon} text-[#4ADE80] text-xs`} /> {label}
                 </div>
