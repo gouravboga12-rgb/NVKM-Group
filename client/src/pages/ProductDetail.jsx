@@ -137,9 +137,9 @@ export default function ProductDetail() {
   };
 
   return (
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 page-transition">
+    <div className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 py-6 sm:py-10 page-transition">
       {/* Breadcrumb */}
-      <nav className="flex items-center gap-1.5 text-xs text-slate-500 mb-8 font-semibold">
+      <nav className="flex items-center gap-1.5 text-xs text-slate-500 mb-6 sm:mb-8 font-semibold overflow-hidden">
         <Link to="/" className="hover:text-primary transition-colors">Home</Link>
         <i className="fa-solid fa-chevron-right text-[8px] text-slate-400"></i>
         <Link to="/shop" className="hover:text-primary transition-colors">Shop</Link>
@@ -188,10 +188,10 @@ export default function ProductDetail() {
             <span className="text-xs font-bold text-accent tracking-widest uppercase">{product.category}</span>
             <h1 className="font-heading font-extrabold text-2xl xs:text-3xl sm:text-4xl text-darkText mt-1 tracking-tight">{product.name}</h1>
 
-            <div className="flex items-center space-x-2 mt-2">
+            <div className="flex items-center flex-wrap gap-2 mt-2">
               <StarRating rating={product.rating} />
               <span className="text-xs font-bold text-darkText">{product.rating}</span>
-              <span className="text-xs text-slate-400 font-semibold">({product.reviewsCount} verified customer reviews)</span>
+              <span className="text-xs text-slate-400 font-semibold">({product.reviewsCount} reviews)</span>
             </div>
 
             {/* Price banner */}
@@ -254,13 +254,15 @@ export default function ProductDetail() {
             <button onClick={handleAddToCart} className="flex-1 bg-slate-100 hover:bg-primary hover:text-white text-primary border border-transparent hover:border-primary/20 font-bold py-4 px-6 rounded-2xl flex items-center justify-center gap-2 shadow-sm transition-all hover:scale-[1.01] hover:-translate-y-0.5 duration-300">
               <i className="fa-solid fa-cart-shopping"></i> Add to Cart
             </button>
-            <button onClick={handleBuyNow} className="flex-1 bg-accent hover:bg-accentHover text-white font-bold py-4 px-6 rounded-2xl flex items-center justify-center gap-2 shadow-lg shadow-accent/20 transition-all hover:scale-[1.01] hover:-translate-y-0.5 duration-300">
-              <i className="fa-solid fa-bolt"></i> Buy It Now
-            </button>
-            <button onClick={handleWhatsAppInquiry} className="bg-blue-650 hover:bg-blue-750 text-white font-bold py-4 px-5 rounded-2xl flex items-center justify-center gap-2 shadow-lg shadow-blue-600/20 transition-all hover:scale-[1.01] hover:-translate-y-0.5 duration-300" title="Inquire on WhatsApp">
-              <i className="fa-brands fa-whatsapp text-2xl"></i>
-              <span className="sm:hidden text-sm">Inquire on WhatsApp</span>
-            </button>
+            <div className="flex gap-3 flex-1">
+              <button onClick={handleBuyNow} className="flex-1 bg-accent hover:bg-accentHover text-white font-bold py-4 px-6 rounded-2xl flex items-center justify-center gap-2 shadow-lg shadow-accent/20 transition-all hover:scale-[1.01] hover:-translate-y-0.5 duration-300">
+                <i className="fa-solid fa-bolt"></i> Buy Now
+              </button>
+              <button onClick={handleWhatsAppInquiry} className="bg-blue-650 hover:bg-blue-750 text-white font-bold py-4 px-5 rounded-2xl flex items-center justify-center gap-2 shadow-lg shadow-blue-600/20 transition-all hover:scale-[1.01] hover:-translate-y-0.5 duration-300" title="Inquire on WhatsApp">
+                <i className="fa-brands fa-whatsapp text-2xl"></i>
+                <span className="text-sm">WhatsApp</span>
+              </button>
+            </div>
           </div>
         </div>
       </div>

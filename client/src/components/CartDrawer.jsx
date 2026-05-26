@@ -27,7 +27,7 @@ export default function CartDrawer() {
   return (
     <div className={`fixed inset-0 z-50 transition-all duration-300 ${cartOpen ? '' : 'pointer-events-none'}`}>
       <div onClick={() => setCartOpen(false)} className={`absolute inset-0 bg-slate-900/50 backdrop-blur-sm transition-opacity duration-300 ${cartOpen ? 'opacity-100' : 'opacity-0'}`}></div>
-      <div className={`absolute top-0 right-0 w-full sm:w-[480px] h-full bg-white shadow-2xl flex flex-col transition-transform duration-300 ${cartOpen ? 'translate-x-0' : 'translate-x-full'}`}>
+      <div className={`absolute top-0 right-0 w-full sm:w-[420px] h-full bg-white shadow-2xl flex flex-col transition-transform duration-300 ${cartOpen ? 'translate-x-0' : 'translate-x-full'}`}>
         
         {/* Header */}
         <div className="p-4 sm:p-6 border-b flex items-center justify-between bg-primary text-white">
@@ -75,10 +75,10 @@ export default function CartDrawer() {
         {/* Footer */}
         <div className="p-4 sm:p-6 border-t bg-slate-50">
           <div className="space-y-2 mb-4">
-            <div className="flex justify-between text-slate-655 text-sm"><span>Subtotal:</span><span>₹{subtotal.toFixed(2)}</span></div>
-            <div className="flex justify-between text-blue-600 text-sm font-medium"><span>Discount Savings:</span><span>-₹{savings.toFixed(2)}</span></div>
-            <div className="flex justify-between text-slate-655 text-sm"><span>Shipping:</span><span className="text-blue-600 font-semibold">FREE Delivery</span></div>
-            <div className="flex justify-between text-darkText font-bold text-lg pt-2 border-t border-slate-200"><span>Total Payable:</span><span className="text-primary">₹{total.toFixed(2)}</span></div>
+            <div className="flex justify-between text-slate-655 text-xs sm:text-sm"><span>Subtotal:</span><span>₹{subtotal.toFixed(2)}</span></div>
+            <div className="flex justify-between text-blue-600 text-xs sm:text-sm font-medium"><span>Discount Savings:</span><span>-₹{savings.toFixed(2)}</span></div>
+            <div className="flex justify-between text-slate-655 text-xs sm:text-sm"><span>Shipping:</span><span className="text-blue-600 font-semibold text-xs sm:text-sm">FREE Delivery</span></div>
+            <div className="flex justify-between text-darkText font-bold text-base sm:text-lg pt-2 border-t border-slate-200"><span>Total Payable:</span><span className="text-primary">₹{total.toFixed(2)}</span></div>
           </div>
           <div className="flex flex-col gap-2">
             <button onClick={handleCheckout} className="w-full bg-accent hover:bg-accentHover text-white py-3 rounded-xl font-bold flex items-center justify-center gap-2 shadow-lg shadow-accent/20 transition-all hover:scale-[1.01]">

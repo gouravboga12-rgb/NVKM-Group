@@ -113,7 +113,7 @@ export default function Shop() {
   }, [loading, filtered.length]);
 
   return (
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 page-transition">
+    <div className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 py-6 sm:py-10 page-transition">
       <div className="text-left space-y-2 mb-10" data-aos="fade-right">
         <span className="text-xs font-bold text-accent tracking-widest uppercase">Pure & Organic</span>
         <h1 className="font-heading font-extrabold text-4xl text-darkText tracking-tight">Shop Organic Powders</h1>

@@ -165,10 +165,10 @@ export default function Home() {
   const GENERAL_WA_MSG = 'Hello NVKM GROUP, I am interested in your natural powder products.';
 
   return (
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-16 page-transition">
+    <div className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 space-y-10 sm:space-y-16 page-transition">
 
       {/* ── HERO ── */}
-      <section className="relative overflow-hidden py-10 sm:py-20 lg:py-32 bg-gradient-to-br from-[#0A192F] via-[#0D2447] to-[#050B14] rounded-[24px] sm:rounded-[40px] text-white shadow-2xl mt-4">
+      <section className="relative overflow-hidden py-8 sm:py-20 lg:py-32 bg-gradient-to-br from-[#0A192F] via-[#0D2447] to-[#050B14] rounded-[20px] sm:rounded-[40px] text-white shadow-2xl mt-3 sm:mt-4">
         {/* Subtle Background Farm Image Overlay */}
         <div 
           className="absolute inset-0 bg-cover bg-center pointer-events-none" 
@@ -179,23 +179,23 @@ export default function Home() {
         {/* Soft background decor blurs */}
         <div className="absolute top-0 left-0 w-96 h-96 bg-blue-500/10 rounded-full blur-[120px] pointer-events-none" />
         <div className="absolute bottom-0 right-0 w-96 h-96 bg-[#38BDF8]/10 rounded-full blur-[120px] pointer-events-none" />
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center relative z-10 px-4 xs:px-6 sm:px-12 lg:px-16">
-          <div className="lg:col-span-7 space-y-6 lg:space-y-7 text-center lg:text-left" data-aos="fade-right">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-12 items-center relative z-10 px-3 xs:px-5 sm:px-12 lg:px-16">
+          <div className="lg:col-span-7 space-y-4 sm:space-y-6 lg:space-y-7 text-center lg:text-left" data-aos="fade-right">
             <span className="inline-flex items-center gap-2 bg-blue-800/40 border border-blue-700/40 px-4 py-1.5 rounded-full text-xs font-bold tracking-wider text-[#38BDF8] shadow-sm animate-pulse-glow">
               <i className="fa-solid fa-leaf text-xs" /> 100% Pure, Organic &amp; Natural
             </span>
-            <h1 className="font-heading font-extrabold text-3xl sm:text-5xl lg:text-6xl leading-[1.15] tracking-tight text-white">
+            <h1 className="font-heading font-extrabold text-2xl xs:text-3xl sm:text-5xl lg:text-6xl leading-[1.15] tracking-tight text-white">
               Premium Natural Fruit &amp; <span className="bg-gradient-to-r from-[#38BDF8] via-[#2563EB] to-[#93C5FD] bg-clip-text text-transparent">Vegetable Powders</span>
             </h1>
-            <p className="text-xs sm:text-sm text-slate-300 max-w-xl mx-auto lg:mx-0 font-medium leading-relaxed">
+            <p className="text-[11px] sm:text-sm text-slate-300 max-w-xl mx-auto lg:mx-0 font-medium leading-relaxed">
               NVKM GROUP manufactures nutrient-rich powders for daily wellness. Sourced from natural harvests and processed under strict hygienic standards — healthy, organic, and preservative-free nutrition for retail &amp; wholesale buyers.
             </p>
-            <div className="flex flex-wrap justify-center lg:justify-start gap-4 pt-2">
-              <button onClick={() => navigate('/shop')} className="bg-[#2563EB] hover:bg-[#1D4ED8] text-white font-extrabold px-6 sm:px-8 py-3.5 sm:py-4 rounded-2xl shadow-xl shadow-blue-950/40 transition-all duration-300 hover:scale-[1.02] flex items-center gap-2 text-xs uppercase tracking-wider">
+            <div className="flex flex-wrap justify-center lg:justify-start gap-3 sm:gap-4 pt-1 sm:pt-2">
+              <button onClick={() => navigate('/shop')} className="bg-[#2563EB] hover:bg-[#1D4ED8] text-white font-extrabold px-5 sm:px-8 py-3 sm:py-4 rounded-2xl shadow-xl shadow-blue-950/40 transition-all duration-300 hover:scale-[1.02] flex items-center gap-2 text-xs uppercase tracking-wider">
                 <i className="fa-solid fa-cart-shopping" /> Shop Our Powders
               </button>
-              <a href={`https://wa.me/9014274293?text=${encodeURIComponent(GENERAL_WA_MSG)}`} target="_blank" rel="noreferrer" className="bg-white/5 hover:bg-white/10 border border-white/15 text-white font-extrabold px-6 sm:px-8 py-3.5 sm:py-4 rounded-2xl transition-all duration-300 hover:scale-[1.02] flex items-center gap-2 text-xs uppercase tracking-wider">
-                <i className="fa-brands fa-whatsapp text-base text-sky-400" /> Contact on WhatsApp
+              <a href={`https://wa.me/9014274293?text=${encodeURIComponent(GENERAL_WA_MSG)}`} target="_blank" rel="noreferrer" className="bg-white/5 hover:bg-white/10 border border-white/15 text-white font-extrabold px-5 sm:px-8 py-3 sm:py-4 rounded-2xl transition-all duration-300 hover:scale-[1.02] flex items-center gap-2 text-xs uppercase tracking-wider">
+                <i className="fa-brands fa-whatsapp text-base text-sky-400" /> WhatsApp
               </a>
             </div>
             {/* Trust badges */}
@@ -327,8 +327,8 @@ export default function Home() {
       </section>
  
       {/* ── WHOLESALE BANNER ── */}
-      <section className="py-4" data-aos="fade-up">
-        <div className="bg-gradient-to-tr from-[#0F2942] to-blue-900 text-white rounded-[24px] sm:rounded-[35px] p-6 sm:p-8 md:p-12 shadow-xl flex flex-col md:flex-row items-center gap-8 relative overflow-hidden">
+      <section className="py-2 sm:py-4" data-aos="fade-up">
+        <div className="bg-gradient-to-tr from-[#0F2942] to-blue-900 text-white rounded-[20px] sm:rounded-[35px] p-5 sm:p-8 md:p-12 shadow-xl flex flex-col md:flex-row items-center gap-6 sm:gap-8 relative overflow-hidden">
           <div className="absolute right-0 bottom-0 top-0 w-1/3 bg-[radial-gradient(circle_at_right_bottom,rgba(56,189,248,0.15),transparent)] pointer-events-none" />
           <div className="flex-1 space-y-4 text-center md:text-left">
             <span className="bg-blue-800 text-[#38BDF8] border border-blue-700/50 text-[10px] font-bold px-3 py-1 rounded-full uppercase tracking-wider">Wholesale &amp; Retail Supplier</span>

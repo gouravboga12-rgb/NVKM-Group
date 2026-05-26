@@ -6,17 +6,17 @@ export default function Footer() {
       {/* Background soft glow */}
       <div className="absolute right-0 bottom-0 w-80 h-80 bg-blue-950/20 rounded-full blur-[100px] pointer-events-none" />
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 grid grid-cols-1 md:grid-cols-12 gap-8 relative z-10">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-16 grid grid-cols-1 md:grid-cols-12 gap-6 sm:gap-8 relative z-10">
         
         {/* Brand */}
-        <div className="space-y-5 md:col-span-4">
+        <div className="space-y-4 sm:space-y-5 md:col-span-4">
           <div className="flex items-center space-x-3">
             <img 
               src="/logo.png" 
               alt="NVKM GROUP Logo" 
-              className="w-16 h-16 md:w-20 md:h-20 rounded-xl object-contain bg-white/5 p-1 shadow-md border border-white/10"
+              className="w-14 h-14 sm:w-16 sm:h-16 md:w-20 md:h-20 rounded-xl object-contain bg-white/5 p-1 shadow-md border border-white/10"
             />
-            <span className="font-heading font-extrabold text-2xl md:text-3xl text-white">NVKM <span className="text-secondary">GROUP</span></span>
+            <span className="font-heading font-extrabold text-xl sm:text-2xl md:text-3xl text-white">NVKM <span className="text-secondary">GROUP</span></span>
           </div>
           <p className="text-xs text-slate-400 leading-relaxed max-w-sm">NVKM GROUP manufactures premium natural fruit & vegetable powders. 100% organic, preservative-free, and nutrient-rich for healthy living.</p>
           <div className="flex space-x-3 mt-4">
@@ -34,29 +34,31 @@ export default function Footer() {
           </div>
         </div>
 
-        {/* Quick Links */}
-        <div className="md:col-span-2">
-          <h3 className="font-heading font-extrabold text-white text-xs uppercase tracking-wider mb-5">Quick Links</h3>
-          <ul className="space-y-3 text-xs font-semibold">
-            <li><Link to="/" className="text-slate-400 hover:text-secondary transition-colors">Home</Link></li>
-            <li><Link to="/shop" className="text-slate-400 hover:text-secondary transition-colors">Shop Products</Link></li>
-            <li><Link to="/about" className="text-slate-400 hover:text-secondary transition-colors">About NVKM GROUP</Link></li>
-            <li><Link to="/contact" className="text-slate-400 hover:text-secondary transition-colors">Contact Us</Link></li>
-            <li><Link to="/login" className="text-slate-400 hover:text-secondary transition-colors">My Account</Link></li>
-          </ul>
-        </div>
+        {/* Quick Links + Categories: 2-col on mobile, separate cols on md+ */}
+        <div className="grid grid-cols-2 md:contents gap-6 md:col-span-5">
+          {/* Quick Links */}
+          <div className="md:col-span-2">
+            <h3 className="font-heading font-extrabold text-white text-xs uppercase tracking-wider mb-4 sm:mb-5">Quick Links</h3>
+            <ul className="space-y-2.5 sm:space-y-3 text-xs font-semibold">
+              <li><Link to="/" className="text-slate-400 hover:text-secondary transition-colors">Home</Link></li>
+              <li><Link to="/shop" className="text-slate-400 hover:text-secondary transition-colors">Shop Products</Link></li>
+              <li><Link to="/about" className="text-slate-400 hover:text-secondary transition-colors">About NVKM GROUP</Link></li>
+              <li><Link to="/contact" className="text-slate-400 hover:text-secondary transition-colors">Contact Us</Link></li>
+              <li><Link to="/login" className="text-slate-400 hover:text-secondary transition-colors">My Account</Link></li>
+            </ul>
+          </div>
 
-        {/* Categories */}
-        <div className="md:col-span-3">
-          <h3 className="font-heading font-extrabold text-white text-xs uppercase tracking-wider mb-5">Product Categories</h3>
-          <ul className="space-y-3 text-xs font-semibold">
-            <li><Link to="/shop?category=Tomato+Powder" className="text-slate-400 hover:text-secondary transition-colors">Tomato Powder</Link></li>
-            <li><Link to="/shop?category=Banana+Powder" className="text-slate-400 hover:text-secondary transition-colors">Banana Powder</Link></li>
-            <li><Link to="/shop?category=Carrot+Powder" className="text-slate-400 hover:text-secondary transition-colors">Carrot Powder</Link></li>
-            <li><Link to="/shop?category=Beetroot+Powder" className="text-slate-400 hover:text-secondary transition-colors">Beetroot Powder</Link></li>
-            <li><Link to="/shop?category=Moringa+Powder" className="text-slate-400 hover:text-secondary transition-colors">Moringa Powder</Link></li>
-            <li><Link to="/shop?category=Pooja+Accessories" className="text-slate-400 hover:text-secondary transition-colors">Pooja Accessories</Link></li>
-          </ul>
+          {/* Categories */}
+          <div className="md:col-span-3">
+            <h3 className="font-heading font-extrabold text-white text-xs uppercase tracking-wider mb-4 sm:mb-5">Categories</h3>
+            <ul className="space-y-2.5 sm:space-y-3 text-xs font-semibold">
+              <li><Link to="/shop?category=Tomato+Powder" className="text-slate-400 hover:text-secondary transition-colors">Tomato Powder</Link></li>
+              <li><Link to="/shop?category=Banana+Powder" className="text-slate-400 hover:text-secondary transition-colors">Banana Powder</Link></li>
+              <li><Link to="/shop?category=Moringa+Powder" className="text-slate-400 hover:text-secondary transition-colors">Moringa Powder</Link></li>
+              <li><Link to="/shop?category=Beetroot+Powder" className="text-slate-400 hover:text-secondary transition-colors">Beetroot Powder</Link></li>
+              <li><Link to="/shop?category=Pooja+Accessories" className="text-slate-400 hover:text-secondary transition-colors">Pooja Accessories</Link></li>
+            </ul>
+          </div>
         </div>
 
         {/* Contact Info */}

@@ -76,14 +76,14 @@ export default function Contact() {
   const [openFaq, setOpenFaq] = useState(null);
 
   return (
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 space-y-16 page-transition">
+    <div className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 py-4 sm:py-6 space-y-10 sm:space-y-16 page-transition">
 
       {/* ── PAGE HEADER ── */}
-      <div className="text-center max-w-2xl mx-auto space-y-4" data-aos="fade-up">
+      <div className="text-center max-w-2xl mx-auto space-y-3 sm:space-y-4" data-aos="fade-up">
         <span className="inline-flex items-center gap-1.5 bg-blue-500/10 border border-blue-500/25 text-blue-600 text-[10px] font-extrabold px-3.5 py-1.5 rounded-full tracking-wider uppercase shadow-sm">
           <i className="fa-solid fa-headset" /> Get In Touch
         </span>
-        <h1 className="font-heading font-black text-4xl sm:text-5xl lg:text-6xl tracking-tight text-[#111827] bg-gradient-to-r from-[#111827] to-[#0F2942] bg-clip-text text-transparent">
+        <h1 className="font-heading font-black text-3xl xs:text-4xl sm:text-5xl lg:text-6xl tracking-tight text-[#111827] bg-gradient-to-r from-[#111827] to-[#0F2942] bg-clip-text text-transparent">
           Contact NVKM GROUP
         </h1>
         <p className="text-sm text-slate-500 leading-relaxed max-w-xl mx-auto font-medium">
@@ -92,17 +92,17 @@ export default function Contact() {
       </div>
 
       {/* ── QUICK CONTACT CHIPS ── */}
-      <div className="flex flex-wrap justify-center gap-4" data-aos="fade-up">
+      <div className="flex flex-wrap justify-center gap-3" data-aos="fade-up">
         {[
           { href: 'tel:9014274293', icon: 'fa-phone', label: 'Call Now', bg: 'bg-gradient-to-r from-[#0F2942] to-[#1D4ED8] text-white hover:scale-[1.02] shadow-lg shadow-blue-950/20' },
-          { href: `https://wa.me/9014274293?text=${encodeURIComponent(GENERAL_WA_MSG)}`, icon: 'fa-brands fa-whatsapp', label: 'WhatsApp Chat', bg: 'bg-gradient-to-r from-[#2563EB] to-[#1D4ED8] text-white hover:scale-[1.02] shadow-lg shadow-blue-500/20', external: true },
+          { href: `https://wa.me/9014274293?text=${encodeURIComponent(GENERAL_WA_MSG)}`, icon: 'fa-brands fa-whatsapp', label: 'WhatsApp', bg: 'bg-gradient-to-r from-[#2563EB] to-[#1D4ED8] text-white hover:scale-[1.02] shadow-lg shadow-blue-500/20', external: true },
           { href: 'mailto:Navakiranamgroup@gmail.com', icon: 'fa-envelope', label: 'Email Us', bg: 'bg-white border border-slate-200 text-slate-700 hover:shadow-md hover:scale-[1.02]' }
         ].map(({ href, icon, label, bg, external }) => (
           <a
             key={label}
             href={href}
             {...(external ? { target: '_blank', rel: 'noreferrer' } : {})}
-            className={`inline-flex items-center gap-2 font-extrabold text-xs py-3 px-6 rounded-full transition-all duration-300 ${bg}`}
+            className={`inline-flex items-center gap-2 font-extrabold text-xs py-2.5 sm:py-3 px-5 sm:px-6 rounded-full transition-all duration-300 ${bg}`}
           >
             <i className={`fa-solid ${icon}`} /> {label}
           </a>
@@ -194,7 +194,7 @@ export default function Contact() {
             <button
               type="submit"
               disabled={submitting}
-              className="bg-gradient-to-r from-[#0F2942] to-[#2563EB] disabled:from-slate-400 disabled:to-slate-400 text-white font-extrabold text-xs py-3.5 px-8 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-[1.02] flex items-center gap-2 self-start cursor-pointer disabled:cursor-not-allowed"
+              className="w-full sm:w-auto bg-gradient-to-r from-[#0F2942] to-[#2563EB] disabled:from-slate-400 disabled:to-slate-400 text-white font-extrabold text-xs py-3.5 px-8 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-[1.02] flex items-center justify-center gap-2 self-start cursor-pointer disabled:cursor-not-allowed"
             >
               {submitting ? (
                 <>

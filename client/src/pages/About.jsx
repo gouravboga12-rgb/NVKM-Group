@@ -18,14 +18,14 @@ export default function About() {
   ];
 
   return (
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 space-y-16 page-transition">
+    <div className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 py-4 sm:py-6 space-y-10 sm:space-y-16 page-transition">
 
       {/* ── PAGE HEADER ── */}
-      <div className="text-center max-w-2xl mx-auto space-y-4" data-aos="fade-up">
+      <div className="text-center max-w-2xl mx-auto space-y-3 sm:space-y-4" data-aos="fade-up">
         <span className="inline-flex items-center gap-1.5 bg-blue-500/10 border border-blue-500/25 text-blue-600 text-[10px] font-extrabold px-3.5 py-1.5 rounded-full tracking-wider uppercase shadow-sm">
           <i className="fa-solid fa-leaf" /> Our Heritage
         </span>
-        <h1 className="font-heading font-black text-4xl sm:text-5xl lg:text-6xl tracking-tight text-[#111827] bg-gradient-to-r from-[#111827] to-[#0F2942] bg-clip-text text-transparent">
+        <h1 className="font-heading font-black text-3xl xs:text-4xl sm:text-5xl lg:text-6xl tracking-tight text-[#111827] bg-gradient-to-r from-[#111827] to-[#0F2942] bg-clip-text text-transparent">
           About NVKM GROUP
         </h1>
         <p className="text-sm text-slate-500 leading-relaxed max-w-xl mx-auto font-medium">
@@ -48,11 +48,11 @@ export default function About() {
             <span className="text-[10px] text-blue-600 font-bold uppercase tracking-wider">Sourced &amp; Processed Locally</span>
           </div>
         </div>
-        <div className="lg:col-span-7 flex flex-col gap-5 text-left">
+        <div className="lg:col-span-7 flex flex-col gap-4 sm:gap-5 text-left">
           <span className="inline-flex items-center bg-blue-50 border border-blue-200 text-blue-800 text-[10px] font-bold px-3 py-1 rounded-full uppercase tracking-wider self-start">
             Manufacturing Business
           </span>
-          <h2 className="font-heading font-black text-3xl text-slate-900 leading-tight">
+          <h2 className="font-heading font-black text-2xl sm:text-3xl text-slate-900 leading-tight">
             Our Roots &amp; Commitment
           </h2>
           <p className="text-xs sm:text-sm text-slate-650 leading-relaxed font-medium">
@@ -113,10 +113,10 @@ export default function About() {
       </div>
 
       {/* ── JOURNEY TIMELINE ── */}
-      <div data-aos="fade-up" className="glass-premium rounded-[38px] p-6 sm:p-10 shadow-xl">
-        <div className="text-center mb-10">
+      <div data-aos="fade-up" className="glass-premium rounded-[24px] sm:rounded-[38px] p-4 sm:p-10 shadow-xl">
+        <div className="text-center mb-6 sm:mb-10">
           <span className="text-[10px] font-extrabold text-[#2563eb] tracking-widest uppercase">Our Journey</span>
-          <h2 className="font-heading font-black text-3xl text-slate-900 mt-2">Company Milestones</h2>
+          <h2 className="font-heading font-black text-2xl sm:text-3xl text-slate-900 mt-2">Company Milestones</h2>
           <div className="w-12 h-1 bg-gradient-to-r from-blue-600 to-sky-400 rounded-full mx-auto mt-3" />
         </div>
 
@@ -163,21 +163,21 @@ export default function About() {
       </div>
 
       {/* ── CTA ── */}
-      <div data-aos="fade-up" className="bg-gradient-to-tr from-[#0F2942] via-[#1D4ED8] to-[#0A192F] rounded-[38px] p-10 sm:p-14 text-center text-white relative overflow-hidden shadow-2xl">
+      <div data-aos="fade-up" className="bg-gradient-to-tr from-[#0F2942] via-[#1D4ED8] to-[#0A192F] rounded-[24px] sm:rounded-[38px] p-6 sm:p-10 lg:p-14 text-center text-white relative overflow-hidden shadow-2xl">
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center_top,rgba(56,189,248,.15),transparent_65%)] pointer-events-none" />
         <div className="absolute top-[-80px] right-[-80px] w-[300px] h-[300px] rounded-full bg-radial-gradient(circle,rgba(56,189,248,.08),transparent) pointer-events-none" />
         <div className="relative z-10">
-          <h2 className="font-heading font-black text-2xl sm:text-3xl lg:text-4xl mb-4 tracking-tight">
+          <h2 className="font-heading font-black text-xl sm:text-3xl lg:text-4xl mb-3 sm:mb-4 tracking-tight">
             Ready to Experience Pure Natural Nutrition?
           </h2>
-          <p className="text-xs sm:text-sm text-blue-100/80 max-w-md mx-auto mb-8 leading-relaxed font-medium">
+          <p className="text-xs sm:text-sm text-blue-100/80 max-w-md mx-auto mb-6 sm:mb-8 leading-relaxed font-medium">
             Join hundreds of health-conscious families and businesses who trust NVKM GROUP for their daily nutrition powders.
           </p>
-          <div className="flex flex-wrap justify-center gap-4">
-            <a href="/shop" className="bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 text-white font-extrabold text-xs py-4 px-8 rounded-2xl shadow-xl shadow-blue-950/30 transition-all duration-300 hover:scale-[1.02] flex items-center gap-2 uppercase tracking-wider">
+          <div className="flex flex-wrap justify-center gap-3 sm:gap-4">
+            <a href="/shop" className="bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 text-white font-extrabold text-xs py-3.5 sm:py-4 px-6 sm:px-8 rounded-2xl shadow-xl shadow-blue-950/30 transition-all duration-300 hover:scale-[1.02] flex items-center gap-2 uppercase tracking-wider">
               <i className="fa-solid fa-cart-shopping" /> Browse Products
             </a>
-            <a href={`https://wa.me/9014274293?text=${encodeURIComponent(GENERAL_WA_MSG)}`} target="_blank" rel="noreferrer" className="bg-white/10 hover:bg-white/20 border border-white/25 text-white font-extrabold text-xs py-4 px-8 rounded-2xl transition-all duration-300 hover:scale-[1.02] flex items-center gap-2 uppercase tracking-wider">
+            <a href={`https://wa.me/9014274293?text=${encodeURIComponent(GENERAL_WA_MSG)}`} target="_blank" rel="noreferrer" className="bg-white/10 hover:bg-white/20 border border-white/25 text-white font-extrabold text-xs py-3.5 sm:py-4 px-6 sm:px-8 rounded-2xl transition-all duration-300 hover:scale-[1.02] flex items-center gap-2 uppercase tracking-wider">
               <i className="fa-brands fa-whatsapp text-sky-400 text-base" /> Chat With Us
             </a>
           </div>
