@@ -5,9 +5,8 @@
    AOS (Animate On Scroll) Defensive Override
    Ensures content is always visible if the CDN script fails to
    load/initialize — prevents permanently hidden opacity:0 elements.
-   AOS re-initializes animations when it successfully loads.
    ============================================================ */
-[data-aos] {
+[data-aos]:not(.aos-init) {
   opacity: 1 !important;
   transform: none !important;
   transition: none !important;

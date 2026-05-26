@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 import api from '../api/api';
 import ProductCard from '../components/ProductCard';
@@ -84,6 +84,64 @@ const categories = [
   { name: 'Pooja Accessories', icon: 'fa-solid fa-hands-praying', color: 'from-yellow-100 to-orange-200', text: 'Hand-made pure cotton round and long wicks for daily puja.' }
 ];
 
+// Counter component for animated stats counting
+function Counter({ target, suffix, duration = 1500 }) {
+  const [count, setCount] = useState(0);
+  const elementRef = useRef(null);
+  const hasAnimated = useRef(false);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        const [entry] = entries;
+        if (entry.isIntersecting && !hasAnimated.current) {
+          hasAnimated.current = true;
+          let startTime = null;
+          const end = parseInt(target, 10);
+          if (isNaN(end)) {
+            setCount(target);
+            return;
+          }
+
+          const animate = (timestamp) => {
+            if (!startTime) startTime = timestamp;
+            const progress = timestamp - startTime;
+            const progressPercentage = Math.min(progress / duration, 1);
+            
+            // Easing: easeOutQuad
+            const easeProgress = progressPercentage * (2 - progressPercentage);
+            const currentCount = Math.floor(easeProgress * end);
+            
+            setCount(currentCount);
+
+            if (progress < duration) {
+              requestAnimationFrame(animate);
+            } else {
+              setCount(end);
+            }
+          };
+
+          requestAnimationFrame(animate);
+        }
+      },
+      { threshold: 0.1 }
+    );
+
+    const currentEl = elementRef.current;
+    if (currentEl) {
+      observer.observe(currentEl);
+    }
+
+    return () => {
+      if (currentEl) {
+        observer.unobserve(currentEl);
+      }
+    };
+  }, [target, duration]);
+
+  return <span ref={elementRef}>{count}{suffix}</span>;
+}
+
 export default function Home() {
   const [featuredProducts, setFeaturedProducts] = useState(FALLBACK_PRODUCTS);
   const [loading, setLoading] = useState(false);
@@ -111,11 +169,18 @@ export default function Home() {
 
       {/* ── HERO ── */}
       <section className="relative overflow-hidden py-10 sm:py-20 lg:py-32 bg-gradient-to-br from-[#0A192F] via-[#0D2447] to-[#050B14] rounded-[24px] sm:rounded-[40px] text-white shadow-2xl mt-4">
+        {/* Subtle Background Farm Image Overlay */}
+        <div 
+          className="absolute inset-0 bg-cover bg-center pointer-events-none" 
+          style={{ 
+            backgroundImage: "linear-gradient(to bottom right, rgba(10, 25, 47, 0.85), rgba(13, 36, 71, 0.88), rgba(5, 11, 20, 0.92)), url('https://images.unsplash.com/photo-1500937386664-56d1dfef3854?auto=format&fit=crop&w=1920&q=80')" 
+          }} 
+        />
         {/* Soft background decor blurs */}
         <div className="absolute top-0 left-0 w-96 h-96 bg-blue-500/10 rounded-full blur-[120px] pointer-events-none" />
         <div className="absolute bottom-0 right-0 w-96 h-96 bg-[#38BDF8]/10 rounded-full blur-[120px] pointer-events-none" />
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center relative z-10 px-4 xs:px-6 sm:px-12 lg:px-16">
-          <div className="lg:col-span-7 space-y-6 lg:space-y-7 text-center lg:text-left">
+          <div className="lg:col-span-7 space-y-6 lg:space-y-7 text-center lg:text-left" data-aos="fade-right">
             <span className="inline-flex items-center gap-2 bg-blue-800/40 border border-blue-700/40 px-4 py-1.5 rounded-full text-xs font-bold tracking-wider text-[#38BDF8] shadow-sm animate-pulse-glow">
               <i className="fa-solid fa-leaf text-xs" /> 100% Pure, Organic &amp; Natural
             </span>
@@ -142,8 +207,8 @@ export default function Home() {
               ))}
             </div>
           </div>
-
-          <div className="lg:col-span-5 relative">
+ 
+          <div className="lg:col-span-5 relative" data-aos="zoom-in">
             <div className="relative max-w-sm mx-auto bg-white/5 backdrop-blur-xl border border-white/10 p-5 rounded-[24px] sm:rounded-[40px] shadow-2xl animate-float">
               <img
                 src="/products images/moringa_main.png"
@@ -168,22 +233,24 @@ export default function Home() {
       </section>
 
       {/* ── STATS STRIP ── */}
-      <section className="grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-5">
+      <section className="grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-5" data-aos="fade-up">
         {[
-          ['500+', 'Happy Customers'],
-          ['6+', 'Product Variants'],
-          ['100%', 'Natural & Organic'],
-          ['48hr', 'Express Delivery']
-        ].map(([num, label]) => (
+          { target: '500', suffix: '+', label: 'Happy Customers' },
+          { target: '6', suffix: '+', label: 'Product Variants' },
+          { target: '100', suffix: '%', label: 'Natural & Organic' },
+          { target: '48', suffix: 'hr', label: 'Express Delivery' }
+        ].map(({ target, suffix, label }) => (
           <div key={label} className="bg-white border border-slate-100 rounded-2xl sm:rounded-3xl p-4 sm:p-7 text-center shadow-sm hover:shadow-lg transition-all duration-300 hover:scale-[1.02] border-glow-blue">
-            <div className="font-heading font-extrabold text-2xl sm:text-4xl text-[#0F2942] tracking-tight">{num}</div>
+            <div className="font-heading font-extrabold text-2xl sm:text-4xl text-[#0F2942] tracking-tight">
+              <Counter target={target} suffix={suffix} duration={1500} />
+            </div>
             <div className="text-[10px] sm:text-xs text-slate-500 mt-1.5 font-bold uppercase tracking-wider">{label}</div>
           </div>
         ))}
       </section>
 
       {/* ── BENEFITS ── */}
-      <section className="py-4">
+      <section className="py-4" data-aos="fade-up">
         <div className="text-center max-w-2xl mx-auto space-y-2 mb-12">
           <span className="text-xs font-bold text-[#2563EB] tracking-widest uppercase">Healthy &amp; Nutritious</span>
           <h2 className="font-heading font-extrabold text-3xl md:text-4xl text-[#111827]">Benefits of Natural Powders</h2>
@@ -194,8 +261,8 @@ export default function Home() {
             { icon: 'fa-certificate', title: '100% Pure & Natural', desc: 'No added preservatives, artificial flavorings, MSG, colorants, or binding fillers. You experience only pure organic nutrients directly from nature.' },
             { icon: 'fa-dna', title: 'Nutrient Lock-in System', desc: 'Our low-temperature dehydration process preserves high vitamins, dietary fibers, enzymes, and active mineral profiles of fresh raw ingredients.' },
             { icon: 'fa-box', title: 'Food-Grade Packaging', desc: 'Packaged in food-safe standup ziplock bags that block UV rays, keeping powders moisture-free with a long shelf life of up to 12 months.' }
-          ].map(({ icon, title, desc }) => (
-            <div key={title} className="bg-white p-8 rounded-[32px] border border-slate-100 shadow-sm hover:shadow-xl hover:-translate-y-1.5 transition-all duration-300">
+          ].map(({ icon, title, desc }, index) => (
+            <div key={title} className="bg-white p-8 rounded-[32px] border border-slate-100 shadow-sm hover:shadow-xl hover:-translate-y-1.5 transition-all duration-300" data-aos="fade-up" data-aos-delay={index * 100}>
               <div className="w-12 h-12 rounded-2xl bg-blue-50 text-[#0F2942] flex items-center justify-center text-xl mb-6 shadow-inner border border-blue-100/50">
                 <i className={`fa-solid ${icon}`} />
               </div>
@@ -207,7 +274,7 @@ export default function Home() {
       </section>
 
       {/* ── CATEGORIES ── */}
-      <section className="py-4">
+      <section className="py-4" data-aos="fade-up">
         <div className="text-center max-w-2xl mx-auto space-y-2 mb-12">
           <span className="text-xs font-bold text-[#2563EB] tracking-widest uppercase">Explore Range</span>
           <h2 className="font-heading font-extrabold text-3xl md:text-4xl text-[#111827]">Product Categories</h2>
@@ -219,6 +286,8 @@ export default function Home() {
               key={index}
               onClick={() => handleCategoryClick(cat.name)}
               className="group bg-white border border-slate-100 p-4 sm:p-6 rounded-[20px] sm:rounded-[30px] hover:border-[#38BDF8] hover:shadow-xl transition-all duration-300 cursor-pointer flex flex-col justify-between shadow-sm"
+              data-aos="zoom-in"
+              data-aos-delay={index * 50}
             >
               <div className={`w-12 h-12 rounded-2xl bg-gradient-to-tr ${cat.color} flex items-center justify-center text-[#0F2942] text-xl group-hover:scale-110 transition-transform duration-300 shadow-sm border border-black/5`}>
                 <i className={cat.icon} />
@@ -234,9 +303,9 @@ export default function Home() {
           ))}
         </div>
       </section>
-
+ 
       {/* ── FEATURED PRODUCTS ── */}
-      <section className="py-4">
+      <section className="py-4" data-aos="fade-up">
         <div className="flex flex-col sm:flex-row sm:items-end justify-between mb-10">
           <div>
             <span className="text-xs font-bold text-[#2563EB] tracking-widest uppercase">Best Sellers</span>
@@ -256,9 +325,9 @@ export default function Home() {
           </div>
         )}
       </section>
-
+ 
       {/* ── WHOLESALE BANNER ── */}
-      <section className="py-4">
+      <section className="py-4" data-aos="fade-up">
         <div className="bg-gradient-to-tr from-[#0F2942] to-blue-900 text-white rounded-[24px] sm:rounded-[35px] p-6 sm:p-8 md:p-12 shadow-xl flex flex-col md:flex-row items-center gap-8 relative overflow-hidden">
           <div className="absolute right-0 bottom-0 top-0 w-1/3 bg-[radial-gradient(circle_at_right_bottom,rgba(56,189,248,0.15),transparent)] pointer-events-none" />
           <div className="flex-1 space-y-4 text-center md:text-left">
@@ -318,7 +387,7 @@ export default function Home() {
       </section>
 
       {/* ── TESTIMONIALS ── */}
-      <section className="py-4">
+      <section className="py-4" data-aos="fade-up">
         <div className="text-center max-w-2xl mx-auto space-y-2 mb-10">
           <span className="text-xs font-bold text-[#2563EB] tracking-widest uppercase">Verified Reviews</span>
           <h2 className="font-heading font-extrabold text-3xl text-[#111827]">Customer Testimonials</h2>
@@ -348,7 +417,7 @@ export default function Home() {
       </section>
 
       {/* ── GALLERY GRID ── */}
-      <section className="py-4 mb-6">
+      <section className="py-4 mb-6" data-aos="fade-up">
         <div className="text-center max-w-2xl mx-auto space-y-2 mb-10">
           <span className="text-xs font-bold text-[#2563EB] tracking-widest uppercase">Healthy Inspirations</span>
           <h2 className="font-heading font-extrabold text-3xl text-[#111827]">Social Proof &amp; Lifestyle</h2>

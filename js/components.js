@@ -142,6 +142,8 @@ function renderHomeView() {
   return `
     <!-- Premium Hero Section -->
     <section class="relative overflow-hidden py-16 lg:py-28 bg-gradient-to-br from-[#0F2942] via-[#0b1d2e] to-[#050e17] rounded-[40px] text-white shadow-2xl mt-4">
+      <!-- Subtle Background Farm Image Overlay -->
+      <div class="absolute inset-0 bg-cover bg-center pointer-events-none" style="background-image: linear-gradient(to bottom right, rgba(15, 41, 66, 0.85), rgba(11, 29, 46, 0.88), rgba(5, 14, 23, 0.92)), url('https://images.unsplash.com/photo-1500937386664-56d1dfef3854?auto=format&amp;fit=crop&amp;w=1920&amp;q=80')"></div>
       <div class="absolute inset-0 bg-[radial-gradient(circle_at_30%_30%,rgba(56,189,248,0.15),transparent)] pointer-events-none"></div>
       <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center relative z-10 px-6 sm:px-12 lg:px-16">
         
@@ -540,6 +542,7 @@ function renderShopGrid() {
 
 // --- Render: Product Details View ---
 function renderProductDetailView(product) {
+  currentVanillaRating = 5;
   const defaultVar = product.variations[0];
   const isWishlisted = state.wishlist.includes(product.id);
   const savePercent = Math.round(((defaultVar.price - defaultVar.discountPrice) / defaultVar.price) * 100);
@@ -740,13 +743,27 @@ function renderProductDetailView(product) {
             </div>
             <div>
               <label class="block text-xs font-bold text-darkText mb-1">Star Rating</label>
-              <select id="review-rating" required class="w-full bg-slate-50 border border-slate-200 p-2.5 rounded-xl text-xs focus:outline-none focus:border-accent">
-                <option value="5">5 Stars (Excellent)</option>
-                <option value="4">4 Stars (Very Good)</option>
-                <option value="3">3 Stars (Good)</option>
-                <option value="2">2 Stars (Average)</option>
-                <option value="1">1 Star (Poor)</option>
-              </select>
+              <input type="hidden" id="review-rating" value="5">
+              <div class="flex items-center gap-2 py-1">
+                <div class="flex items-center gap-1" id="review-stars-container">
+                  <button type="button" onclick="setVanillaReviewRating(1)" onmouseenter="previewVanillaReviewRating(1)" onmouseleave="clearVanillaReviewRatingPreview()" class="text-2xl transition-all duration-150 transform hover:scale-110 active:scale-95 focus:outline-none">
+                    <i class="fa-star fa-solid text-amber-400" id="vanilla-star-1"></i>
+                  </button>
+                  <button type="button" onclick="setVanillaReviewRating(2)" onmouseenter="previewVanillaReviewRating(2)" onmouseleave="clearVanillaReviewRatingPreview()" class="text-2xl transition-all duration-150 transform hover:scale-110 active:scale-95 focus:outline-none">
+                    <i class="fa-star fa-solid text-amber-400" id="vanilla-star-2"></i>
+                  </button>
+                  <button type="button" onclick="setVanillaReviewRating(3)" onmouseenter="previewVanillaReviewRating(3)" onmouseleave="clearVanillaReviewRatingPreview()" class="text-2xl transition-all duration-150 transform hover:scale-110 active:scale-95 focus:outline-none">
+                    <i class="fa-star fa-solid text-amber-400" id="vanilla-star-3"></i>
+                  </button>
+                  <button type="button" onclick="setVanillaReviewRating(4)" onmouseenter="previewVanillaReviewRating(4)" onmouseleave="clearVanillaReviewRatingPreview()" class="text-2xl transition-all duration-150 transform hover:scale-110 active:scale-95 focus:outline-none">
+                    <i class="fa-star fa-solid text-amber-400" id="vanilla-star-4"></i>
+                  </button>
+                  <button type="button" onclick="setVanillaReviewRating(5)" onmouseenter="previewVanillaReviewRating(5)" onmouseleave="clearVanillaReviewRatingPreview()" class="text-2xl transition-all duration-150 transform hover:scale-110 active:scale-95 focus:outline-none">
+                    <i class="fa-star fa-solid text-amber-400" id="vanilla-star-5"></i>
+                  </button>
+                </div>
+                <span class="text-xs font-bold text-slate-500 ml-2" id="vanilla-rating-text">5 Stars (Excellent)</span>
+              </div>
             </div>
             <div>
               <label class="block text-xs font-bold text-darkText mb-1">Comments / Review Text</label>
@@ -841,6 +858,50 @@ function togglePdTab(tabName) {
       btn.className = "flex-1 py-4 text-center border-b-2 border-transparent text-slate-500 hover:text-darkText transition-colors font-semibold";
     }
   });
+}
+
+let currentVanillaRating = 5;
+
+const RATING_TEXTS = {
+  5: '5 Stars (Excellent)',
+  4: '4 Stars (Very Good)',
+  3: '3 Stars (Good)',
+  2: '2 Stars (Average)',
+  1: '1 Star (Poor)'
+};
+
+function updateVanillaStarsDisplay(rating) {
+  for (let i = 1; i <= 5; i++) {
+    const starIcon = document.getElementById(`vanilla-star-${i}`);
+    if (starIcon) {
+      if (i <= rating) {
+        starIcon.className = "fa-star fa-solid text-amber-400";
+      } else {
+        starIcon.className = "fa-star fa-regular text-slate-300";
+      }
+    }
+  }
+  const ratingText = document.getElementById("vanilla-rating-text");
+  if (ratingText) {
+    ratingText.textContent = RATING_TEXTS[rating] || `${rating} Stars`;
+  }
+}
+
+function setVanillaReviewRating(rating) {
+  currentVanillaRating = rating;
+  const ratingInput = document.getElementById("review-rating");
+  if (ratingInput) {
+    ratingInput.value = rating;
+  }
+  updateVanillaStarsDisplay(rating);
+}
+
+function previewVanillaReviewRating(rating) {
+  updateVanillaStarsDisplay(rating);
+}
+
+function clearVanillaReviewRatingPreview() {
+  updateVanillaStarsDisplay(currentVanillaRating);
 }
 
 function handleReviewSubmit(event, productId) {

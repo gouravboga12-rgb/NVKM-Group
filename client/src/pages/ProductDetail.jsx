@@ -23,6 +23,7 @@ export default function ProductDetail() {
   // Review form state
   const [reviewName, setReviewName] = useState('');
   const [reviewRating, setReviewRating] = useState(5);
+  const [hoverRating, setHoverRating] = useState(0);
   const [reviewComment, setReviewComment] = useState('');
   const [submittingReview, setSubmittingReview] = useState(false);
 
@@ -388,19 +389,34 @@ export default function ProductDetail() {
             </div>
             <div>
               <label className="block text-xs font-bold text-darkText mb-1.5 uppercase tracking-wider">Star Rating</label>
-              <div className="relative">
-                <select
-                  value={reviewRating}
-                  onChange={e => setReviewRating(Number(e.target.value))}
-                  className="w-full bg-slate-50 border border-slate-200 p-3 rounded-xl text-xs focus:outline-none focus:border-accent focus:ring-2 focus:ring-accent/15 transition-all font-bold appearance-none cursor-pointer"
-                >
-                  <option value="5">5 Stars (Excellent)</option>
-                  <option value="4">4 Stars (Very Good)</option>
-                  <option value="3">3 Stars (Good)</option>
-                  <option value="2">2 Stars (Average)</option>
-                  <option value="1">1 Star (Poor)</option>
-                </select>
-                <i className="fa-solid fa-chevron-down absolute right-4 top-3.5 text-slate-400 text-xs pointer-events-none"></i>
+              <div className="flex items-center gap-2 py-1">
+                <div className="flex items-center gap-1.5">
+                  {[1, 2, 3, 4, 5].map((star) => (
+                    <button
+                      key={star}
+                      type="button"
+                      onClick={() => setReviewRating(star)}
+                      onMouseEnter={() => setHoverRating(star)}
+                      onMouseLeave={() => setHoverRating(0)}
+                      className="text-2xl transition-all duration-155 transform hover:scale-115 active:scale-90 focus:outline-none"
+                    >
+                      <i 
+                        className={`fa-star ${
+                          star <= (hoverRating || reviewRating) 
+                            ? 'fa-solid text-amber-400' 
+                            : 'fa-regular text-slate-350'
+                        }`}
+                      ></i>
+                    </button>
+                  ))}
+                </div>
+                <span className="text-xs font-bold text-slate-500 ml-2 shadow-sm px-2 py-1 bg-slate-50 rounded-lg border border-slate-100/50">
+                  {(hoverRating || reviewRating) === 5 && '5 Stars (Excellent)'}
+                  {(hoverRating || reviewRating) === 4 && '4 Stars (Very Good)'}
+                  {(hoverRating || reviewRating) === 3 && '3 Stars (Good)'}
+                  {(hoverRating || reviewRating) === 2 && '2 Stars (Average)'}
+                  {(hoverRating || reviewRating) === 1 && '1 Star (Poor)'}
+                </span>
               </div>
             </div>
             <div>
