@@ -394,12 +394,18 @@ function renderHomeView() {
 function renderShopView() {
   const categoryFilters = ["All", "Fruits and Vegetable powder", "Pooja Accessories"];
   let filtersHtml = "";
+  let selectOptionsHtml = "";
   categoryFilters.forEach(cat => {
     const isActive = state.selectedCategory === cat || (cat === getCategoryGroup(state.selectedCategory));
     filtersHtml += `
       <button onclick="handleCategoryFilter('${cat}')" class="px-4 py-2 text-xs font-bold rounded-xl transition-all ${isActive ? 'bg-primary text-white shadow-md' : 'bg-white hover:bg-slate-100 text-slate-600 border'}" id="filter-btn-${cat.replace(/\s+/g, '-')}">
         ${cat}
       </button>
+    `;
+    selectOptionsHtml += `
+      <option value="${cat}" ${isActive ? 'selected' : ''}>
+        ${cat === 'All' ? 'Show All Categories' : cat}
+      </option>
     `;
   });
 
@@ -437,10 +443,20 @@ function renderShopView() {
           </div>
         </div>
 
-        <!-- Horizontal Categories filters -->
+        <!-- Category filters -->
         <div class="border-t border-slate-100 pt-4">
           <span class="block text-xs font-bold text-darkText mb-2.5">Filter by Category:</span>
-          <div class="flex flex-wrap gap-2">
+          
+          <!-- Dropdown for mobile -->
+          <div class="block sm:hidden relative">
+            <select onchange="handleCategoryFilter(this.value)" class="w-full bg-slate-50 border border-slate-200 py-3.5 pl-4 pr-10 rounded-2xl text-xs font-bold text-darkText focus:outline-none focus:border-accent appearance-none cursor-pointer">
+              ${selectOptionsHtml}
+            </select>
+            <i class="fa-solid fa-chevron-down absolute right-4 top-1/2 -translate-y-1/2 text-slate-400 text-xs pointer-events-none"></i>
+          </div>
+
+          <!-- Horizontal buttons for desktop/tablet -->
+          <div class="hidden sm:flex flex-wrap gap-2">
             ${filtersHtml}
           </div>
         </div>

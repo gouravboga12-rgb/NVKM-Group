@@ -155,10 +155,28 @@ export default function Shop() {
           </div>
         </div>
 
-        {/* Horizontal Categories filters */}
+        {/* Category filters */}
         <div className="border-t border-slate-100 pt-5">
           <span className="block text-xs font-bold text-darkText mb-3 uppercase tracking-wider">Filter by Category:</span>
-          <div className="flex overflow-x-auto pb-2 scrollbar-none gap-2.5 -mx-4 px-4 sm:mx-0 sm:px-0 sm:flex-wrap">
+          
+          {/* Dropdown for mobile */}
+          <div className="block sm:hidden relative">
+            <select
+              value={categoryFilters.includes(categoryQuery) ? categoryQuery : getCategoryGroup(categoryQuery)}
+              onChange={e => handleCategoryFilter(e.target.value)}
+              className="w-full bg-slate-50 border border-slate-200 py-3.5 pl-4 pr-10 rounded-2xl text-xs font-bold text-darkText focus:outline-none focus:border-accent focus:ring-2 focus:ring-accent/15 transition-all appearance-none cursor-pointer"
+            >
+              {categoryFilters.map(cat => (
+                <option key={cat} value={cat}>
+                  {cat === 'All' ? 'Show All Categories' : cat}
+                </option>
+              ))}
+            </select>
+            <i className="fa-solid fa-chevron-down absolute right-4 top-1/2 -translate-y-1/2 text-slate-400 text-xs pointer-events-none"></i>
+          </div>
+
+          {/* Horizontal buttons for desktop/tablet */}
+          <div className="hidden sm:flex overflow-x-auto pb-2 scrollbar-none gap-2.5 sm:flex-wrap">
             {categoryFilters.map(cat => {
               const isActive = categoryQuery === cat || (cat === getCategoryGroup(categoryQuery));
               return (
