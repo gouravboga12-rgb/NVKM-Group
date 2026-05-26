@@ -36,7 +36,7 @@ export default function WishlistDrawer() {
               <i className="fa-regular fa-heart text-6xl text-slate-200 mb-4"></i>
               <p className="font-heading font-semibold text-lg text-slate-500">Your wishlist is empty!</p>
               <p className="text-sm text-slate-400 mt-1 max-w-[280px]">Save healthy powders to buy them later.</p>
-              <button onClick={() => { navigate('/shop'); setWishlistOpen(false); }} className="mt-6 bg-primary hover:bg-emerald-800 text-white font-bold py-2.5 px-6 rounded-xl text-sm transition-colors shadow-md">Explore Products</button>
+              <button onClick={() => { navigate('/shop'); setWishlistOpen(false); }} className="mt-6 bg-primary hover:bg-blue-800 text-white font-bold py-2.5 px-6 rounded-xl text-sm transition-colors shadow-md">Explore Products</button>
             </div>
           ) : (
             wishlistProducts.map(item => {
@@ -54,7 +54,7 @@ export default function WishlistDrawer() {
                         <span className="text-xs text-slate-400 line-through leading-none">₹{defaultVar.price}</span>
                         <span className="text-sm font-bold text-primary">₹{defaultVar.discountPrice} ({defaultVar.weight})</span>
                       </div>
-                      <button onClick={() => { addToCart(item, defaultVar.weight); setWishlistOpen(false); }} className="bg-primary hover:bg-emerald-850 text-white text-xs px-3 py-1.5 rounded-lg font-bold transition-all shadow-sm">
+                      <button onClick={() => { addToCart(item, defaultVar.weight); setWishlistOpen(false); }} className="bg-primary hover:bg-blue-850 text-white text-xs px-3 py-1.5 rounded-lg font-bold transition-all shadow-sm">
                         <i className="fa-solid fa-cart-shopping"></i> Add
                       </button>
                     </div>

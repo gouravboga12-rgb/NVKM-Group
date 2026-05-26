@@ -41,9 +41,14 @@ export default function Header() {
               alt="NVKM GROUP Logo" 
               className="w-11 h-11 xs:w-14 xs:h-14 sm:w-16 sm:h-16 rounded-xl object-contain shadow-md shadow-primary/5 transform group-hover:scale-105 transition-transform duration-300"
             />
-            <span className="font-heading font-extrabold text-lg xs:text-2xl sm:text-3xl tracking-tight text-primary">
-              NVKM <span className="bg-gradient-to-r from-accent to-emerald-600 bg-clip-text text-transparent">GROUP</span>
-            </span>
+            <div className="flex flex-col sm:flex-row sm:items-baseline leading-none text-left justify-center">
+              <span className="font-heading font-extrabold text-[15px] sm:text-2xl lg:text-3xl tracking-[0.11em] sm:tracking-tight text-primary mr-[-0.11em] sm:mr-0">
+                NVKM
+              </span>
+              <span className="font-heading font-extrabold text-[15px] sm:text-2xl lg:text-3xl tracking-normal sm:tracking-tight bg-gradient-to-r from-accent to-blue-600 bg-clip-text text-transparent sm:ml-2 mt-1.5 sm:mt-0 uppercase">
+                GROUP
+              </span>
+            </div>
           </Link>
 
           {/* Desktop Nav */}
@@ -89,7 +94,7 @@ export default function Header() {
             {/* Cart */}
             <button 
               onClick={() => setCartOpen(true)} 
-              className="flex items-center gap-1.5 sm:gap-2 px-2.5 sm:px-3 py-1.5 bg-gradient-to-tr from-emerald-50 to-white hover:from-emerald-100 hover:to-emerald-50 text-[#14532D] hover:text-[#22c55e] border border-emerald-100 rounded-full transition-all duration-300 shadow-sm hover:shadow-md cursor-pointer group"
+              className="flex items-center gap-1.5 sm:gap-2 px-2.5 sm:px-3 py-1.5 bg-gradient-to-tr from-blue-50 to-white hover:from-blue-100 hover:to-blue-50 text-[#0F2942] hover:text-[#2563eb] border border-blue-100 rounded-full transition-all duration-300 shadow-sm hover:shadow-md cursor-pointer group"
               aria-label="Cart"
             >
               <div className="relative flex items-center justify-center">
@@ -107,7 +112,7 @@ export default function Header() {
 
             {/* User */}
             <button onClick={handleUserClick} className={`flex items-center space-x-2 p-2 rounded-full px-2.5 sm:px-4 transition-all duration-300 ${
-              user ? 'bg-emerald-50 hover:bg-emerald-100 text-primary border border-primary/10 shadow-sm' : 'bg-slate-50 hover:bg-slate-100 text-primary border border-slate-200/50'
+              user ? 'bg-blue-50 hover:bg-blue-100 text-primary border border-primary/10 shadow-sm' : 'bg-slate-50 hover:bg-slate-100 text-primary border border-slate-200/50'
             }`}>
               <i className="fa-regular fa-user text-sm"></i>
               <span className="text-xs font-bold hidden lg:inline">{user ? user.name.split(' ')[0] : 'Sign In'}</span>

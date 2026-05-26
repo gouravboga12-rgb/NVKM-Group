@@ -485,7 +485,7 @@ function renderCartDrawer() {
         <i class="fa-solid fa-basket-shopping text-6xl text-slate-200 mb-4"></i>
         <p class="font-heading font-semibold text-lg text-slate-500">Your basket is empty!</p>
         <p class="text-sm text-slate-400 mt-1 max-w-[280px]">Add organic powders to start healthy living.</p>
-        <button onclick="navigate('shop'); toggleCartDrawer(false);" class="mt-6 bg-primary hover:bg-emerald-800 text-white font-bold py-2.5 px-6 rounded-xl text-sm transition-colors shadow-md">
+        <button onclick="navigate('shop'); toggleCartDrawer(false);" class="mt-6 bg-primary hover:bg-blue-800 text-white font-bold py-2.5 px-6 rounded-xl text-sm transition-colors shadow-md">
           Shop Now
         </button>
       </div>
@@ -586,7 +586,7 @@ function renderWishlistDrawer() {
         <i class="fa-regular fa-heart text-6xl text-slate-200 mb-4"></i>
         <p class="font-heading font-semibold text-lg text-slate-500">Your wishlist is empty!</p>
         <p class="text-sm text-slate-400 mt-1 max-w-[280px]">Save healthy powders to buy them later.</p>
-        <button onclick="navigate('shop'); toggleWishlistDrawer(false);" class="mt-6 bg-primary hover:bg-emerald-800 text-white font-bold py-2.5 px-6 rounded-xl text-sm transition-colors shadow-md">
+        <button onclick="navigate('shop'); toggleWishlistDrawer(false);" class="mt-6 bg-primary hover:bg-blue-800 text-white font-bold py-2.5 px-6 rounded-xl text-sm transition-colors shadow-md">
           Explore Products
         </button>
       </div>
@@ -620,7 +620,7 @@ function renderWishlistDrawer() {
               <span class="text-sm font-bold text-primary">₹${defaultVar.discountPrice} (${defaultVar.weight})</span>
             </div>
             
-            <button onclick="addToCart('${item.id}', '${defaultVar.weight}'); toggleWishlistDrawer(false);" class="bg-primary hover:bg-emerald-850 text-white text-xs px-3 py-1.5 rounded-lg font-bold transition-all shadow-sm">
+            <button onclick="addToCart('${item.id}', '${defaultVar.weight}'); toggleWishlistDrawer(false);" class="bg-primary hover:bg-blue-800 text-white text-xs px-3 py-1.5 rounded-lg font-bold transition-all shadow-sm">
               <i class="fa-solid fa-cart-shopping"></i> Add
             </button>
           </div>
@@ -671,7 +671,7 @@ function renderQuickView(product) {
     weightsHtml += `
       <label class="flex-1 cursor-pointer">
         <input type="radio" name="qv-weight" value="${v.weight}" ${index === 0 ? 'checked' : ''} onchange="updateQuickViewPrice('${product.id}', this.value)" class="sr-only peer">
-        <div class="border border-slate-200 peer-checked:border-primary peer-checked:bg-emerald-50 rounded-xl py-2 px-3 text-center transition-all">
+        <div class="border border-slate-200 peer-checked:border-primary peer-checked:bg-blue-50 rounded-xl py-2 px-3 text-center transition-all">
           <span class="block text-xs font-bold text-darkText">${v.weight}</span>
           <span class="block text-[10px] text-slate-500 font-medium">₹${v.discountPrice}</span>
         </div>
@@ -689,7 +689,7 @@ function renderQuickView(product) {
           <img src="${product.image}" id="qv-main-image" alt="${product.name}" class="w-full h-full object-cover">
         </div>
         <div class="grid grid-cols-3 gap-3">
-          <div class="border border-primary bg-emerald-50 rounded-xl overflow-hidden aspect-square cursor-pointer">
+          <div class="border border-primary bg-blue-50 rounded-xl overflow-hidden aspect-square cursor-pointer">
             <img src="${product.image}" alt="view 1" class="w-full h-full object-cover">
           </div>
           <!-- Additional mock views -->
@@ -751,13 +751,13 @@ function renderQuickView(product) {
         </div>
 
         <div class="mt-6 pt-4 border-t border-slate-100 flex flex-col sm:flex-row gap-2.5">
-          <button onclick="submitQvAddToCart('${product.id}')" class="flex-1 bg-primary hover:bg-emerald-850 text-white font-bold py-3.5 px-6 rounded-xl flex items-center justify-center gap-2 shadow-lg shadow-primary/20 transition-all">
+          <button onclick="submitQvAddToCart('${product.id}')" class="flex-1 bg-primary hover:bg-blue-800 text-white font-bold py-3.5 px-6 rounded-xl flex items-center justify-center gap-2 shadow-lg shadow-primary/20 transition-all">
             <i class="fa-solid fa-basket-shopping text-sm"></i> Add to Basket
           </button>
           <button onclick="submitQvBuyNow('${product.id}')" class="flex-1 bg-accent hover:bg-accentHover text-white font-bold py-3.5 px-6 rounded-xl flex items-center justify-center gap-2 shadow-lg shadow-accent/20 transition-all">
             <i class="fa-solid fa-bolt text-sm"></i> Buy Now
           </button>
-          <button onclick="submitQvWhatsAppInquiry('${product.id}')" class="bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-3.5 px-4 rounded-xl flex items-center justify-center shadow-md transition-all" title="WhatsApp Inquiry">
+          <button onclick="submitQvWhatsAppInquiry('${product.id}')" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-3.5 px-4 rounded-xl flex items-center justify-center shadow-md transition-all" title="WhatsApp Inquiry">
             <i class="fa-brands fa-whatsapp text-xl"></i>
           </button>
         </div>
@@ -963,7 +963,7 @@ function renderUserMenu() {
 
   if (state.currentUser) {
     userNameLabel.textContent = state.currentUser.name.split(" ")[0]; // short name
-    userBtn.className = "flex items-center space-x-1.5 p-2 bg-emerald-50 hover:bg-emerald-100 text-primary border border-primary/20 rounded-full px-3 transition-all duration-200 focus:outline-none";
+    userBtn.className = "flex items-center space-x-1.5 p-2 bg-blue-50 hover:bg-blue-100 text-primary border border-primary/20 rounded-full px-3 transition-all duration-200 focus:outline-none";
   } else {
     userNameLabel.textContent = "Sign In";
     userBtn.className = "flex items-center space-x-1.5 p-2 bg-slate-100 hover:bg-slate-200/80 text-primary rounded-full px-3 transition-all duration-200 focus:outline-none";

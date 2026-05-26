@@ -74,7 +74,7 @@ export function CartProvider({ children }) {
               />
             </div>
             <div>
-              <p className="text-[10px] text-emerald-600 font-extrabold uppercase tracking-widest flex items-center gap-1">
+              <p className="text-[10px] text-blue-600 font-extrabold uppercase tracking-widest flex items-center gap-1">
                 <i className="fa-solid fa-circle-check"></i> Added to Cart
               </p>
               <h4 className="text-xs font-black text-slate-800 line-clamp-1 mt-0.5">
@@ -91,7 +91,7 @@ export function CartProvider({ children }) {
               e.stopPropagation();
               setCartOpen(true);
             }}
-            className="bg-[#14532D] hover:bg-[#22c55e] text-white text-[10px] font-black px-3.5 py-2 rounded-xl shadow-md transition-all duration-200 cursor-pointer whitespace-nowrap active:scale-95 pointer-events-auto"
+            className="bg-[#0F2942] hover:bg-[#2563EB] text-white text-[10px] font-black px-3.5 py-2 rounded-xl shadow-md transition-all duration-200 cursor-pointer whitespace-nowrap active:scale-95 pointer-events-auto"
           >
             View Cart
           </button>

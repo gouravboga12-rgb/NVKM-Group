@@ -175,18 +175,18 @@ export default function Login() {
   };
 
   return (
-    <div className="page-transition min-h-[85vh] flex items-center justify-center py-12 px-4 relative overflow-hidden bg-gradient-to-br from-emerald-50/20 via-transparent to-green-50/10">
+    <div className="page-transition min-h-[85vh] flex items-center justify-center py-12 px-4 relative overflow-hidden bg-gradient-to-br from-blue-50/20 via-transparent to-sky-50/10">
       {/* Decorative blobs */}
-      <div className="fixed top-[10%] left-[5%] w-[300px] h-[300px] rounded-full bg-radial-gradient(circle,rgba(34,197,94,.04),transparent) pointer-events-none z-0" />
-      <div className="fixed bottom-[10%] right-[5%] w-[250px] h-[250px] rounded-full bg-radial-gradient(circle,rgba(20,83,45,.04),transparent) pointer-events-none z-0" />
+      <div className="fixed top-[10%] left-[5%] w-[300px] h-[300px] rounded-full bg-radial-gradient(circle,rgba(37,99,235,.04),transparent) pointer-events-none z-0" />
+      <div className="fixed bottom-[10%] right-[5%] w-[250px] h-[250px] rounded-full bg-radial-gradient(circle,rgba(15,41,66,.04),transparent) pointer-events-none z-0" />
 
-      <div className="w-full max-w-[460px] relative z-10 glass-premium rounded-[24px] xs:rounded-[32px] p-5 xs:p-8 sm:p-10 shadow-2xl border border-emerald-500/20">
+      <div className="w-full max-w-[460px] relative z-10 glass-premium rounded-[24px] xs:rounded-[32px] p-5 xs:p-8 sm:p-10 shadow-2xl border border-blue-500/20">
         {/* Logo & Brand */}
         <div className="text-center mb-8">
-          <div className="w-14 h-14 rounded-2xl mx-auto mb-4 bg-gradient-to-br from-emerald-900 to-emerald-500 flex items-center justify-center shadow-lg shadow-emerald-950/20">
+          <div className="w-14 h-14 rounded-2xl mx-auto mb-4 bg-gradient-to-br from-blue-900 to-blue-500 flex items-center justify-center shadow-lg shadow-blue-950/20">
             <i className="fa-solid fa-leaf text-white text-2xl" />
           </div>
-          <span className="text-[10px] font-extrabold text-emerald-600 tracking-widest uppercase">NVKM GROUP</span>
+          <span className="text-[10px] font-extrabold text-blue-600 tracking-widest uppercase">NVKM GROUP</span>
         </div>
 
         {/* Tab Switcher */}
@@ -197,7 +197,7 @@ export default function Login() {
                 key={tab}
                 onClick={() => setActiveTab(tab)}
                 className={`flex-1 py-2.5 rounded-xl cursor-pointer text-[0.82rem] font-extrabold transition-all duration-200 flex items-center justify-center gap-1.5 ${activeTab === tab
-                    ? 'bg-white text-emerald-900 shadow-sm border border-slate-100/50'
+                    ? 'bg-white text-blue-900 shadow-sm border border-slate-100/50'
                     : 'bg-transparent text-slate-400 hover:text-slate-600'
                   }`}
               >
@@ -245,7 +245,7 @@ export default function Login() {
                   type="button"
                   onClick={() => { setLoginMethod(method); setOtpSent(false); }}
                   className={`flex-1 py-2 rounded-lg cursor-pointer text-[0.78rem] font-bold transition-all duration-200 flex items-center justify-center gap-1.5 ${loginMethod === method
-                      ? 'bg-white text-emerald-950 shadow-sm'
+                      ? 'bg-white text-blue-950 shadow-sm'
                       : 'bg-transparent text-slate-400 hover:text-slate-650'
                     }`}
                 >
@@ -265,7 +265,7 @@ export default function Login() {
                     onChange={e => setLoginEmail(e.target.value)}
                     required
                     placeholder="name@email.com"
-                    className="w-full bg-slate-50 border-[1.5px] border-slate-300/80 px-4 py-3 rounded-2xl text-[0.82rem] outline-none transition-all duration-200 text-slate-800 focus:border-emerald-500 focus:ring-4 focus:ring-emerald-500/10 focus:bg-white"
+                    className="w-full bg-slate-50 border-[1.5px] border-slate-300/80 px-4 py-3 rounded-2xl text-[0.82rem] outline-none transition-all duration-200 text-slate-800 focus:border-blue-500 focus:ring-4 focus:ring-blue-500/10 focus:bg-white"
                   />
                 </div>
                 <div>
@@ -274,7 +274,7 @@ export default function Login() {
                     <button
                       type="button"
                       onClick={() => setActiveTab('forgot')}
-                      className="text-[11px] text-emerald-600 bg-none border-none cursor-pointer font-bold hover:text-emerald-700 transition-colors"
+                      className="text-[11px] text-blue-600 bg-none border-none cursor-pointer font-bold hover:text-blue-700 transition-colors"
                     >
                       Forgot Password?
                     </button>
@@ -286,7 +286,7 @@ export default function Login() {
                       onChange={e => setLoginPassword(e.target.value)}
                       required
                       placeholder="••••••••"
-                      className="w-full bg-slate-50 border-[1.5px] border-slate-300/80 pl-4 pr-12 py-3 rounded-2xl text-[0.82rem] outline-none transition-all duration-200 text-slate-800 focus:border-emerald-500 focus:ring-4 focus:ring-emerald-500/10 focus:bg-white"
+                      className="w-full bg-slate-50 border-[1.5px] border-slate-300/80 pl-4 pr-12 py-3 rounded-2xl text-[0.82rem] outline-none transition-all duration-200 text-slate-800 focus:border-blue-500 focus:ring-4 focus:ring-blue-500/10 focus:bg-white"
                     />
                     <button
                       type="button"
@@ -299,7 +299,7 @@ export default function Login() {
                 </div>
                 <button
                   type="submit"
-                  className="w-full bg-gradient-to-r from-emerald-900 to-emerald-600 text-white font-extrabold py-3.5 px-4 rounded-2xl text-[0.85rem] cursor-pointer shadow-lg shadow-emerald-950/20 transition-all duration-200 hover:-translate-y-0.5 hover:shadow-xl hover:shadow-emerald-950/30 active:translate-y-0 tracking-wide mt-2"
+                  className="w-full bg-gradient-to-r from-blue-900 to-blue-600 text-white font-extrabold py-3.5 px-4 rounded-2xl text-[0.85rem] cursor-pointer shadow-lg shadow-blue-950/20 transition-all duration-200 hover:-translate-y-0.5 hover:shadow-xl hover:shadow-blue-950/30 active:translate-y-0 tracking-wide mt-2"
                 >
                   <i className="fa-solid fa-arrow-right-to-bracket mr-2" /> Sign In with Email
                 </button>
@@ -319,14 +319,14 @@ export default function Login() {
                       onChange={e => setLoginPhone(e.target.value.replace(/[^0-9]/g, '').slice(0, 10))}
                       required
                       placeholder="10-digit number"
-                      className="w-full bg-slate-50 border-[1.5px] border-slate-300/80 pl-12 pr-4 py-3.5 rounded-2xl text-[0.82rem] outline-none transition-all duration-200 text-slate-800 focus:border-emerald-500 focus:ring-4 focus:ring-emerald-500/10 focus:bg-white"
+                      className="w-full bg-slate-50 border-[1.5px] border-slate-300/80 pl-12 pr-4 py-3.5 rounded-2xl text-[0.82rem] outline-none transition-all duration-200 text-slate-800 focus:border-blue-500 focus:ring-4 focus:ring-blue-500/10 focus:bg-white"
                     />
                   </div>
                 </div>
                 <button
                   type="submit"
                   disabled={submittingPhone}
-                  className={`w-full bg-gradient-to-r from-emerald-900 to-emerald-600 text-white font-extrabold py-3.5 px-4 rounded-2xl text-[0.85rem] cursor-pointer shadow-lg shadow-emerald-950/20 transition-all duration-200 hover:-translate-y-0.5 hover:shadow-xl hover:shadow-emerald-950/30 active:translate-y-0 tracking-wide mt-2 flex items-center justify-center gap-2 ${submittingPhone ? 'opacity-70 cursor-not-allowed' : ''
+                  className={`w-full bg-gradient-to-r from-blue-900 to-blue-600 text-white font-extrabold py-3.5 px-4 rounded-2xl text-[0.85rem] cursor-pointer shadow-lg shadow-blue-950/20 transition-all duration-200 hover:-translate-y-0.5 hover:shadow-xl hover:shadow-blue-950/30 active:translate-y-0 tracking-wide mt-2 flex items-center justify-center gap-2 ${submittingPhone ? 'opacity-70 cursor-not-allowed' : ''
                     }`}
                 >
                   {submittingPhone ? (
@@ -345,11 +345,11 @@ export default function Login() {
             {/* OTP Verification Grid */}
             {loginMethod === 'phone' && otpSent && (
               <form onSubmit={handleOtpVerify} className="flex flex-col gap-5">
-                <div className="bg-gradient-to-br from-emerald-50/80 to-green-50/60 border border-emerald-100 p-4 rounded-2xl text-center">
-                  <div className="w-10 h-10 rounded-full bg-gradient-to-br from-emerald-900 to-emerald-500 flex items-center justify-center mx-auto mb-2 shadow-md">
+                <div className="bg-gradient-to-br from-blue-50/80 to-sky-50/60 border border-blue-100 p-4 rounded-2xl text-center">
+                  <div className="w-10 h-10 rounded-full bg-gradient-to-br from-blue-900 to-blue-500 flex items-center justify-center mx-auto mb-2 shadow-md">
                     <i className="fa-solid fa-message text-white text-xs" />
                   </div>
-                  <span className="text-[10px] font-extrabold text-emerald-800 uppercase tracking-widest block">SMS Code Sent</span>
+                  <span className="text-[10px] font-extrabold text-blue-800 uppercase tracking-widest block">SMS Code Sent</span>
                   <p className="text-[11px] text-slate-400 mt-1 font-medium">Enter the code sent to +91 {loginPhone}</p>
                 </div>
 
@@ -369,7 +369,7 @@ export default function Login() {
                         value={val}
                         onChange={e => handleOtpChange(e.target.value, idx)}
                         onKeyDown={e => handleOtpKeyDown(e, idx)}
-                        className="flex-1 max-w-[40px] xs:max-w-[44px] sm:max-w-none sm:w-12 h-12 sm:h-14 bg-slate-50 border-[1.5px] border-slate-350/80 rounded-xl text-center text-xl font-bold font-heading outline-none transition-all duration-200 text-emerald-950 focus:border-emerald-500 focus:ring-4 focus:ring-emerald-500/10 focus:bg-white"
+                        className="flex-1 max-w-[40px] xs:max-w-[44px] sm:max-w-none sm:w-12 h-12 sm:h-14 bg-slate-50 border-[1.5px] border-slate-350/80 rounded-xl text-center text-xl font-bold font-heading outline-none transition-all duration-200 text-blue-950 focus:border-blue-500 focus:ring-4 focus:ring-blue-500/10 focus:bg-white"
                         required
                       />
                     ))}
@@ -387,7 +387,7 @@ export default function Login() {
                   <button
                     type="submit"
                     disabled={verifyingPhone}
-                    className="flex-[2] bg-gradient-to-r from-emerald-900 to-emerald-600 text-white font-extrabold py-3.5 rounded-2xl text-[0.82rem] cursor-pointer shadow-lg shadow-emerald-950/20 hover:-translate-y-0.5 hover:shadow-xl hover:shadow-emerald-950/30 active:translate-y-0 transition-all duration-200 flex items-center justify-center gap-1.5"
+                    className="flex-[2] bg-gradient-to-r from-blue-900 to-blue-600 text-white font-extrabold py-3.5 rounded-2xl text-[0.82rem] cursor-pointer shadow-lg shadow-blue-950/20 hover:-translate-y-0.5 hover:shadow-xl hover:shadow-blue-950/30 active:translate-y-0 transition-all duration-200 flex items-center justify-center gap-1.5"
                   >
                     {verifyingPhone ? (
                       'Verifying...'
@@ -406,7 +406,7 @@ export default function Login() {
               <button
                 type="button"
                 onClick={() => setActiveTab('register')}
-                className="bg-transparent border-none text-emerald-600 font-extrabold cursor-pointer text-[0.78rem] hover:text-emerald-700 transition-colors"
+                className="bg-transparent border-none text-blue-600 font-extrabold cursor-pointer text-[0.78rem] hover:text-blue-700 transition-colors"
               >
                 Register Now
               </button>
@@ -430,7 +430,7 @@ export default function Login() {
                   onChange={e => setRegName(e.target.value)}
                   required
                   placeholder="Ramesh Kumar"
-                  className="w-full bg-slate-50 border-[1.5px] border-slate-300/80 px-4 py-3 rounded-2xl text-[0.82rem] outline-none transition-all duration-200 text-slate-800 focus:border-emerald-500 focus:ring-4 focus:ring-emerald-500/10 focus:bg-white"
+                  className="w-full bg-slate-50 border-[1.5px] border-slate-300/80 px-4 py-3 rounded-2xl text-[0.82rem] outline-none transition-all duration-200 text-slate-800 focus:border-blue-500 focus:ring-4 focus:ring-blue-500/10 focus:bg-white"
                 />
               </div>
               <div>
@@ -441,7 +441,7 @@ export default function Login() {
                   onChange={e => setRegPhone(e.target.value)}
                   required
                   placeholder="+91 XXXXXXXXXX"
-                  className="w-full bg-slate-50 border-[1.5px] border-slate-300/80 px-4 py-3 rounded-2xl text-[0.82rem] outline-none transition-all duration-200 text-slate-800 focus:border-emerald-500 focus:ring-4 focus:ring-emerald-500/10 focus:bg-white"
+                  className="w-full bg-slate-50 border-[1.5px] border-slate-300/80 px-4 py-3 rounded-2xl text-[0.82rem] outline-none transition-all duration-200 text-slate-800 focus:border-blue-500 focus:ring-4 focus:ring-blue-500/10 focus:bg-white"
                 />
               </div>
               <div>
@@ -452,7 +452,7 @@ export default function Login() {
                   onChange={e => setRegEmail(e.target.value)}
                   required
                   placeholder="your@email.com"
-                  className="w-full bg-slate-50 border-[1.5px] border-slate-300/80 px-4 py-3 rounded-2xl text-[0.82rem] outline-none transition-all duration-200 text-slate-800 focus:border-emerald-500 focus:ring-4 focus:ring-emerald-500/10 focus:bg-white"
+                  className="w-full bg-slate-50 border-[1.5px] border-slate-300/80 px-4 py-3 rounded-2xl text-[0.82rem] outline-none transition-all duration-200 text-slate-800 focus:border-blue-500 focus:ring-4 focus:ring-blue-500/10 focus:bg-white"
                 />
               </div>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
@@ -464,7 +464,7 @@ export default function Login() {
                     onChange={e => setRegPassword(e.target.value)}
                     required
                     placeholder="••••••••"
-                    className="w-full bg-slate-50 border-[1.5px] border-slate-300/80 px-4 py-3 rounded-2xl text-[0.82rem] outline-none transition-all duration-200 text-slate-800 focus:border-emerald-500 focus:ring-4 focus:ring-emerald-500/10 focus:bg-white"
+                    className="w-full bg-slate-50 border-[1.5px] border-slate-300/80 px-4 py-3 rounded-2xl text-[0.82rem] outline-none transition-all duration-200 text-slate-800 focus:border-blue-500 focus:ring-4 focus:ring-blue-500/10 focus:bg-white"
                   />
                 </div>
                 <div>
@@ -475,13 +475,13 @@ export default function Login() {
                     onChange={e => setRegConfirmPassword(e.target.value)}
                     required
                     placeholder="••••••••"
-                    className="w-full bg-slate-50 border-[1.5px] border-slate-300/80 px-4 py-3 rounded-2xl text-[0.82rem] outline-none transition-all duration-200 text-slate-800 focus:border-emerald-500 focus:ring-4 focus:ring-emerald-500/10 focus:bg-white"
+                    className="w-full bg-slate-50 border-[1.5px] border-slate-300/80 px-4 py-3 rounded-2xl text-[0.82rem] outline-none transition-all duration-200 text-slate-800 focus:border-blue-500 focus:ring-4 focus:ring-blue-500/10 focus:bg-white"
                   />
                 </div>
               </div>
               <button
                 type="submit"
-                className="w-full bg-gradient-to-r from-emerald-800 to-emerald-500 text-white font-extrabold py-3.5 px-4 rounded-2xl text-[0.85rem] cursor-pointer shadow-lg shadow-emerald-950/20 transition-all duration-200 hover:-translate-y-0.5 hover:shadow-xl hover:shadow-emerald-950/30 active:translate-y-0 tracking-wide mt-2"
+                className="w-full bg-gradient-to-r from-blue-800 to-blue-50 text-white font-extrabold py-3.5 px-4 rounded-2xl text-[0.85rem] cursor-pointer shadow-lg shadow-blue-950/20 transition-all duration-200 hover:-translate-y-0.5 hover:shadow-xl hover:shadow-blue-950/30 active:translate-y-0 tracking-wide mt-2"
               >
                 <i className="fa-solid fa-user-plus mr-2" /> Create Account
               </button>
@@ -491,7 +491,7 @@ export default function Login() {
               <button
                 type="button"
                 onClick={() => setActiveTab('login')}
-                className="bg-transparent border-none text-emerald-950 font-extrabold cursor-pointer text-[0.78rem] hover:text-emerald-900 transition-colors"
+                className="bg-transparent border-none text-blue-950 font-extrabold cursor-pointer text-[0.78rem] hover:text-blue-900 transition-colors"
               >
                 Sign In
               </button>
@@ -505,7 +505,7 @@ export default function Login() {
             <button
               type="button"
               onClick={() => setActiveTab('login')}
-              className="bg-transparent border-none cursor-pointer text-slate-400 hover:text-emerald-900 text-[0.8rem] font-extrabold flex items-center gap-1.5 p-0 self-start transition-colors"
+              className="bg-transparent border-none cursor-pointer text-slate-400 hover:text-blue-900 text-[0.8rem] font-extrabold flex items-center gap-1.5 p-0 self-start transition-colors"
             >
               <i className="fa-solid fa-arrow-left text-xs" /> Back to Sign In
             </button>
@@ -522,12 +522,12 @@ export default function Login() {
                   onChange={e => setFpEmail(e.target.value)}
                   required
                   placeholder="your@email.com"
-                  className="w-full bg-slate-50 border-[1.5px] border-slate-300/80 px-4 py-3.5 rounded-2xl text-[0.82rem] outline-none transition-all duration-200 text-slate-800 focus:border-emerald-500 focus:ring-4 focus:ring-emerald-500/10 focus:bg-white"
+                  className="w-full bg-slate-50 border-[1.5px] border-slate-300/80 px-4 py-3.5 rounded-2xl text-[0.82rem] outline-none transition-all duration-200 text-slate-800 focus:border-blue-500 focus:ring-4 focus:ring-blue-500/10 focus:bg-white"
                 />
               </div>
               <button
                 type="submit"
-                className="w-full bg-gradient-to-r from-emerald-900 to-emerald-600 text-white font-extrabold py-3.5 px-4 rounded-2xl text-[0.85rem] cursor-pointer shadow-lg shadow-emerald-950/20 transition-all duration-200 hover:-translate-y-0.5 hover:shadow-xl hover:shadow-emerald-950/30 active:translate-y-0 tracking-wide mt-2"
+                className="w-full bg-gradient-to-r from-blue-900 to-blue-600 text-white font-extrabold py-3.5 px-4 rounded-2xl text-[0.85rem] cursor-pointer shadow-lg shadow-blue-950/20 transition-all duration-200 hover:-translate-y-0.5 hover:shadow-xl hover:shadow-blue-950/30 active:translate-y-0 tracking-wide mt-2"
               >
                 <i className="fa-solid fa-envelope mr-2" /> Send Reset Link
               </button>

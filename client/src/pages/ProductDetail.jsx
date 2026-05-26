@@ -80,7 +80,7 @@ export default function ProductDetail() {
       <div className="max-w-7xl mx-auto px-4 py-20 text-center">
         <h2 className="font-heading font-extrabold text-2xl text-darkText">Product Not Found</h2>
         <p className="text-sm text-slate-500 mt-2">The product you are looking for does not exist or has been removed.</p>
-        <Link to="/shop" className="inline-block mt-6 bg-primary hover:bg-emerald-800 text-white font-bold py-2.5 px-6 rounded-xl text-sm transition-colors shadow-md">
+        <Link to="/shop" className="inline-block mt-6 bg-primary hover:bg-blue-800 text-white font-bold py-2.5 px-6 rounded-xl text-sm transition-colors shadow-md">
           Back to Shop
         </Link>
       </div>
@@ -169,7 +169,7 @@ export default function ProductDetail() {
                     key={idx}
                     onClick={() => setSelectedImage(img)}
                     className={`border-2 rounded-xl sm:rounded-2xl overflow-hidden aspect-square cursor-pointer transition-all duration-300 hover:scale-105 ${isSelected
-                        ? 'border-primary bg-emerald-50 shadow-md shadow-emerald-950/5'
+                        ? 'border-primary bg-blue-50 shadow-md shadow-blue-950/5'
                         : 'border-slate-200 bg-white hover:border-slate-350'
                       }`}
                   >
@@ -195,7 +195,7 @@ export default function ProductDetail() {
 
             {/* Price banner */}
             {activeVariation && (
-              <div className="mt-6 flex flex-wrap items-baseline gap-2.5 sm:gap-4 p-4 sm:p-5 bg-gradient-to-r from-emerald-50/70 to-slate-50/50 border border-emerald-100/50 rounded-2xl shadow-sm">
+              <div className="mt-6 flex flex-wrap items-baseline gap-2.5 sm:gap-4 p-4 sm:p-5 bg-gradient-to-r from-blue-50/70 to-slate-50/50 border border-blue-100/50 rounded-2xl shadow-sm">
                 <span className="text-4xl font-heading font-extrabold text-primary tracking-tight">₹{activeVariation.discountPrice}</span>
                 {savePercent > 0 && (
                   <>
@@ -225,7 +225,7 @@ export default function ProductDetail() {
                         className="sr-only"
                       />
                       <div className={`border-2 rounded-xl xs:rounded-2xl py-2 px-2 xs:py-3 xs:px-3 text-center transition-all duration-300 transform active:scale-95 shadow-sm ${isChecked
-                          ? 'border-primary bg-emerald-50/40 shadow-md shadow-emerald-950/5 scale-[1.02]'
+                          ? 'border-primary bg-blue-50/40 shadow-md shadow-blue-950/5 scale-[1.02]'
                           : 'border-slate-200 bg-white hover:border-slate-350 hover:bg-slate-50/50'
                         }`}>
                         <span className="block text-sm font-bold text-darkText">{v.weight}</span>
@@ -256,7 +256,7 @@ export default function ProductDetail() {
             <button onClick={handleBuyNow} className="flex-1 bg-accent hover:bg-accentHover text-white font-bold py-4 px-6 rounded-2xl flex items-center justify-center gap-2 shadow-lg shadow-accent/20 transition-all hover:scale-[1.01] hover:-translate-y-0.5 duration-300">
               <i className="fa-solid fa-bolt"></i> Buy It Now
             </button>
-            <button onClick={handleWhatsAppInquiry} className="bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-4 px-5 rounded-2xl flex items-center justify-center gap-2 shadow-lg shadow-emerald-600/20 transition-all hover:scale-[1.01] hover:-translate-y-0.5 duration-300" title="Inquire on WhatsApp">
+            <button onClick={handleWhatsAppInquiry} className="bg-blue-650 hover:bg-blue-750 text-white font-bold py-4 px-5 rounded-2xl flex items-center justify-center gap-2 shadow-lg shadow-blue-600/20 transition-all hover:scale-[1.01] hover:-translate-y-0.5 duration-300" title="Inquire on WhatsApp">
               <i className="fa-brands fa-whatsapp text-2xl"></i>
               <span className="sm:hidden text-sm">Inquire on WhatsApp</span>
             </button>
@@ -291,7 +291,7 @@ export default function ProductDetail() {
                 key={tab}
                 onClick={() => setActiveTab(tab)}
                 className={`flex-1 py-2.5 sm:py-3 px-1 sm:px-4 text-center rounded-xl xs:rounded-2xl transition-all duration-300 ${isActive
-                    ? 'bg-gradient-to-r from-primary to-emerald-800 text-white shadow-sm font-bold'
+                    ? 'bg-gradient-to-r from-primary to-blue-800 text-white shadow-sm font-bold'
                     : 'text-slate-500 hover:text-slate-800 hover:bg-slate-100/50 font-semibold'
                   }`}
               >
@@ -319,7 +319,7 @@ export default function ProductDetail() {
             <div className="space-y-3">
               <h3 className="font-heading font-bold text-darkText text-lg flex items-center gap-2"><i className="fa-solid fa-flask text-accent"></i> Pure Content Formula</h3>
               <p className="text-sm text-slate-700 leading-relaxed bg-slate-50/50 p-3 xs:p-4 border border-slate-100 rounded-xl xs:rounded-2xl font-medium">{product.ingredients}</p>
-              <div className="flex items-center gap-2.5 p-3 xs:p-3.5 bg-emerald-50/40 border border-emerald-100 rounded-xl xs:rounded-2xl text-xs text-primary font-bold mt-4">
+              <div className="flex items-center gap-2.5 p-3 xs:p-3.5 bg-blue-50/40 border border-blue-100 rounded-xl xs:rounded-2xl text-xs text-primary font-bold mt-4">
                 <i className="fa-solid fa-shield-heart text-accent text-sm"></i>
                 <span>Free from preservatives, fillers, starches, chemical anti-caking compounds, or sugars.</span>
               </div>
@@ -329,7 +329,7 @@ export default function ProductDetail() {
             <div className="space-y-3">
               <h3 className="font-heading font-bold text-darkText text-lg flex items-center gap-2"><i className="fa-solid fa-utensils text-accent"></i> How to Consume</h3>
               <p className="text-sm text-slate-700 leading-relaxed bg-slate-50/50 p-3 xs:p-4 border border-slate-100 rounded-xl xs:rounded-2xl font-medium">{product.usage}</p>
-              <div className="flex items-center gap-2.5 p-3 xs:p-3.5 bg-emerald-50/40 border border-emerald-100 rounded-xl xs:rounded-2xl text-xs text-primary font-bold mt-4">
+              <div className="flex items-center gap-2.5 p-3 xs:p-3.5 bg-blue-50/40 border border-blue-100 rounded-xl xs:rounded-2xl text-xs text-primary font-bold mt-4">
                 <i className="fa-solid fa-clock text-accent text-sm"></i>
                 <span>Recommended shelf life: Store in airtight container in dry, cool cabinet shelf environment.</span>
               </div>
@@ -347,7 +347,7 @@ export default function ProductDetail() {
             {product.reviews && product.reviews.length > 0 ? (
               product.reviews.map((rev, i) => (
                 <div key={i} className="flex gap-3 xs:gap-4 border-b border-slate-100 pb-5 last:border-b-0 last:pb-0">
-                  <div className="w-8 h-8 xs:w-10 xs:h-10 rounded-full bg-gradient-to-br from-primary to-emerald-700 text-white flex items-center justify-center font-heading font-bold text-xs xs:text-sm shrink-0 shadow-sm uppercase">
+                  <div className="w-8 h-8 xs:w-10 xs:h-10 rounded-full bg-gradient-to-br from-primary to-blue-700 text-white flex items-center justify-center font-heading font-bold text-xs xs:text-sm shrink-0 shadow-sm uppercase">
                     {rev.name ? rev.name.charAt(0) : 'A'}
                   </div>
                   <div className="flex-1 space-y-1">
@@ -417,7 +417,7 @@ export default function ProductDetail() {
             <button
               type="submit"
               disabled={submittingReview}
-              className="w-full bg-primary hover:bg-emerald-850 text-white font-bold py-3.5 rounded-xl text-xs transition-colors shadow-sm disabled:opacity-50 transform active:scale-98"
+              className="w-full bg-primary hover:bg-blue-850 text-white font-bold py-3.5 rounded-xl text-xs transition-colors shadow-sm disabled:opacity-50 transform active:scale-98"
             >
               {submittingReview ? 'Submitting...' : 'Submit My Review'}
             </button>

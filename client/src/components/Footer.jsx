@@ -2,9 +2,9 @@ import { Link } from 'react-router-dom';
 
 export default function Footer() {
   return (
-    <footer className="bg-[#06180c] text-slate-300 font-light border-t border-emerald-950/40 relative overflow-hidden">
+    <footer className="bg-[#05111E] text-slate-300 font-light border-t border-blue-950/40 relative overflow-hidden">
       {/* Background soft glow */}
-      <div className="absolute right-0 bottom-0 w-80 h-80 bg-emerald-950/20 rounded-full blur-[100px] pointer-events-none" />
+      <div className="absolute right-0 bottom-0 w-80 h-80 bg-blue-950/20 rounded-full blur-[100px] pointer-events-none" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 grid grid-cols-1 md:grid-cols-12 gap-8 relative z-10">
         
@@ -71,7 +71,7 @@ export default function Footer() {
       </div>
 
       {/* Bottom Bar */}
-      <div className="border-t border-emerald-950/60 py-6 px-4 relative z-10 bg-black/10">
+      <div className="border-t border-blue-950/60 py-6 px-4 relative z-10 bg-black/10">
         <div className="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between text-xs text-slate-500 gap-2 font-semibold">
           <span>© {new Date().getFullYear()} NVKM GROUP. All rights reserved.</span>
           <span>Premium Natural Powder Products | Made with <i className="fa-solid fa-heart text-red-500 text-[10px] animate-pulse"></i> in India</span>

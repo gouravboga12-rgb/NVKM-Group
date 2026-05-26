@@ -81,7 +81,7 @@ export default function QuickViewModal() {
                         onClick={() => setActiveImgIdx(idx)}
                         className={`border-2 rounded-xl overflow-hidden aspect-square cursor-pointer transition-all duration-200 hover:scale-105 ${
                           isSelected 
-                            ? 'border-primary bg-emerald-50 shadow-md' 
+                            ? 'border-primary bg-blue-50 shadow-md' 
                             : 'border-slate-200 bg-white hover:border-slate-300'
                         }`}
                       >
@@ -134,7 +134,7 @@ export default function QuickViewModal() {
                     {product.variations.map((v, i) => (
                       <label key={i} className="flex-1 cursor-pointer">
                         <input type="radio" name="qv-weight" value={v.weight} checked={activeWeight === v.weight} onChange={() => setSelectedWeight(v.weight)} className="sr-only peer" />
-                        <div className="border border-slate-200/80 peer-checked:border-primary peer-checked:bg-emerald-50/60 peer-checked:ring-1 peer-checked:ring-primary rounded-2xl py-3 px-3 text-center transition-all duration-200 shadow-sm hover:border-slate-300">
+                        <div className="border border-slate-200/80 peer-checked:border-primary peer-checked:bg-blue-50/60 peer-checked:ring-1 peer-checked:ring-primary rounded-2xl py-3 px-3 text-center transition-all duration-200 shadow-sm hover:border-slate-300">
                           <span className="block text-xs font-extrabold text-darkText">{v.weight}</span>
                           <span className="block text-[10px] text-slate-500 font-bold mt-0.5">₹{v.discountPrice}</span>
                         </div>
@@ -155,13 +155,13 @@ export default function QuickViewModal() {
               </div>
 
               <div className="mt-8 pt-5 border-t border-slate-100 flex flex-col sm:flex-row gap-3">
-                <button onClick={handleAddToCart} className="flex-1 bg-primary hover:bg-emerald-800 text-white font-bold text-xs py-3.5 px-6 rounded-2xl flex items-center justify-center gap-2 shadow-lg shadow-primary/10 hover:shadow-primary/25 transition-all duration-300 hover:scale-[1.02]">
+                <button onClick={handleAddToCart} className="flex-1 bg-primary hover:bg-blue-800 text-white font-bold text-xs py-3.5 px-6 rounded-2xl flex items-center justify-center gap-2 shadow-lg shadow-primary/10 hover:shadow-primary/25 transition-all duration-300 hover:scale-[1.02]">
                   <i className="fa-solid fa-cart-shopping text-xs"></i> Add to Cart
                 </button>
                 <button onClick={handleBuyNow} className="flex-1 bg-accent hover:bg-accentHover text-white font-bold text-xs py-3.5 px-6 rounded-2xl flex items-center justify-center gap-2 shadow-lg shadow-accent/10 hover:shadow-accent/25 transition-all duration-300 hover:scale-[1.02]">
                   <i className="fa-solid fa-bolt text-xs"></i> Buy Now
                 </button>
-                <button onClick={handleWhatsApp} className="bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-3.5 px-5 rounded-2xl flex items-center justify-center gap-2 shadow-md transition-all duration-300 hover:scale-[1.02] active:scale-95" title="WhatsApp Inquiry">
+                <button onClick={handleWhatsApp} className="bg-blue-600 hover:bg-blue-700 text-white font-bold py-3.5 px-5 rounded-2xl flex items-center justify-center gap-2 shadow-md transition-all duration-300 hover:scale-[1.02] active:scale-95" title="WhatsApp Inquiry">
                   <i className="fa-brands fa-whatsapp text-lg"></i>
                   <span className="sm:hidden text-xs">Inquire on WhatsApp</span>
                 </button>

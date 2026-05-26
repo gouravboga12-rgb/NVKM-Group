@@ -35,7 +35,7 @@ export default function CartDrawer() {
             <i className="fa-solid fa-cart-shopping text-xl"></i>
             <h2 className="font-heading font-bold text-lg">Your Shopping Cart</h2>
           </div>
-          <button onClick={() => setCartOpen(false)} className="p-1 text-slate-200 hover:text-white rounded-full hover:bg-emerald-800/50 transition-colors"><i className="fa-solid fa-xmark text-xl"></i></button>
+          <button onClick={() => setCartOpen(false)} className="p-1 text-slate-200 hover:text-white rounded-full hover:bg-blue-800/50 transition-colors"><i className="fa-solid fa-xmark text-xl"></i></button>
         </div>
 
         {/* Items */}
@@ -45,7 +45,7 @@ export default function CartDrawer() {
               <i className="fa-solid fa-cart-shopping text-6xl text-slate-200 mb-4"></i>
               <p className="font-heading font-semibold text-lg text-slate-500">Your cart is empty!</p>
               <p className="text-sm text-slate-400 mt-1 max-w-[280px]">Add organic powders to start healthy living.</p>
-              <button onClick={() => { navigate('/shop'); setCartOpen(false); }} className="mt-6 bg-primary hover:bg-emerald-800 text-white font-bold py-2.5 px-6 rounded-xl text-sm transition-colors shadow-md">Shop Now</button>
+              <button onClick={() => { navigate('/shop'); setCartOpen(false); }} className="mt-6 bg-primary hover:bg-blue-800 text-white font-bold py-2.5 px-6 rounded-xl text-sm transition-colors shadow-md">Shop Now</button>
             </div>
           ) : (
             cart.map(item => (
@@ -75,16 +75,16 @@ export default function CartDrawer() {
         {/* Footer */}
         <div className="p-4 sm:p-6 border-t bg-slate-50">
           <div className="space-y-2 mb-4">
-            <div className="flex justify-between text-slate-600 text-sm"><span>Subtotal:</span><span>₹{subtotal.toFixed(2)}</span></div>
-            <div className="flex justify-between text-green-600 text-sm font-medium"><span>Discount Savings:</span><span>-₹{savings.toFixed(2)}</span></div>
-            <div className="flex justify-between text-slate-600 text-sm"><span>Shipping:</span><span className="text-green-600 font-semibold">FREE Delivery</span></div>
+            <div className="flex justify-between text-slate-655 text-sm"><span>Subtotal:</span><span>₹{subtotal.toFixed(2)}</span></div>
+            <div className="flex justify-between text-blue-600 text-sm font-medium"><span>Discount Savings:</span><span>-₹{savings.toFixed(2)}</span></div>
+            <div className="flex justify-between text-slate-655 text-sm"><span>Shipping:</span><span className="text-blue-600 font-semibold">FREE Delivery</span></div>
             <div className="flex justify-between text-darkText font-bold text-lg pt-2 border-t border-slate-200"><span>Total Payable:</span><span className="text-primary">₹{total.toFixed(2)}</span></div>
           </div>
           <div className="flex flex-col gap-2">
             <button onClick={handleCheckout} className="w-full bg-accent hover:bg-accentHover text-white py-3 rounded-xl font-bold flex items-center justify-center gap-2 shadow-lg shadow-accent/20 transition-all hover:scale-[1.01]">
               <i className="fa-solid fa-circle-check"></i> Checkout & Pay Online
             </button>
-            <button onClick={handleWhatsAppDirect} className="w-full bg-emerald-600 hover:bg-emerald-700 text-white py-3 rounded-xl font-bold flex items-center justify-center gap-2 shadow-lg shadow-emerald-600/20 transition-all hover:scale-[1.01]">
+            <button onClick={handleWhatsAppDirect} className="w-full bg-blue-600 hover:bg-blue-700 text-white py-3 rounded-xl font-bold flex items-center justify-center gap-2 shadow-lg shadow-blue-600/20 transition-all hover:scale-[1.01]">
               <i className="fa-brands fa-whatsapp text-lg"></i> Direct Order on WhatsApp
             </button>
           </div>

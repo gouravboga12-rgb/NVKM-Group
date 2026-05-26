@@ -8,7 +8,7 @@ export default function Toast() {
       case 'warning': return <i className="fa-solid fa-triangle-exclamation text-yellow-500 text-lg"></i>;
       case 'error': return <i className="fa-solid fa-circle-exclamation text-red-500 text-lg"></i>;
       case 'info': return <i className="fa-solid fa-circle-info text-blue-500 text-lg"></i>;
-      default: return <i className="fa-solid fa-circle-check text-green-500 text-lg"></i>;
+      default: return <i className="fa-solid fa-circle-check text-blue-500 text-lg"></i>;
     }
   };
 

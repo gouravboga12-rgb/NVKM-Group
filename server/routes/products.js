@@ -3,6 +3,18 @@ const router = express.Router();
 const supabase = require('../config/db');
 const { PRODUCTS_DATA } = require('../config/fallbackData');
 
+const getCategoryGroup = (category) => {
+  if (!category) return 'All';
+  const cat = category.toLowerCase();
+  if (cat === 'pooja accessories') {
+    return 'Pooja Accessories';
+  }
+  if (cat === 'all') {
+    return 'All';
+  }
+  return 'Fruits and Vegetable powder';
+};
+
 // Helper to transform mock data to frontend expected schema
 const transformProduct = (p) => ({
   id: p.slug,
@@ -41,7 +53,12 @@ router.get('/', async (req, res) => {
     if (!supabase.isConfigured) {
       let filtered = [...PRODUCTS_DATA];
       if (category && category !== 'All') {
-        filtered = filtered.filter(p => p.category.toLowerCase() === category.toLowerCase());
+        filtered = filtered.filter(p => {
+          if (category !== 'Fruits and Vegetable powder' && category !== 'Pooja Accessories') {
+            return p.category.toLowerCase() === category.toLowerCase();
+          }
+          return getCategoryGroup(p.category) === category;
+        });
       }
       if (q) {
         const queryStr = q.toLowerCase();
@@ -60,7 +77,11 @@ router.get('/', async (req, res) => {
       .select('*, product_variations(*), product_reviews(*)');
 
     if (category && category !== 'All') {
-      query = query.eq('category', category);
+      if (category === 'Fruits and Vegetable powder') {
+        query = query.in('category', ['Tomato Powder', 'Banana Powder', 'Carrot Powder', 'Beetroot Powder', 'Moringa Powder']);
+      } else {
+        query = query.eq('category', category);
+      }
     }
 
     if (q) {
@@ -104,7 +125,12 @@ router.get('/', async (req, res) => {
     console.error('Products API error, returning fallback local products:', error.message);
     let filtered = [...PRODUCTS_DATA];
     if (category && category !== 'All') {
-      filtered = filtered.filter(p => p.category.toLowerCase() === category.toLowerCase());
+      filtered = filtered.filter(p => {
+        if (category !== 'Fruits and Vegetable powder' && category !== 'Pooja Accessories') {
+          return p.category.toLowerCase() === category.toLowerCase();
+        }
+        return getCategoryGroup(p.category) === category;
+      });
     }
     if (q) {
       const queryStr = q.toLowerCase();

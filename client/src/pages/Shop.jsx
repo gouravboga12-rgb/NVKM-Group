@@ -26,7 +26,19 @@ export default function Shop() {
       });
   }, []);
 
-  const categoryFilters = ['All', 'Tomato Powder', 'Banana Powder', 'Carrot Powder', 'Beetroot Powder', 'Moringa Powder', 'Pooja Accessories'];
+  const categoryFilters = ['All', 'Fruits and Vegetable powder', 'Pooja Accessories'];
+
+  const getCategoryGroup = (category) => {
+    if (!category) return 'All';
+    const cat = category.toLowerCase();
+    if (cat === 'pooja accessories') {
+      return 'Pooja Accessories';
+    }
+    if (cat === 'all') {
+      return 'All';
+    }
+    return 'Fruits and Vegetable powder';
+  };
 
   const handleCategoryFilter = (cat) => {
     const params = new URLSearchParams(searchParams);
@@ -71,7 +83,12 @@ export default function Shop() {
   }
 
   if (categoryQuery && categoryQuery !== 'All') {
-    filtered = filtered.filter(p => p.category === categoryQuery);
+    filtered = filtered.filter(p => {
+      if (categoryQuery !== 'Fruits and Vegetable powder' && categoryQuery !== 'Pooja Accessories') {
+        return p.category === categoryQuery;
+      }
+      return getCategoryGroup(p.category) === categoryQuery;
+    });
   }
 
   if (sortBy === 'price-asc') {
@@ -143,14 +160,14 @@ export default function Shop() {
           <span className="block text-xs font-bold text-darkText mb-3 uppercase tracking-wider">Filter by Category:</span>
           <div className="flex overflow-x-auto pb-2 scrollbar-none gap-2.5 -mx-4 px-4 sm:mx-0 sm:px-0 sm:flex-wrap">
             {categoryFilters.map(cat => {
-              const isActive = categoryQuery === cat;
+              const isActive = categoryQuery === cat || (cat === getCategoryGroup(categoryQuery));
               return (
                 <button
                   key={cat}
                   onClick={() => handleCategoryFilter(cat)}
                   className={`px-5 py-2.5 text-xs font-bold rounded-xl transition-all duration-300 transform active:scale-95 shrink-0 sm:shrink-1 ${isActive
-                      ? 'bg-gradient-to-r from-primary to-emerald-800 text-white shadow-md shadow-emerald-900/20 scale-[1.02] border-transparent'
-                      : 'bg-white hover:bg-emerald-50/50 hover:text-primary hover:border-emerald-200 text-slate-600 border border-slate-200 hover:scale-[1.01]'
+                      ? 'bg-gradient-to-r from-primary to-blue-800 text-white shadow-md shadow-blue-900/20 scale-[1.02] border-transparent'
+                      : 'bg-white hover:bg-blue-50/50 hover:text-primary hover:border-blue-200 text-slate-650 border border-slate-200 hover:scale-[1.01]'
                     }`}
                 >
                   {cat}
@@ -170,7 +187,7 @@ export default function Shop() {
           <i className="fa-solid fa-hourglass-empty text-5xl text-slate-300 mb-4"></i>
           <h3 className="font-heading font-bold text-lg text-slate-500">No Powders Match Your Query!</h3>
           <p className="text-xs text-slate-400 mt-1 max-w-sm">Try clearing your filters or checking your spelling to explore other categories.</p>
-          <button onClick={resetFilters} className="mt-6 bg-primary hover:bg-emerald-800 text-white font-bold py-2.5 px-6 rounded-xl text-xs transition-all shadow-sm">
+          <button onClick={resetFilters} className="mt-6 bg-primary hover:bg-blue-800 text-white font-bold py-2.5 px-6 rounded-xl text-xs transition-all shadow-sm">
             Reset Filters
           </button>
         </div>

@@ -27,22 +27,22 @@ export default function Contact() {
     {
       icon: 'fa-phone',
       label: 'Call Support',
-      color: 'text-emerald-600 bg-emerald-50 border-emerald-100',
+      color: 'text-blue-600 bg-blue-50 border-blue-100',
       content: (
         <div className="flex flex-col gap-1 mt-1">
-          <a href="tel:9014274293" className="font-extrabold text-slate-800 hover:text-emerald-600 transition-colors text-sm">+91 9014274293</a>
-          <a href="tel:7075604700" className="font-extrabold text-slate-800 hover:text-emerald-600 transition-colors text-sm">+91 7075604700</a>
+          <a href="tel:9014274293" className="font-extrabold text-slate-800 hover:text-blue-600 transition-colors text-sm">+91 9014274293</a>
+          <a href="tel:7075604700" className="font-extrabold text-slate-800 hover:text-blue-600 transition-colors text-sm">+91 7075604700</a>
         </div>
       )
     },
     {
       icon: 'fa-brands fa-whatsapp',
       label: 'WhatsApp Chats',
-      color: 'text-emerald-500 bg-emerald-50 border-emerald-100',
+      color: 'text-sky-500 bg-blue-50 border-blue-100',
       content: (
         <div className="flex flex-col gap-1 mt-1">
-          <a href={`https://wa.me/9014274293?text=${encodeURIComponent(GENERAL_WA_MSG)}`} target="_blank" rel="noreferrer" className="font-extrabold text-emerald-600 hover:text-[#22c55e] transition-colors text-sm">+91 9014274293</a>
-          <a href={`https://wa.me/7075604700?text=${encodeURIComponent(GENERAL_WA_MSG)}`} target="_blank" rel="noreferrer" className="font-extrabold text-emerald-600 hover:text-[#22c55e] transition-colors text-sm">+91 7075604700</a>
+          <a href={`https://wa.me/9014274293?text=${encodeURIComponent(GENERAL_WA_MSG)}`} target="_blank" rel="noreferrer" className="font-extrabold text-blue-600 hover:text-[#2563eb] transition-colors text-sm">+91 9014274293</a>
+          <a href={`https://wa.me/7075604700?text=${encodeURIComponent(GENERAL_WA_MSG)}`} target="_blank" rel="noreferrer" className="font-extrabold text-blue-600 hover:text-[#2563eb] transition-colors text-sm">+91 7075604700</a>
         </div>
       )
     },
@@ -51,7 +51,7 @@ export default function Contact() {
       label: 'Email Support',
       color: 'text-blue-500 bg-blue-50 border-blue-100',
       content: (
-        <a href="mailto:Navakiranamgroup@gmail.com" className="font-extrabold text-slate-800 hover:text-emerald-600 transition-colors text-xs block mt-1 break-all">Navakiranamgroup@gmail.com</a>
+        <a href="mailto:Navakiranamgroup@gmail.com" className="font-extrabold text-slate-800 hover:text-blue-600 transition-colors text-xs block mt-1 break-all">Navakiranamgroup@gmail.com</a>
       )
     },
     {
@@ -80,10 +80,10 @@ export default function Contact() {
 
       {/* ── PAGE HEADER ── */}
       <div className="text-center max-w-2xl mx-auto space-y-4" data-aos="fade-up">
-        <span className="inline-flex items-center gap-1.5 bg-emerald-500/10 border border-emerald-500/25 text-emerald-600 text-[10px] font-extrabold px-3.5 py-1.5 rounded-full tracking-wider uppercase shadow-sm">
+        <span className="inline-flex items-center gap-1.5 bg-blue-500/10 border border-blue-500/25 text-blue-600 text-[10px] font-extrabold px-3.5 py-1.5 rounded-full tracking-wider uppercase shadow-sm">
           <i className="fa-solid fa-headset" /> Get In Touch
         </span>
-        <h1 className="font-heading font-black text-4xl sm:text-5xl lg:text-6xl tracking-tight text-[#111827] bg-gradient-to-r from-[#111827] to-[#14532d] bg-clip-text text-transparent">
+        <h1 className="font-heading font-black text-4xl sm:text-5xl lg:text-6xl tracking-tight text-[#111827] bg-gradient-to-r from-[#111827] to-[#0F2942] bg-clip-text text-transparent">
           Contact NVKM GROUP
         </h1>
         <p className="text-sm text-slate-500 leading-relaxed max-w-xl mx-auto font-medium">
@@ -94,8 +94,8 @@ export default function Contact() {
       {/* ── QUICK CONTACT CHIPS ── */}
       <div className="flex flex-wrap justify-center gap-4" data-aos="fade-up">
         {[
-          { href: 'tel:9014274293', icon: 'fa-phone', label: 'Call Now', bg: 'bg-gradient-to-r from-[#14532d] to-[#166534] text-white hover:scale-[1.02] shadow-lg shadow-green-950/20' },
-          { href: `https://wa.me/9014274293?text=${encodeURIComponent(GENERAL_WA_MSG)}`, icon: 'fa-brands fa-whatsapp', label: 'WhatsApp Chat', bg: 'bg-gradient-to-r from-[#22c55e] to-[#16a34a] text-white hover:scale-[1.02] shadow-lg shadow-green-500/20', external: true },
+          { href: 'tel:9014274293', icon: 'fa-phone', label: 'Call Now', bg: 'bg-gradient-to-r from-[#0F2942] to-[#1D4ED8] text-white hover:scale-[1.02] shadow-lg shadow-blue-950/20' },
+          { href: `https://wa.me/9014274293?text=${encodeURIComponent(GENERAL_WA_MSG)}`, icon: 'fa-brands fa-whatsapp', label: 'WhatsApp Chat', bg: 'bg-gradient-to-r from-[#2563EB] to-[#1D4ED8] text-white hover:scale-[1.02] shadow-lg shadow-blue-500/20', external: true },
           { href: 'mailto:Navakiranamgroup@gmail.com', icon: 'fa-envelope', label: 'Email Us', bg: 'bg-white border border-slate-200 text-slate-700 hover:shadow-md hover:scale-[1.02]' }
         ].map(({ href, icon, label, bg, external }) => (
           <a
@@ -115,7 +115,7 @@ export default function Contact() {
         {/* Contact Form */}
         <div data-aos="fade-right" className="lg:col-span-7 glass-premium rounded-[32px] p-6 sm:p-10 shadow-2xl">
           <div className="flex items-center gap-3 mb-6 pb-6 border-b border-slate-100">
-            <div className="w-10 h-10 rounded-2xl bg-gradient-to-tr from-[#14532d] to-[#22c55e] flex items-center justify-center shadow-md">
+            <div className="w-10 h-10 rounded-2xl bg-gradient-to-tr from-[#0F2942] to-[#2563EB] flex items-center justify-center shadow-md">
               <i className="fa-solid fa-paper-plane text-white text-sm" />
             </div>
             <h2 className="font-heading font-extrabold text-lg text-slate-900">Send Us A Message</h2>
@@ -131,7 +131,7 @@ export default function Contact() {
                   onChange={handleChange}
                   required
                   placeholder="e.g. Ramesh Kumar"
-                  className="w-full bg-slate-50 border border-slate-200 hover:border-emerald-300 focus:border-emerald-500 focus:ring-4 focus:ring-emerald-500/10 p-3.5 rounded-2xl text-xs outline-none transition-all duration-200 text-slate-800 font-medium"
+                  className="w-full bg-slate-50 border border-slate-200 hover:border-blue-300 focus:border-blue-500 focus:ring-4 focus:ring-blue-500/10 p-3.5 rounded-2xl text-xs outline-none transition-all duration-200 text-slate-800 font-medium"
                 />
               </div>
               <div>
@@ -143,7 +143,7 @@ export default function Contact() {
                   onChange={handleChange}
                   required
                   placeholder="+91 XXXXXXXXXX"
-                  className="w-full bg-slate-50 border border-slate-200 hover:border-emerald-300 focus:border-emerald-500 focus:ring-4 focus:ring-emerald-500/10 p-3.5 rounded-2xl text-xs outline-none transition-all duration-200 text-slate-800 font-medium"
+                  className="w-full bg-slate-50 border border-slate-200 hover:border-blue-300 focus:border-blue-500 focus:ring-4 focus:ring-blue-500/10 p-3.5 rounded-2xl text-xs outline-none transition-all duration-200 text-slate-800 font-medium"
                 />
               </div>
             </div>
@@ -155,7 +155,7 @@ export default function Contact() {
                 value={formData.email}
                 onChange={handleChange}
                 placeholder="your@email.com"
-                className="w-full bg-slate-50 border border-slate-200 hover:border-emerald-300 focus:border-emerald-500 focus:ring-4 focus:ring-emerald-500/10 p-3.5 rounded-2xl text-xs outline-none transition-all duration-200 text-slate-800 font-medium"
+                className="w-full bg-slate-50 border border-slate-200 hover:border-blue-300 focus:border-blue-500 focus:ring-4 focus:ring-blue-500/10 p-3.5 rounded-2xl text-xs outline-none transition-all duration-200 text-slate-800 font-medium"
               />
             </div>
             <div>
@@ -165,7 +165,7 @@ export default function Contact() {
                   name="subject"
                   value={formData.subject}
                   onChange={handleChange}
-                  className="w-full bg-slate-50 border border-slate-200 hover:border-emerald-300 focus:border-emerald-500 focus:ring-4 focus:ring-emerald-500/10 p-3.5 rounded-2xl text-xs outline-none transition-all duration-200 text-slate-800 font-medium cursor-pointer appearance-none"
+                  className="w-full bg-slate-50 border border-slate-200 hover:border-blue-300 focus:border-blue-500 focus:ring-4 focus:ring-blue-500/10 p-3.5 rounded-2xl text-xs outline-none transition-all duration-200 text-slate-800 font-medium cursor-pointer appearance-none"
                 >
                   <option value="">Select inquiry type...</option>
                   <option value="retail">Retail Order Inquiry</option>
@@ -188,13 +188,13 @@ export default function Contact() {
                 onChange={handleChange}
                 required
                 placeholder="Please list the powders (Banana, Moringa, etc.) and quantities (Retail/Wholesale) you are interested in..."
-                className="w-full bg-slate-50 border border-slate-200 hover:border-emerald-300 focus:border-emerald-500 focus:ring-4 focus:ring-emerald-500/10 p-3.5 rounded-2xl text-xs outline-none transition-all duration-200 text-slate-800 font-medium resize-none leading-relaxed"
+                className="w-full bg-slate-50 border border-slate-200 hover:border-blue-300 focus:border-blue-500 focus:ring-4 focus:ring-blue-500/10 p-3.5 rounded-2xl text-xs outline-none transition-all duration-200 text-slate-800 font-medium resize-none leading-relaxed"
               />
             </div>
             <button
               type="submit"
               disabled={submitting}
-              className="bg-gradient-to-r from-[#14532d] to-[#22c55e] disabled:from-slate-400 disabled:to-slate-400 text-white font-extrabold text-xs py-3.5 px-8 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-[1.02] flex items-center gap-2 self-start cursor-pointer disabled:cursor-not-allowed"
+              className="bg-gradient-to-r from-[#0F2942] to-[#2563EB] disabled:from-slate-400 disabled:to-slate-400 text-white font-extrabold text-xs py-3.5 px-8 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-[1.02] flex items-center gap-2 self-start cursor-pointer disabled:cursor-not-allowed"
             >
               {submitting ? (
                 <>
@@ -216,7 +216,7 @@ export default function Contact() {
           {/* Contact Details */}
           <div data-aos="fade-left" className="glass-premium rounded-[32px] p-6 sm:p-8 shadow-xl">
             <div className="flex items-center gap-3 mb-6 pb-6 border-b border-slate-100">
-              <div className="w-10 h-10 rounded-2xl bg-gradient-to-tr from-[#14532d] to-[#22c55e] flex items-center justify-center shadow-md">
+              <div className="w-10 h-10 rounded-2xl bg-gradient-to-tr from-[#0F2942] to-[#2563EB] flex items-center justify-center shadow-md">
                 <i className="fa-solid fa-address-book text-white text-sm" />
               </div>
               <h2 className="font-heading font-extrabold text-sm text-slate-900">Connect Directly</h2>
@@ -240,10 +240,10 @@ export default function Contact() {
           </div>
 
           {/* Business Hours */}
-          <div data-aos="fade-left" data-aos-delay="100" className="bg-gradient-to-tr from-[#14532d] to-[#065f46] text-white rounded-[28px] p-6 sm:p-8 shadow-xl relative overflow-hidden">
-            <div className="absolute top-[-40px] right-[-40px] w-[150px] h-[150px] rounded-full bg-radial-gradient(circle,rgba(74,222,128,.12),transparent) pointer-events-none" />
+          <div data-aos="fade-left" data-aos-delay="100" className="bg-gradient-to-tr from-[#0F2942] to-[#1D4ED8] text-white rounded-[28px] p-6 sm:p-8 shadow-xl relative overflow-hidden">
+            <div className="absolute top-[-40px] right-[-40px] w-[150px] h-[150px] rounded-full bg-radial-gradient(circle,rgba(56,189,248,.12),transparent) pointer-events-none" />
             <h3 className="font-heading font-extrabold text-sm text-white flex items-center gap-2 pb-4 mb-4 border-b border-white/10">
-              <i className="fa-solid fa-clock text-[#4ade80]" /> Business &amp; Store Hours
+              <i className="fa-solid fa-clock text-[#38bdf8]" /> Business &amp; Store Hours
             </h3>
             <div className="flex flex-col gap-3">
               {[
@@ -252,12 +252,12 @@ export default function Contact() {
                 ['Sunday', 'Store Closed', false]
               ].map(([day, time, open]) => (
                 <div key={day} className="flex justify-between items-center">
-                  <span className="text-xs text-emerald-100/80 font-medium">{day}</span>
-                  <span className={`text-xs font-extrabold ${open ? 'text-[#4ade80]' : 'text-emerald-300/40'}`}>{time}</span>
+                  <span className="text-xs text-blue-100/80 font-medium">{day}</span>
+                  <span className={`text-xs font-extrabold ${open ? 'text-[#38bdf8]' : 'text-blue-300/40'}`}>{time}</span>
                 </div>
               ))}
             </div>
-            <p className="text-[10px] text-emerald-200/60 mt-4 pt-4 border-t border-white/10">
+            <p className="text-[10px] text-blue-200/60 mt-4 pt-4 border-t border-white/10">
               Online orders accepted 24/7 via WhatsApp.
             </p>
           </div>
@@ -267,16 +267,16 @@ export default function Contact() {
       {/* ── FAQ SECTION ── */}
       <div data-aos="fade-up" className="glass-premium rounded-[32px] p-6 sm:p-10 shadow-xl">
         <div className="text-center mb-8">
-          <span className="text-[10px] font-extrabold text-[#22c55e] tracking-widest uppercase">Common Questions</span>
+          <span className="text-[10px] font-extrabold text-[#2563eb] tracking-widest uppercase">Common Questions</span>
           <h2 className="font-heading font-black text-2xl text-slate-900 mt-2">Frequently Asked Questions</h2>
-          <div className="w-12 h-1 bg-gradient-to-r from-emerald-600 to-emerald-400 rounded-full mx-auto mt-3" />
+          <div className="w-12 h-1 bg-gradient-to-r from-blue-600 to-sky-400 rounded-full mx-auto mt-3" />
         </div>
         <div className="space-y-3 max-w-3xl mx-auto">
           {faqs.map(({ q, a }, i) => (
             <div
               key={i}
               className={`border rounded-2xl overflow-hidden transition-all duration-300 ${openFaq === i
-                  ? 'border-emerald-200 bg-emerald-50/15 shadow-md shadow-emerald-800/5'
+                  ? 'border-blue-200 bg-blue-50/15 shadow-md shadow-blue-800/5'
                   : 'border-slate-100 bg-white hover:border-slate-200'
                 }`}
             >
@@ -287,7 +287,7 @@ export default function Contact() {
               >
                 <span className="text-xs sm:text-sm font-bold text-slate-800 pr-4">{q}</span>
                 <div
-                  className={`w-7 h-7 rounded-full flex-shrink-0 flex items-center justify-center transition-all duration-300 ${openFaq === i ? 'bg-gradient-to-tr from-[#14532d] to-[#22c55e] text-white' : 'bg-slate-50 text-slate-400'
+                  className={`w-7 h-7 rounded-full flex-shrink-0 flex items-center justify-center transition-all duration-300 ${openFaq === i ? 'bg-gradient-to-tr from-[#0F2942] to-[#2563EB] text-white' : 'bg-slate-50 text-slate-400'
                     }`}
                 >
                   <i
@@ -309,7 +309,7 @@ export default function Contact() {
       {/* ── GOOGLE MAP ── */}
       <div data-aos="fade-up" className="bg-white border border-slate-100 rounded-[32px] p-4 sm:p-6 shadow-sm hover:shadow-md transition-shadow">
         <h3 className="font-heading font-extrabold text-sm text-slate-900 mb-4 flex items-center gap-2">
-          <i className="fa-solid fa-map-location-dot text-[#16a34a]" /> Factory Location Map
+          <i className="fa-solid fa-map-location-dot text-[#2563eb]" /> Factory Location Map
         </h3>
         <div className="rounded-2xl overflow-hidden h-[350px] shadow-inner border border-slate-100">
           <iframe

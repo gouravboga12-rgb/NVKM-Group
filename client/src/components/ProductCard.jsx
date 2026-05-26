@@ -138,18 +138,30 @@ export default function ProductCard({ product }) {
             <span className="text-[9px] text-slate-500 font-extrabold ml-auto bg-slate-200/50 px-2.5 py-1 rounded-lg">{defaultVar.weight} Pack</span>
           </div>
 
-          <div className="mt-4 grid grid-cols-2 gap-2">
-            <button onClick={() => addToCart(product, defaultVar.weight)} className="bg-slate-50 hover:bg-primary hover:text-white text-primary font-bold text-xs py-3 px-3 rounded-xl transition-all duration-300 flex items-center justify-center gap-1.5 border border-slate-200/60 hover:border-transparent">
-              <i className="fa-solid fa-cart-shopping"></i> Add<span className="hidden lg:inline"> to Cart</span>
+          <div className="mt-4 space-y-2">
+            <button 
+              onClick={() => addToCart(product, defaultVar.weight)} 
+              className="w-full bg-primary hover:bg-blue-900 text-white font-extrabold text-xs py-3 px-4 rounded-xl transition-all duration-300 flex items-center justify-center gap-2 shadow-sm hover:shadow-md"
+            >
+              <i className="fa-solid fa-cart-shopping"></i> Add to Cart
             </button>
-            <button onClick={handleBuyNow} className="bg-accent hover:bg-accentHover text-white font-bold text-xs py-3 px-3 rounded-xl transition-all duration-300 flex items-center justify-center gap-1.5 shadow-md shadow-accent/10 hover:shadow-accent/25">
-              <i className="fa-solid fa-bolt"></i> Buy Now
-            </button>
+            <div className="grid grid-cols-2 gap-2">
+              <button 
+                onClick={handleBuyNow} 
+                className="bg-accent hover:bg-accentHover text-white font-extrabold text-xs py-2.5 px-3 rounded-xl transition-all duration-300 flex items-center justify-center gap-1.5 shadow-md shadow-accent/10 hover:shadow-accent/25"
+              >
+                <i className="fa-solid fa-bolt"></i> Buy Now
+              </button>
+              <a 
+                href={waUrl} 
+                target="_blank" 
+                rel="noreferrer" 
+                className="bg-blue-50/60 hover:bg-blue-600 hover:text-white text-blue-800 border border-blue-100 hover:border-transparent font-extrabold text-xs py-2.5 px-3 rounded-xl transition-all duration-300 flex items-center justify-center gap-1.5"
+              >
+                <i className="fa-brands fa-whatsapp text-sm"></i> Inquire
+              </a>
+            </div>
           </div>
-
-          <a href={waUrl} target="_blank" rel="noreferrer" className="w-full mt-2.5 bg-emerald-50/60 hover:bg-emerald-600 hover:text-white text-emerald-800 border border-emerald-100 hover:border-transparent font-bold text-xs py-2.5 rounded-xl transition-all duration-300 flex items-center justify-center gap-1.5">
-            <i className="fa-brands fa-whatsapp text-sm"></i> Inquire on WhatsApp
-          </a>
         </div>
       </div>
     </div>

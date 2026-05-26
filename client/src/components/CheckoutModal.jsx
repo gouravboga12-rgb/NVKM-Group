@@ -158,7 +158,7 @@ export default function CheckoutModal() {
           contact: form.phone
         },
         theme: {
-          color: '#0f5132' // NVKM Forest Green
+          color: '#0F2942' // NVKM Midnight Sapphire
         },
         modal: {
           ondismiss: function () {
@@ -216,9 +216,9 @@ export default function CheckoutModal() {
                 <textarea required rows="3" value={form.address} onChange={e => setForm(f => ({ ...f, address: e.target.value }))} className="w-full bg-slate-50 border border-slate-200 p-2.5 rounded-xl text-sm focus:outline-none focus:border-accent transition-all" placeholder="House/Flat No, Street, Landmark, Town, District, State & Pincode"></textarea>
               </div>
 
-              <div className="bg-emerald-55/40 border border-emerald-200 p-4 rounded-2xl flex flex-col gap-1.5 animate-[fadeIn_0.2s_ease-out]">
+              <div className="bg-blue-50/40 border border-blue-200 p-4 rounded-2xl flex flex-col gap-1.5 animate-[fadeIn_0.2s_ease-out]">
                 <h3 className="text-sm font-bold text-primary flex items-center gap-1.5"><i className="fa-solid fa-shield-halved"></i> Secure Online Payment</h3>
-                <p className="text-xs text-emerald-800 leading-relaxed">Transactions are processed securely via Razorpay. We support Credit/Debit Cards, UPI, Netbanking, and Wallets. No extra transaction fees apply!</p>
+                <p className="text-xs text-blue-800 leading-relaxed">Transactions are processed securely via Razorpay. We support Credit/Debit Cards, UPI, Netbanking, and Wallets. No extra transaction fees apply!</p>
               </div>
 
               <div className="border-t border-slate-100 pt-4 flex flex-col sm:flex-row gap-2 justify-end">
@@ -240,7 +240,7 @@ export default function CheckoutModal() {
             {/* Mock Header */}
             <div className="p-6 bg-slate-900 text-white flex items-center justify-between">
               <div className="flex items-center gap-2.5">
-                <div className="w-8 h-8 rounded-lg bg-emerald-500 flex items-center justify-center font-bold text-sm text-slate-900">R</div>
+                <div className="w-8 h-8 rounded-lg bg-blue-500 flex items-center justify-center font-bold text-sm text-slate-900">R</div>
                 <div>
                   <h3 className="font-heading font-black text-sm tracking-tight">Razorpay Checkout</h3>
                   <p className="text-[10px] text-slate-400">Sandbox Test Environment</p>
@@ -248,7 +248,7 @@ export default function CheckoutModal() {
               </div>
               <div className="text-right">
                 <span className="text-[10px] text-slate-400 block font-semibold">AMOUNT</span>
-                <span className="font-heading font-extrabold text-sm text-emerald-400">₹{mockPaymentData.amount.toFixed(2)}</span>
+                <span className="font-heading font-extrabold text-sm text-blue-400">₹{mockPaymentData.amount.toFixed(2)}</span>
               </div>
             </div>
 
@@ -279,7 +279,7 @@ export default function CheckoutModal() {
                     setMockPaymentData(null);
                     await handler(response);
                   }}
-                  className="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-3 px-4 rounded-xl flex items-center justify-center gap-2 transition-all hover:scale-[1.01] shadow-lg shadow-emerald-600/20 text-sm"
+                  className="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-4 rounded-xl flex items-center justify-center gap-2 transition-all hover:scale-[1.01] shadow-lg shadow-blue-600/20 text-sm"
                 >
                   <i className="fa-solid fa-circle-check"></i> Simulate Success (Success Handler)
                 </button>
