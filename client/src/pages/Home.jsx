@@ -168,18 +168,27 @@ export default function Home() {
     <div className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 space-y-10 sm:space-y-16 page-transition">
 
       {/* ── HERO ── */}
-      <section className="relative overflow-hidden py-8 sm:py-20 lg:py-32 bg-gradient-to-br from-[#0A192F] via-[#0D2447] to-[#050B14] rounded-[20px] sm:rounded-[40px] text-white shadow-2xl mt-3 sm:mt-4">
-        {/* Subtle Background Farm Image Overlay */}
-        <div 
-          className="absolute inset-0 bg-cover bg-center pointer-events-none" 
-          style={{ 
-            backgroundImage: "linear-gradient(to bottom right, rgba(10, 25, 47, 0.85), rgba(13, 36, 71, 0.88), rgba(5, 11, 20, 0.92)), url('https://images.unsplash.com/photo-1500937386664-56d1dfef3854?auto=format&fit=crop&w=1920&q=80')" 
-          }} 
+      <section className="relative overflow-hidden py-8 sm:py-20 lg:py-32 rounded-[20px] sm:rounded-[40px] text-white shadow-2xl mt-3 sm:mt-4">
+        {/* Background farm image */}
+        <img
+          src="https://images.unsplash.com/photo-1500937386664-56d1dfef3854?auto=format&fit=crop&w=1920&q=80"
+          alt=""
+          aria-hidden="true"
+          className="absolute inset-0 w-full h-full object-cover object-center pointer-events-none select-none"
+          style={{ zIndex: 0 }}
+        />
+        {/* Dark gradient overlay — keeps text readable but image visible */}
+        <div
+          className="absolute inset-0 pointer-events-none"
+          style={{
+            background: 'linear-gradient(135deg, rgba(5,11,20,0.78) 0%, rgba(10,25,47,0.72) 50%, rgba(13,36,71,0.80) 100%)',
+            zIndex: 1
+          }}
         />
         {/* Soft background decor blurs */}
-        <div className="absolute top-0 left-0 w-96 h-96 bg-blue-500/10 rounded-full blur-[120px] pointer-events-none" />
-        <div className="absolute bottom-0 right-0 w-96 h-96 bg-[#38BDF8]/10 rounded-full blur-[120px] pointer-events-none" />
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-12 items-center relative z-10 px-3 xs:px-5 sm:px-12 lg:px-16">
+        <div className="absolute top-0 left-0 w-96 h-96 bg-blue-500/10 rounded-full blur-[120px] pointer-events-none" style={{ zIndex: 2 }} />
+        <div className="absolute bottom-0 right-0 w-96 h-96 bg-[#38BDF8]/10 rounded-full blur-[120px] pointer-events-none" style={{ zIndex: 2 }} />
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-12 items-center relative px-3 xs:px-5 sm:px-12 lg:px-16" style={{ zIndex: 10 }}>
           <div className="lg:col-span-7 space-y-4 sm:space-y-6 lg:space-y-7 text-center lg:text-left" data-aos="fade-right">
             <span className="inline-flex items-center gap-2 bg-blue-800/40 border border-blue-700/40 px-4 py-1.5 rounded-full text-xs font-bold tracking-wider text-[#38BDF8] shadow-sm animate-pulse-glow">
               <i className="fa-solid fa-leaf text-xs" /> 100% Pure, Organic &amp; Natural

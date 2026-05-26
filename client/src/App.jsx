@@ -59,7 +59,7 @@ function App() {
       <ScrollToTop />
       <Header />
 
-      <main className="min-h-screen pt-20 pb-12">
+      <main className="min-h-screen pt-20 pb-12 overflow-x-hidden">
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/shop" element={<Shop />} />
