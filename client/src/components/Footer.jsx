@@ -76,6 +76,7 @@ export default function Footer() {
       <div className="border-t border-blue-950/60 py-6 px-4 relative z-10 bg-black/10">
         <div className="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between text-xs text-slate-500 gap-2 font-semibold">
           <span>© {new Date().getFullYear()} NVKM GROUP. All rights reserved.</span>
+          <span>Developed by <a href="https://www.codtechitsolutions.com/" target="_blank" rel="noopener noreferrer" className="text-slate-450 hover:text-secondary transition-colors font-bold">CODTECH IT SOLUTION</a></span>
           <span>Premium Natural Powder Products | Made with <i className="fa-solid fa-heart text-red-500 text-[10px] animate-pulse"></i> in India</span>
         </div>
       </div>
