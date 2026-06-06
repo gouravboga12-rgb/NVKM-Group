@@ -208,6 +208,14 @@ export default function AdminLayout() {
           </div>
           
           <div className="flex items-center gap-4">
+            <button
+              onClick={() => window.location.reload()}
+              className="p-2.5 rounded-xl bg-white/5 lg:bg-slate-100 hover:bg-white/10 lg:hover:bg-blue-50 text-slate-300 lg:text-slate-500 hover:text-white lg:hover:text-blue-600 border border-white/10 lg:border-slate-200/60 shadow-sm transition-all duration-300 hover:scale-105 active:scale-95 flex items-center justify-center cursor-pointer group"
+              title="Refresh Page"
+            >
+              <i className="fa-solid fa-arrows-rotate text-sm group-hover:rotate-180 transition-transform duration-500" />
+            </button>
+
             <span className="hidden sm:inline-flex items-center gap-1.5 bg-blue-500/10 border border-blue-500/25 text-blue-600 lg:text-primary text-[10px] font-extrabold px-3 py-1.5 rounded-full tracking-wider uppercase">
               <i className="fa-solid fa-shield-halved text-[9px]"></i> Secure Shell
             </span>
