@@ -59,7 +59,6 @@ export default function Footer({ settings }) {
               <li><Link to="/shop?category=Banana+Powder" className="text-slate-400 hover:text-secondary transition-colors">Banana Powder</Link></li>
               <li><Link to="/shop?category=Moringa+Powder" className="text-slate-400 hover:text-secondary transition-colors">Moringa Powder</Link></li>
               <li><Link to="/shop?category=Beetroot+Powder" className="text-slate-400 hover:text-secondary transition-colors">Beetroot Powder</Link></li>
-              <li><Link to="/shop?category=Pooja+Accessories" className="text-slate-400 hover:text-secondary transition-colors">Pooja Accessories</Link></li>
             </ul>
           </div>
         </div>
