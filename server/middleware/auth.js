@@ -14,13 +14,24 @@ const protect = async (req, res, next) => {
         const { readData } = require('../utils/mockDb');
         const users = readData('users.json');
         const user = users.find(u => u.id === decoded.id);
-        req.user = user || {
-          id: decoded.id || 'mock-user-id-555',
-          name: 'NVKM Customer',
-          phone: '9014274293',
-          email: 'customer@nvkm.com',
-          role: 'user'
-        };
+        
+        if (decoded.id === 'mock-admin-id') {
+          req.user = {
+            id: 'mock-admin-id',
+            name: 'Janagonda Naveen',
+            phone: '9014274293',
+            email: 'janagondanaveen@gmail.com',
+            role: 'admin'
+          };
+        } else {
+          req.user = user || {
+            id: decoded.id || 'mock-user-id-555',
+            name: 'NVKM Customer',
+            phone: '9014274293',
+            email: 'customer@nvkm.com',
+            role: 'user'
+          };
+        }
         return next();
       }
 
