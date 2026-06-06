@@ -123,3 +123,11 @@ CREATE TABLE IF NOT EXISTS activity_logs (
   performed_by TEXT NOT NULL,
   created_at TIMESTAMPTZ DEFAULT NOW()
 );
+
+-- Settings table for dynamic configurations
+CREATE TABLE IF NOT EXISTS settings (
+  key TEXT PRIMARY KEY,
+  value JSONB NOT NULL,
+  updated_at TIMESTAMPTZ DEFAULT NOW()
+);
+

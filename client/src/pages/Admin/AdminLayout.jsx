@@ -9,6 +9,8 @@ import AdminCustomers from './AdminCustomers';
 import InvoicePrint from './InvoicePrint';
 import AdminLogin from './AdminLogin';
 import AdminCategories from './AdminCategories';
+import AdminSettings from './AdminSettings';
+
 
 export default function AdminLayout() {
   const { user, loading, logout } = useAuth();
@@ -67,6 +69,7 @@ export default function AdminLayout() {
     { path: '/admin/orders', label: 'Customer Orders', icon: 'fa-truck-ramp-box' },
     { path: '/admin/customers', label: 'Customer Records', icon: 'fa-users' },
     { path: '/admin/contacts', label: 'Contact Inquiries', icon: 'fa-envelope-open-text' },
+    { path: '/admin/settings', label: 'Store Settings', icon: 'fa-gears' },
     { path: '/admin/logs', label: 'Change Tracker Logs', icon: 'fa-clock-rotate-left' }
   ];
 
@@ -240,6 +243,7 @@ export default function AdminLayout() {
             <Route path="/categories" element={<AdminCategories />} />
             <Route path="/contacts" element={<AdminContacts />} />
             <Route path="/customers" element={<AdminCustomers />} />
+            <Route path="/settings" element={<AdminSettings />} />
             
             {/* Logs route */}
             <Route path="/logs" element={<AdminContacts showLogs={true} />} />

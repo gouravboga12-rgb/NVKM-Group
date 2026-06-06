@@ -1,6 +1,8 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { Routes, Route, useLocation } from 'react-router-dom';
+import api, { DEFAULT_SETTINGS } from './api/api';
 import Header from './components/Header';
+
 import Footer from './components/Footer';
 import Toast from './components/Toast';
 import CartDrawer from './components/CartDrawer';
@@ -25,6 +27,20 @@ function ScrollToTop() {
 }
 
 function App() {
+  const [settings, setSettings] = useState(null);
+
+  useEffect(() => {
+    const fetchSettings = async () => {
+      try {
+        const { data } = await api.get('/admin/settings');
+        setSettings(data);
+      } catch (err) {
+        console.error('Failed to load store settings:', err);
+      }
+    };
+    fetchSettings();
+  }, []);
+
   useEffect(() => {
     // Initialize AOS
     if (window.AOS) {
@@ -60,7 +76,7 @@ function App() {
   return (
     <>
       <ScrollToTop />
-      {!isAdminPath && <Header />}
+      {!isAdminPath && <Header settings={settings} />}
 
       <main className={isAdminPath ? "min-h-screen overflow-x-hidden bg-slate-50" : "min-h-screen pt-20 pb-12 overflow-x-hidden"}>
         <Routes>
@@ -68,7 +84,7 @@ function App() {
           <Route path="/shop" element={<Shop />} />
           <Route path="/products/:slug" element={<ProductDetail />} />
           <Route path="/about" element={<About />} />
-          <Route path="/contact" element={<Contact />} />
+          <Route path="/contact" element={<Contact settings={settings} />} />
           <Route path="/login" element={<Login />} />
           <Route path="/reset-password" element={<ResetPassword />} />
           <Route path="/dashboard" element={<Dashboard />} />
@@ -76,7 +92,7 @@ function App() {
         </Routes>
       </main>
 
-      {!isAdminPath && <Footer />}
+      {!isAdminPath && <Footer settings={settings} />}
 
       {/* Global Overlays */}
       <CartDrawer />
@@ -90,7 +106,13 @@ function App() {
           <div className="bg-[#1e293b] text-white text-xs font-semibold px-3 py-1.5 rounded-lg shadow-xl mb-3 opacity-0 translate-y-2 scale-95 pointer-events-none group-hover:opacity-100 group-hover:translate-y-0 group-hover:scale-100 transition-all duration-300">
             Need Help? Chat on WhatsApp
           </div>
-          <a href="https://wa.me/9014274293?text=Hello,%20I%20am%20interested%20in%20your%20natural%20powder%20products." target="_blank" rel="noreferrer" className="w-14 h-14 bg-blue-600 hover:bg-blue-700 text-white rounded-full flex items-center justify-center shadow-2xl relative hover:scale-110 transition-transform duration-300" aria-label="Chat on WhatsApp">
+          <a 
+            href={`https://wa.me/${(settings?.whatsapp_phone_1 || DEFAULT_SETTINGS.whatsapp_phone_1).replace(/[^0-9]/g, '')}?text=${encodeURIComponent('Hello, I am interested in your natural powder products.')}`} 
+            target="_blank" 
+            rel="noreferrer" 
+            className="w-14 h-14 bg-blue-600 hover:bg-blue-700 text-white rounded-full flex items-center justify-center shadow-2xl relative hover:scale-110 transition-transform duration-300" 
+            aria-label="Chat on WhatsApp"
+          >
             <span className="absolute inset-0 rounded-full bg-blue-400 opacity-75 animate-pulse-ring -z-10"></span>
             <i className="fa-brands fa-whatsapp text-3xl"></i>
           </a>

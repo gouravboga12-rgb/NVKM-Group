@@ -1,6 +1,9 @@
 import { Link } from 'react-router-dom';
+import { DEFAULT_SETTINGS } from '../api/api';
 
-export default function Footer() {
+export default function Footer({ settings }) {
+  const s = settings || DEFAULT_SETTINGS;
+
   return (
     <footer className="bg-[#05111E] text-slate-300 font-light border-t border-blue-950/40 relative overflow-hidden">
       {/* Background soft glow */}
@@ -20,7 +23,7 @@ export default function Footer() {
           </div>
           <p className="text-xs text-slate-400 leading-relaxed max-w-sm">NVKM GROUP manufactures premium natural fruit & vegetable powders. 100% organic, preservative-free, and nutrient-rich for healthy living.</p>
           <div className="flex space-x-3 mt-4">
-            {[['fa-facebook-f', '#'], ['fa-instagram', '#'], ['fa-whatsapp', 'https://wa.me/9014274293'], ['fa-youtube', '#']].map(([icon, link], idx) => (
+            {[['fa-facebook-f', '#'], ['fa-instagram', '#'], ['fa-whatsapp', `https://wa.me/${(s.whatsapp_phone_1 || '9014274293').replace(/[^0-9]/g, '')}`], ['fa-youtube', '#']].map(([icon, link], idx) => (
               <a 
                 key={idx} 
                 href={link} 
@@ -65,9 +68,18 @@ export default function Footer() {
         <div className="md:col-span-3">
           <h3 className="font-heading font-extrabold text-white text-xs uppercase tracking-wider mb-5">Contact Details</h3>
           <ul className="space-y-3 text-xs font-semibold">
-            <li className="flex items-start gap-2.5 text-slate-400"><i className="fa-solid fa-location-dot text-secondary mt-0.5 text-xs"></i><span>NVKM GROUP Manufacturing,<br />Andhra Pradesh, India</span></li>
-            <li className="flex items-center gap-2.5 text-slate-400"><i className="fa-solid fa-phone text-secondary text-xs"></i><a href="tel:9014274293" className="hover:text-secondary transition-colors">+91 90142 74293</a></li>
-            <li className="flex items-center gap-2.5 text-slate-400"><i className="fa-solid fa-phone text-secondary text-xs"></i><a href="tel:7075604700" className="hover:text-secondary transition-colors">+91 70756 04700</a></li>
+            <li className="flex items-start gap-2.5 text-slate-400">
+              <i className="fa-solid fa-location-dot text-secondary mt-0.5 text-xs"></i>
+              <span style={{ whiteSpace: 'pre-line' }}>{s.footer_address}</span>
+            </li>
+            <li className="flex items-center gap-2.5 text-slate-400">
+              <i className="fa-solid fa-phone text-secondary text-xs"></i>
+              <a href={`tel:${s.contact_phone_1.replace(/\s+/g, '')}`} className="hover:text-secondary transition-colors">{s.footer_phone_1}</a>
+            </li>
+            <li className="flex items-center gap-2.5 text-slate-400">
+              <i className="fa-solid fa-phone text-secondary text-xs"></i>
+              <a href={`tel:${s.contact_phone_2.replace(/\s+/g, '')}`} className="hover:text-secondary transition-colors">{s.footer_phone_2}</a>
+            </li>
           </ul>
         </div>
       </div>

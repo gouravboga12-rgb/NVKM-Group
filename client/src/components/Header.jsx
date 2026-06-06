@@ -2,8 +2,11 @@ import { useState } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { useCart } from '../context/CartContext';
 import { useAuth } from '../context/AuthContext';
+import { DEFAULT_SETTINGS } from '../api/api';
 
-export default function Header() {
+export default function Header({ settings }) {
+  const s = settings || DEFAULT_SETTINGS;
+
   const [mobileOpen, setMobileOpen] = useState(false);
   const [searchVal, setSearchVal] = useState('');
   const { cartCount, wishlist, setCartOpen, setWishlistOpen, calculateTotals } = useCart();
@@ -174,7 +177,7 @@ export default function Header() {
           {/* Drawer Footer */}
           <div className="p-5 border-t border-slate-100 bg-slate-50/50 rounded-bl-[30px]">
             <div className="flex items-center justify-between">
-              <a href="tel:9014274293" className="flex items-center gap-2 text-primary hover:text-accent font-bold text-xs transition-colors">
+              <a href={`tel:${s.contact_phone_1.replace(/\s+/g, '')}`} className="flex items-center gap-2 text-primary hover:text-accent font-bold text-xs transition-colors">
                 <div className="w-8 h-8 bg-blue-50 rounded-full flex items-center justify-center">
                   <i className="fa-solid fa-phone text-xs text-primary"></i>
                 </div>

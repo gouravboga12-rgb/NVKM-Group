@@ -1295,4 +1295,100 @@ router.delete('/orders/:id', protect, adminProtect, async (req, res) => {
   }
 });
 
+// @route   GET /api/admin/settings
+// @desc    Get contact & footer settings (Public)
+// @access  Public
+router.get('/settings', async (req, res) => {
+  const DEFAULT_SETTINGS = {
+    contact_phone_1: "9014274293",
+    contact_phone_2: "7075604700",
+    whatsapp_phone_1: "9014274293",
+    whatsapp_phone_2: "7075604700",
+    email: "Navakiranamgroup@gmail.com",
+    address: "Near bypass Anantapur Road, Bathalapalli, Sri Sathya Sai Dist, Andhra Pradesh 515661",
+    footer_address: "NVKM GROUP Manufacturing, Andhra Pradesh, India",
+    footer_phone_1: "+91 90142 74293",
+    footer_phone_2: "+91 70756 04700"
+  };
+
+  // --- MOCK FALLBACK MODE ---
+  if (!supabase.isConfigured) {
+    const settingsList = readData('settings.json');
+    const settings = Array.isArray(settingsList) ? settingsList[0] : settingsList;
+    return res.json(settings || DEFAULT_SETTINGS);
+  }
+
+  // --- SUPABASE MODE ---
+  try {
+    const { data, error } = await supabase
+      .from('settings')
+      .select('value')
+      .eq('key', 'contact_settings')
+      .maybeSingle();
+
+    if (error) {
+      if (error.code === 'PGRST205' || error.code === '42P01') {
+        const settingsList = readData('settings.json');
+        const settings = Array.isArray(settingsList) ? settingsList[0] : settingsList;
+        return res.json(settings || DEFAULT_SETTINGS);
+      }
+      throw error;
+    }
+
+    if (data && data.value) {
+      return res.json(data.value);
+    }
+
+    const settingsList = readData('settings.json');
+    const settings = Array.isArray(settingsList) ? settingsList[0] : settingsList;
+    res.json(settings || DEFAULT_SETTINGS);
+  } catch (error) {
+    console.error('Settings query error, falling back to JSON:', error.message);
+    const settingsList = readData('settings.json');
+    const settings = Array.isArray(settingsList) ? settingsList[0] : settingsList;
+    res.json(settings || DEFAULT_SETTINGS);
+  }
+});
+
+// @route   PUT /api/admin/settings
+// @desc    Update contact & footer settings
+// @access  Private/Admin
+router.put('/settings', protect, adminProtect, async (req, res) => {
+  const settingsData = req.body;
+  const performedBy = req.user.name || req.user.email;
+
+  // --- MOCK FALLBACK MODE ---
+  if (!supabase.isConfigured) {
+    writeData('settings.json', [settingsData]);
+    await logActivity('Settings Updated', 'Updated contact and footer settings details', performedBy);
+    return res.json({ message: 'Settings updated successfully!', settings: settingsData });
+  }
+
+  // --- SUPABASE MODE ---
+  try {
+    const { error } = await supabase
+      .from('settings')
+      .upsert({ key: 'contact_settings', value: settingsData });
+
+    if (error) {
+      if (error.code === 'PGRST205' || error.code === '42P01') {
+        writeData('settings.json', [settingsData]);
+        await logActivity('Settings Updated', 'Updated contact and footer settings details (Local Fallback)', performedBy);
+        return res.json({ message: 'Settings updated successfully (Local Fallback)!', settings: settingsData });
+      }
+      throw error;
+    }
+
+    writeData('settings.json', [settingsData]);
+    await logActivity('Settings Updated', 'Updated contact and footer settings details', performedBy);
+    res.json({ message: 'Settings updated successfully!', settings: settingsData });
+  } catch (error) {
+    console.error('Settings update error, falling back to JSON:', error.message);
+    writeData('settings.json', [settingsData]);
+    await logActivity('Settings Updated', 'Updated contact and footer settings details (Local Fallback after DB error)', performedBy);
+    res.json({ message: 'Settings updated successfully (Local Fallback after error)!', settings: settingsData });
+  }
+});
+
 module.exports = router;
+

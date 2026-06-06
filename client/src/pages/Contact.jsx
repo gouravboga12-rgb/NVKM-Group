@@ -1,9 +1,11 @@
 import { useState } from 'react';
 import { useToast } from '../context/ToastContext';
-import api from '../api/api';
+import api, { DEFAULT_SETTINGS } from '../api/api';
 
-export default function Contact() {
+export default function Contact({ settings }) {
+  const s = settings || DEFAULT_SETTINGS;
   const { showToast } = useToast();
+
   const [formData, setFormData] = useState({ name: '', phone: '', email: '', subject: '', message: '' });
   const [submitting, setSubmitting] = useState(false);
 
@@ -35,8 +37,8 @@ export default function Contact() {
       color: 'text-blue-600 bg-blue-50 border-blue-100',
       content: (
         <div className="flex flex-col gap-1 mt-1">
-          <a href="tel:9014274293" className="font-extrabold text-slate-800 hover:text-blue-600 transition-colors text-sm">+91 9014274293</a>
-          <a href="tel:7075604700" className="font-extrabold text-slate-800 hover:text-blue-600 transition-colors text-sm">+91 7075604700</a>
+          <a href={`tel:${s.contact_phone_1.replace(/\s+/g, '')}`} className="font-extrabold text-slate-800 hover:text-blue-600 transition-colors text-sm">{s.contact_phone_1}</a>
+          <a href={`tel:${s.contact_phone_2.replace(/\s+/g, '')}`} className="font-extrabold text-slate-800 hover:text-blue-600 transition-colors text-sm">{s.contact_phone_2}</a>
         </div>
       )
     },
@@ -46,8 +48,8 @@ export default function Contact() {
       color: 'text-sky-500 bg-blue-50 border-blue-100',
       content: (
         <div className="flex flex-col gap-1 mt-1">
-          <a href={`https://wa.me/9014274293?text=${encodeURIComponent(GENERAL_WA_MSG)}`} target="_blank" rel="noreferrer" className="font-extrabold text-blue-600 hover:text-[#2563eb] transition-colors text-sm">+91 9014274293</a>
-          <a href={`https://wa.me/7075604700?text=${encodeURIComponent(GENERAL_WA_MSG)}`} target="_blank" rel="noreferrer" className="font-extrabold text-blue-600 hover:text-[#2563eb] transition-colors text-sm">+91 7075604700</a>
+          <a href={`https://wa.me/${s.whatsapp_phone_1.replace(/[^0-9]/g, '')}?text=${encodeURIComponent(GENERAL_WA_MSG)}`} target="_blank" rel="noreferrer" className="font-extrabold text-blue-600 hover:text-[#2563eb] transition-colors text-sm">{s.whatsapp_phone_1}</a>
+          <a href={`https://wa.me/${s.whatsapp_phone_2.replace(/[^0-9]/g, '')}?text=${encodeURIComponent(GENERAL_WA_MSG)}`} target="_blank" rel="noreferrer" className="font-extrabold text-blue-600 hover:text-[#2563eb] transition-colors text-sm">{s.whatsapp_phone_2}</a>
         </div>
       )
     },
@@ -56,7 +58,7 @@ export default function Contact() {
       label: 'Email Support',
       color: 'text-blue-500 bg-blue-50 border-blue-100',
       content: (
-        <a href="mailto:Navakiranamgroup@gmail.com" className="font-extrabold text-slate-800 hover:text-blue-600 transition-colors text-xs block mt-1 break-all">Navakiranamgroup@gmail.com</a>
+        <a href={`mailto:${s.email}`} className="font-extrabold text-slate-800 hover:text-blue-600 transition-colors text-xs block mt-1 break-all">{s.email}</a>
       )
     },
     {
@@ -64,8 +66,8 @@ export default function Contact() {
       label: 'Factory Store Address',
       color: 'text-amber-500 bg-amber-50 border-amber-100',
       content: (
-        <p className="font-bold text-slate-800 leading-relaxed text-xs mt-1">
-          Near bypass Anantapur Road, Bathalapalli,<br />Sri Sathya Sai Dist, Andhra Pradesh 515661
+        <p className="font-bold text-slate-800 leading-relaxed text-xs mt-1" style={{ whiteSpace: 'pre-line' }}>
+          {s.address}
         </p>
       )
     }
@@ -74,7 +76,7 @@ export default function Contact() {
   const faqs = [
     { q: 'Do you offer wholesale pricing?', a: 'Yes! We offer tiered wholesale pricing for bulk orders above 5 kg with up to 40% discount. Contact us on WhatsApp for a custom quote.' },
     { q: 'Are your powders organic and preservative-free?', a: 'Absolutely. All NVKM GROUP powders are 100% natural — no artificial preservatives, colorants, MSG, or fillers of any kind.' },
-    { q: 'How do I place a bulk order?', a: 'You can place bulk orders directly through our website or contact us via WhatsApp at +91 9014274293 for personalized B2B support and pricing.' },
+    { q: 'How do I place a bulk order?', a: `You can place bulk orders directly through our website or contact us via WhatsApp at ${s.whatsapp_phone_1} for personalized B2B support and pricing.` },
     { q: 'Do you ship across India?', a: 'Yes, we ship PAN India with express delivery options. We also offer physical store pickup from our factory in Bathalapalli, Andhra Pradesh.' }
   ];
 
@@ -99,9 +101,9 @@ export default function Contact() {
       {/* ── QUICK CONTACT CHIPS ── */}
       <div className="flex flex-wrap justify-center gap-3" data-aos="fade-up">
         {[
-          { href: 'tel:9014274293', icon: 'fa-phone', label: 'Call Now', bg: 'bg-gradient-to-r from-[#0F2942] to-[#1D4ED8] text-white hover:scale-[1.02] shadow-lg shadow-blue-950/20' },
-          { href: `https://wa.me/9014274293?text=${encodeURIComponent(GENERAL_WA_MSG)}`, icon: 'fa-brands fa-whatsapp', label: 'WhatsApp', bg: 'bg-gradient-to-r from-[#2563EB] to-[#1D4ED8] text-white hover:scale-[1.02] shadow-lg shadow-blue-500/20', external: true },
-          { href: 'mailto:Navakiranamgroup@gmail.com', icon: 'fa-envelope', label: 'Email Us', bg: 'bg-white border border-slate-200 text-slate-700 hover:shadow-md hover:scale-[1.02]' }
+          { href: `tel:${s.contact_phone_1.replace(/\s+/g, '')}`, icon: 'fa-phone', label: 'Call Now', bg: 'bg-gradient-to-r from-[#0F2942] to-[#1D4ED8] text-white hover:scale-[1.02] shadow-lg shadow-blue-950/20' },
+          { href: `https://wa.me/${s.whatsapp_phone_1.replace(/[^0-9]/g, '')}?text=${encodeURIComponent(GENERAL_WA_MSG)}`, icon: 'fa-brands fa-whatsapp', label: 'WhatsApp', bg: 'bg-gradient-to-r from-[#2563EB] to-[#1D4ED8] text-white hover:scale-[1.02] shadow-lg shadow-blue-500/20', external: true },
+          { href: `mailto:${s.email}`, icon: 'fa-envelope', label: 'Email Us', bg: 'bg-white border border-slate-200 text-slate-700 hover:shadow-md hover:scale-[1.02]' }
         ].map(({ href, icon, label, bg, external }) => (
           <a
             key={label}
