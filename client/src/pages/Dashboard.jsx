@@ -33,9 +33,19 @@ export default function Dashboard() {
         
         if (user.id) {
           try {
-            const key = `nvkm_orders_${user.id}`;
-            const localOrders = JSON.parse(localStorage.getItem(key) || '[]');
+            const key1 = `nvkm_orders_${user.id}`;
+            const key2 = `nvkm_mock_orders_${user.id}`;
+            const localOrders1 = JSON.parse(localStorage.getItem(key1) || '[]');
+            const localOrders2 = JSON.parse(localStorage.getItem(key2) || '[]');
             
+            // Merge both local storage formats
+            const localOrders = [...localOrders1];
+            localOrders2.forEach(o2 => {
+              if (!localOrders.some(o1 => o1.orderId === o2.orderId)) {
+                localOrders.push(o2);
+              }
+            });
+
             // Merge server-returned orders with local orders (avoiding duplicates)
             const merged = [...data];
             localOrders.forEach(localOrd => {

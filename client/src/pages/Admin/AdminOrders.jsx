@@ -44,14 +44,20 @@ export default function AdminOrders() {
         
         for (let i = 0; i < localStorage.length; i++) {
           const key = localStorage.key(i);
-          if (key && key.startsWith('nvkm_orders_')) {
-            const userOrders = JSON.parse(localStorage.getItem(key) || '[]');
-            userOrders.forEach(ord => {
-              if (!globalExisting.some(o => o.orderId === ord.orderId)) {
-                globalExisting.push(ord);
-                updatedGlobal = true;
+          if (key && (key.startsWith('nvkm_orders_') || key.startsWith('nvkm_mock_orders_'))) {
+            try {
+              const userOrders = JSON.parse(localStorage.getItem(key) || '[]');
+              if (Array.isArray(userOrders)) {
+                userOrders.forEach(ord => {
+                  if (ord && ord.orderId && !globalExisting.some(o => o.orderId === ord.orderId)) {
+                    globalExisting.push(ord);
+                    updatedGlobal = true;
+                  }
+                });
               }
-            });
+            } catch (err) {
+              console.error(`Failed to parse local storage key ${key}:`, err);
+            }
           }
         }
         if (updatedGlobal) {
