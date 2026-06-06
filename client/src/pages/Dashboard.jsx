@@ -31,9 +31,9 @@ export default function Dashboard() {
         setFetching(true);
         const { data } = await api.get('/orders/my');
         
-        if (user.id && user.id.startsWith('mock-')) {
+        if (user.id) {
           try {
-            const key = `nvkm_mock_orders_${user.id}`;
+            const key = `nvkm_orders_${user.id}`;
             const localOrders = JSON.parse(localStorage.getItem(key) || '[]');
             
             // Merge server-returned orders with local orders (avoiding duplicates)

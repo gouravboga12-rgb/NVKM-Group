@@ -41,9 +41,9 @@ export default function CheckoutModal() {
     });
   };
 
-  const saveMockOrder = (orderId, total, savings, method, status) => {
-    if (user && user.id && user.id.startsWith('mock-')) {
-      const mockOrder = {
+  const saveLocalOrder = (orderId, total, savings, method, status) => {
+    if (user && user.id) {
+      const localOrder = {
         orderId,
         date: new Date().toLocaleDateString('en-IN'),
         items: cart.map(item => ({
@@ -71,12 +71,12 @@ export default function CheckoutModal() {
         deliveryTrackerStatus: 'Pending'
       };
       try {
-        const key = `nvkm_mock_orders_${user.id}`;
+        const key = `nvkm_orders_${user.id}`;
         const existing = JSON.parse(localStorage.getItem(key) || '[]');
-        existing.unshift(mockOrder);
+        existing.unshift(localOrder);
         localStorage.setItem(key, JSON.stringify(existing));
       } catch (err) {
-        console.error('Error saving local mock order:', err);
+        console.error('Error saving local order:', err);
       }
     }
   };
@@ -104,7 +104,7 @@ export default function CheckoutModal() {
           paymentMethod: 'COD'
         });
 
-        saveMockOrder(data.orderId, total, savings, 'COD', 'Pending');
+        saveLocalOrder(data.orderId, total, savings, 'COD', 'Pending');
         clearCart();
         setCheckoutOpen(false);
         showToast(`Congratulations! Order ${data.orderId} has been submitted!`);
@@ -149,7 +149,7 @@ export default function CheckoutModal() {
             }
           });
 
-          saveMockOrder(data.orderId, total, savings, 'Razorpay', 'Paid');
+          saveLocalOrder(data.orderId, total, savings, 'Razorpay', 'Paid');
           clearCart();
           setCheckoutOpen(false);
           showToast(`Congratulations! Order ${data.orderId} has been placed successfully!`);
