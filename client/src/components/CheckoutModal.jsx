@@ -45,6 +45,7 @@ export default function CheckoutModal() {
     if (user && user.id) {
       const localOrder = {
         orderId,
+        userId: user.id, // Store userId for mapping updates
         date: new Date().toLocaleDateString('en-IN'),
         items: cart.map(item => ({
           productId: item.productId,
@@ -75,6 +76,12 @@ export default function CheckoutModal() {
         const existing = JSON.parse(localStorage.getItem(key) || '[]');
         existing.unshift(localOrder);
         localStorage.setItem(key, JSON.stringify(existing));
+
+        // Also save globally for Admin console mock-mode fallback
+        const globalKey = 'nvkm_global_orders';
+        const globalExisting = JSON.parse(localStorage.getItem(globalKey) || '[]');
+        globalExisting.unshift(localOrder);
+        localStorage.setItem(globalKey, JSON.stringify(globalExisting));
       } catch (err) {
         console.error('Error saving local order:', err);
       }

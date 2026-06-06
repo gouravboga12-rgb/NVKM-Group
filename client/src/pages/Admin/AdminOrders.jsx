@@ -35,7 +35,53 @@ export default function AdminOrders() {
       if (searchQuery) params.q = searchQuery;
 
       const { data } = await api.get('/admin/orders', { params });
-      setOrders(data);
+      
+      // Merge with global local storage orders (for Vercel stateless mock mode fallback)
+      try {
+        // Self-heal: sync any user-specific local orders to global list
+        const globalExisting = JSON.parse(localStorage.getItem('nvkm_global_orders') || '[]');
+        let updatedGlobal = false;
+        
+        for (let i = 0; i < localStorage.length; i++) {
+          const key = localStorage.key(i);
+          if (key && key.startsWith('nvkm_orders_')) {
+            const userOrders = JSON.parse(localStorage.getItem(key) || '[]');
+            userOrders.forEach(ord => {
+              if (!globalExisting.some(o => o.orderId === ord.orderId)) {
+                globalExisting.push(ord);
+                updatedGlobal = true;
+              }
+            });
+          }
+        }
+        if (updatedGlobal) {
+          localStorage.setItem('nvkm_global_orders', JSON.stringify(globalExisting));
+        }
+
+        const localOrders = globalExisting;
+        const merged = [...data];
+        localOrders.forEach(localOrd => {
+          if (!merged.some(o => o.orderId === localOrd.orderId)) {
+            // Apply simple search filter locally if search query exists
+            let match = true;
+            if (searchQuery) {
+              const q = searchQuery.toLowerCase();
+              match = (
+                localOrd.orderId.toLowerCase().includes(q) ||
+                localOrd.shippingInfo?.name?.toLowerCase().includes(q) ||
+                localOrd.shippingInfo?.phone?.toLowerCase().includes(q) ||
+                localOrd.shippingInfo?.address?.toLowerCase().includes(q)
+              );
+            }
+            if (match) {
+              merged.push(localOrd);
+            }
+          }
+        });
+        setOrders(merged);
+      } catch (e) {
+        setOrders(data);
+      }
     } catch (err) {
       showToast(err.response?.data?.message || 'Could not load orders queue.', 'error');
     } finally {
@@ -71,14 +117,49 @@ export default function AdminOrders() {
         overallStatus = selectedOrder.status === 'Order Placed' ? 'Order Placed' : 'Processing';
       }
 
-      // 2. Update overall status
+      // 2. Update overall status on backend
       await api.put(`/admin/orders/${selectedOrder.orderId}/status`, { status: overallStatus });
-      // 3. Update delivery tracking details
+      // 3. Update delivery tracking details on backend
       await api.put(`/admin/orders/${selectedOrder.orderId}/delivery`, {
         deliveryPackageId: editForm.deliveryPackageId,
         trackingLink: editForm.trackingLink,
         deliveryTrackerStatus: editForm.deliveryTrackerStatus
       });
+
+      // 4. Update locally in global and user nvkm_orders storage for local mock redundancy
+      try {
+        const globalExisting = JSON.parse(localStorage.getItem('nvkm_global_orders') || '[]');
+        const idx = globalExisting.findIndex(o => o.orderId === selectedOrder.orderId);
+        if (idx > -1) {
+          globalExisting[idx] = {
+            ...globalExisting[idx],
+            status: overallStatus,
+            deliveryPackageId: editForm.deliveryPackageId,
+            trackingLink: editForm.trackingLink,
+            deliveryTrackerStatus: editForm.deliveryTrackerStatus
+          };
+          localStorage.setItem('nvkm_global_orders', JSON.stringify(globalExisting));
+          
+          const userId = globalExisting[idx].userId || selectedOrder.userId;
+          if (userId) {
+            const userKey = `nvkm_orders_${userId}`;
+            const userExisting = JSON.parse(localStorage.getItem(userKey) || '[]');
+            const uIdx = userExisting.findIndex(o => o.orderId === selectedOrder.orderId);
+            if (uIdx > -1) {
+              userExisting[uIdx] = {
+                ...userExisting[uIdx],
+                status: overallStatus,
+                deliveryPackageId: editForm.deliveryPackageId,
+                trackingLink: editForm.trackingLink,
+                deliveryTrackerStatus: editForm.deliveryTrackerStatus
+              };
+              localStorage.setItem(userKey, JSON.stringify(userExisting));
+            }
+          }
+        }
+      } catch (err) {
+        console.error('Error updating local mock order:', err);
+      }
       
       showToast('Order status and delivery details updated successfully!');
       setShowEditModal(false);
@@ -97,6 +178,23 @@ export default function AdminOrders() {
     try {
       setUpdatingId(orderId);
       const { data } = await api.delete(`/admin/orders/${orderId}`);
+      
+      // Delete locally from cache
+      try {
+        const globalExisting = JSON.parse(localStorage.getItem('nvkm_global_orders') || '[]');
+        const found = globalExisting.find(o => o.orderId === orderId);
+        const filtered = globalExisting.filter(o => o.orderId !== orderId);
+        localStorage.setItem('nvkm_global_orders', JSON.stringify(filtered));
+        
+        if (found && found.userId) {
+          const userKey = `nvkm_orders_${found.userId}`;
+          const userFiltered = JSON.parse(localStorage.getItem(userKey) || '[]').filter(o => o.orderId !== orderId);
+          localStorage.setItem(userKey, JSON.stringify(userFiltered));
+        }
+      } catch (err) {
+        console.error('Error deleting local mock order:', err);
+      }
+
       showToast(data.message || 'Order deleted successfully!');
       fetchOrders();
     } catch (err) {
