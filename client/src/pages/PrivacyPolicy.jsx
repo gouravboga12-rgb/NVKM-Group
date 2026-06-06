@@ -18,14 +18,15 @@ export default function PrivacyPolicy() {
 
         <h2 className="font-heading font-extrabold text-lg text-slate-900 border-b border-slate-100 pb-2 pt-4">1. Information We Collect</h2>
         <p>
-          If you register for an account, make a purchase, or contact us directly, we collect:
+          We collect personal details such as your:
         </p>
         <ul className="list-disc pl-5 space-y-1.5">
-          <li>Name, phone number and email id for contact and shipping purposes</li>
-          <li>Details of inquiries sent through the contact form or WhatsApp</li>
+          <li>Name</li>
+          <li>Phone number</li>
+          <li>Email ID</li>
         </ul>
-        <p className="mt-3 font-bold text-slate-700 bg-slate-50 border border-slate-100 rounded-xl p-3 inline-block text-xs">
-          🔐 Security Notice: We do not store account passwords.
+        <p className="mt-2">
+          We collect this information exclusively for contact and shipping purposes.
         </p>
 
         <h2 className="font-heading font-extrabold text-lg text-slate-900 border-b border-slate-100 pb-2 pt-4">2. How We Use Your Information</h2>
@@ -42,7 +43,7 @@ export default function PrivacyPolicy() {
 
         <h2 className="font-heading font-extrabold text-lg text-slate-900 border-b border-slate-100 pb-2 pt-4">3. Data Security & Storage</h2>
         <p>
-          We offer good protection by encryption technique with secured databases to keep your personal data protected. While we take maximum precautions, no online transaction is 100% secure.
+          We offer good protection by encryption technique with secured databases to keep your personal data protected.
         </p>
 
         <h2 className="font-heading font-extrabold text-lg text-slate-900 border-b border-slate-100 pb-2 pt-4">4. Third-Party Services</h2>
