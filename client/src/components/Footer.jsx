@@ -55,10 +55,11 @@ export default function Footer({ settings }) {
           <div className="md:col-span-3">
             <h3 className="font-heading font-extrabold text-white text-xs uppercase tracking-wider mb-4 sm:mb-5">Categories</h3>
             <ul className="space-y-2.5 sm:space-y-3 text-xs font-semibold">
-              <li><Link to="/shop?category=Tomato+Powder" className="text-slate-400 hover:text-secondary transition-colors">Tomato Powder</Link></li>
-              <li><Link to="/shop?category=Banana+Powder" className="text-slate-400 hover:text-secondary transition-colors">Banana Powder</Link></li>
-              <li><Link to="/shop?category=Moringa+Powder" className="text-slate-400 hover:text-secondary transition-colors">Moringa Powder</Link></li>
-              <li><Link to="/shop?category=Beetroot+Powder" className="text-slate-400 hover:text-secondary transition-colors">Beetroot Powder</Link></li>
+              <li><span className="text-slate-400">Tomato Powder</span></li>
+              <li><span className="text-slate-400">Banana Powder</span></li>
+              <li><span className="text-slate-400">Moringa Powder</span></li>
+              <li><span className="text-slate-400">Beetroot Powder</span></li>
+              <li><Link to="/shop?category=Pooja+Accessories" className="text-slate-400 hover:text-secondary transition-colors">Pooja Accessories</Link></li>
             </ul>
           </div>
         </div>
