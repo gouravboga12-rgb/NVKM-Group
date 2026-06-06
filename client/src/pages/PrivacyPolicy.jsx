@@ -23,7 +23,7 @@ export default function PrivacyPolicy() {
         <ul className="list-disc pl-5 space-y-1.5">
           <li>Contact details (Name, Phone number, Email address, Shipping and billing addresses)</li>
           <li>Account credentials (hashed passwords)</li>
-          <li>Payment related information (processed securely via encrypted gateways like Razorpay; we do not store raw card/banking credentials on our servers)</li>
+          <li>Payment related information (processed securely; we do not store raw card or banking credentials on our servers)</li>
           <li>Details of inquiries sent through the contact form or WhatsApp</li>
         </ul>
 
@@ -41,12 +41,12 @@ export default function PrivacyPolicy() {
 
         <h2 className="font-heading font-extrabold text-lg text-slate-900 border-b border-slate-100 pb-2 pt-4">3. Data Security & Storage</h2>
         <p>
-          We employ state-of-the-art security measures (including HTTPS encryption, JWT session validation, and secure cloud storage in Supabase) to keep your personal data protected. While we take maximum precautions, no online transaction is 100% secure, and users are advised to keep account passwords confidential.
+          We offer good protection by encryption technique with secured databases to keep your personal data protected. While we take maximum precautions, no online transaction is 100% secure, and users are advised to keep account passwords confidential.
         </p>
 
         <h2 className="font-heading font-extrabold text-lg text-slate-900 border-b border-slate-100 pb-2 pt-4">4. Third-Party Services</h2>
         <p>
-          We do not sell, trade, or rent your personal information to third parties. We share data only with trusted partners required to process your transaction (e.g., Razorpay for payment processing and shipping providers for home delivery).
+          We do not sell, trade, or rent your personal information to third parties. We share data only with trusted partners required to process your transaction (e.g., payment partners and shipping providers for home delivery).
         </p>
 
         <h2 className="font-heading font-extrabold text-lg text-slate-900 border-b border-slate-100 pb-2 pt-4">5. Contact Us</h2>
