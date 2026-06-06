@@ -48,6 +48,9 @@ export default function Footer({ settings }) {
               <li><Link to="/about" className="text-slate-400 hover:text-secondary transition-colors">About NVKM GROUP</Link></li>
               <li><Link to="/contact" className="text-slate-400 hover:text-secondary transition-colors">Contact Us</Link></li>
               <li><Link to="/login" className="text-slate-400 hover:text-secondary transition-colors">My Account</Link></li>
+              <li><Link to="/privacy-policy" className="text-slate-400 hover:text-secondary transition-colors">Privacy Policy</Link></li>
+              <li><Link to="/terms-conditions" className="text-slate-400 hover:text-secondary transition-colors">Terms & Conditions</Link></li>
+              <li><Link to="/refund-policy" className="text-slate-400 hover:text-secondary transition-colors">Refund Policy</Link></li>
             </ul>
           </div>
 
