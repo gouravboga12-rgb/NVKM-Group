@@ -28,7 +28,7 @@ export default function TermsConditions() {
 
         <h2 className="font-heading font-extrabold text-lg text-slate-900 border-b border-slate-100 pb-2 pt-4">3. Payments & Orders</h2>
         <p>
-          We accept Online Prepaid payments (UPI, Cards, Net Banking via Razorpay) and Cash on Delivery (COD). By submitting an order, you agree to make full payment upon delivery. We reserve the right to cancel orders showing incorrect delivery details or duplicate placement.
+          We accept Online Prepaid payments (UPI, Cards, Net Banking via Razorpay). By submitting an order, you agree to make full payment at the time of checkout. We reserve the right to cancel orders showing incorrect delivery details or duplicate placement.
         </p>
 
         <h2 className="font-heading font-extrabold text-lg text-slate-900 border-b border-slate-100 pb-2 pt-4">4. Shipping & Logistics</h2>
