@@ -41,6 +41,46 @@ export default function CheckoutModal() {
     });
   };
 
+  const saveMockOrder = (orderId, total, savings, method, status) => {
+    if (user && user.id && user.id.startsWith('mock-')) {
+      const mockOrder = {
+        orderId,
+        date: new Date().toLocaleDateString('en-IN'),
+        items: cart.map(item => ({
+          productId: item.productId,
+          name: item.name,
+          weight: item.weight,
+          price: item.price,
+          originalPrice: item.originalPrice,
+          image: item.image || '',
+          quantity: item.quantity
+        })),
+        totalPayable: total,
+        savings: savings || 0,
+        shippingInfo: {
+          name: form.name,
+          phone: form.phone,
+          email: form.email,
+          address: form.address
+        },
+        status: 'Order Placed',
+        paymentMethod: method,
+        paymentStatus: status,
+        deliveryPackageId: '',
+        trackingLink: '',
+        deliveryTrackerStatus: 'Pending'
+      };
+      try {
+        const key = `nvkm_mock_orders_${user.id}`;
+        const existing = JSON.parse(localStorage.getItem(key) || '[]');
+        existing.unshift(mockOrder);
+        localStorage.setItem(key, JSON.stringify(existing));
+      } catch (err) {
+        console.error('Error saving local mock order:', err);
+      }
+    }
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (cart.length === 0) return;
@@ -64,6 +104,7 @@ export default function CheckoutModal() {
           paymentMethod: 'COD'
         });
 
+        saveMockOrder(data.orderId, total, savings, 'COD', 'Pending');
         clearCart();
         setCheckoutOpen(false);
         showToast(`Congratulations! Order ${data.orderId} has been submitted!`);
@@ -108,6 +149,7 @@ export default function CheckoutModal() {
             }
           });
 
+          saveMockOrder(data.orderId, total, savings, 'Razorpay', 'Paid');
           clearCart();
           setCheckoutOpen(false);
           showToast(`Congratulations! Order ${data.orderId} has been placed successfully!`);

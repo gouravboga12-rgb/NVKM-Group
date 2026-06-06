@@ -30,7 +30,26 @@ export default function Dashboard() {
       try {
         setFetching(true);
         const { data } = await api.get('/orders/my');
-        setOrders(data);
+        
+        if (user.id && user.id.startsWith('mock-')) {
+          try {
+            const key = `nvkm_mock_orders_${user.id}`;
+            const localOrders = JSON.parse(localStorage.getItem(key) || '[]');
+            
+            // Merge server-returned orders with local orders (avoiding duplicates)
+            const merged = [...data];
+            localOrders.forEach(localOrd => {
+              if (!merged.some(o => o.orderId === localOrd.orderId)) {
+                merged.push(localOrd);
+              }
+            });
+            setOrders(merged);
+          } catch (e) {
+            setOrders(data);
+          }
+        } else {
+          setOrders(data);
+        }
       } catch (err) {
         showToast(err.response?.data?.message || 'Could not fetch order history.', 'error');
       } finally {
