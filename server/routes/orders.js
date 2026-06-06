@@ -55,7 +55,7 @@ router.post('/', async (req, res) => {
     let userId = null;
     if (req.headers.authorization && req.headers.authorization.startsWith('Bearer')) {
       try {
-        const decoded = jwt.verify(req.headers.authorization.split(' ')[1], process.env.JWT_SECRET);
+        const decoded = jwt.verify(req.headers.authorization.split(' ')[1], process.env.JWT_SECRET || 'nvkm_super_secret_jwt_key_2026');
         userId = decoded.id;
       } catch (e) { /* guest */ }
     }
@@ -102,7 +102,7 @@ router.post('/', async (req, res) => {
     let userId = null;
     if (req.headers.authorization && req.headers.authorization.startsWith('Bearer')) {
       try {
-        const decoded = jwt.verify(req.headers.authorization.split(' ')[1], process.env.JWT_SECRET);
+        const decoded = jwt.verify(req.headers.authorization.split(' ')[1], process.env.JWT_SECRET || 'nvkm_super_secret_jwt_key_2026');
         userId = decoded.id;
       } catch (e) {
         // Token invalid — treat as guest
