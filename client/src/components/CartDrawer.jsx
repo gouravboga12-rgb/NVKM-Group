@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 export default function CartDrawer() {
   const { cart, cartOpen, setCartOpen, updateCartQuantity, removeFromCart, calculateTotals, setCheckoutOpen } = useCart();
   const navigate = useNavigate();
-  const { subtotal, savings, total } = calculateTotals();
+  const { subtotal, savings, shipping, total } = calculateTotals();
 
   const WHATSAPP_PRIMARY = '9014274293';
 
@@ -14,13 +14,17 @@ export default function CartDrawer() {
     setCheckoutOpen(true);
   };
 
-  const handleWhatsAppDirect = () => {
-    if (cart.length === 0) return;
+  const handleWhatsAppBulk = () => {
+    if (cart.length === 0) {
+      const msg = `Hello NVKM GROUP, I am interested in placing a bulk wholesale order. Please share your product catalog and wholesale rate sheets. Thank you!`;
+      window.open(`https://wa.me/${WHATSAPP_PRIMARY}?text=${encodeURIComponent(msg)}`, '_blank');
+      return;
+    }
     let itemsList = '';
     cart.forEach((item, i) => {
-      itemsList += `${i + 1}. ${item.name} (${item.weight}) x ${item.quantity} = ₹${item.price * item.quantity}\n`;
+      itemsList += `${i + 1}. ${item.name} (${item.weight}) x ${item.quantity}\n`;
     });
-    const msg = `Hello NVKM GROUP, I would like to place an order directly on WhatsApp!\n\n--- Items List ---\n${itemsList}\nTotal Payable: ₹${total}\nDiscount Savings: ₹${savings}\nDelivery Type: Cash on Delivery\n\nPlease let me know the confirmation and delivery time. Thank you!`;
+    const msg = `Hello NVKM GROUP, I am interested in placing a bulk wholesale order for the following items in my cart:\n\n--- Items list ---\n${itemsList}\nCould you please share your custom wholesale pricing quote and catalog? Thank you!`;
     window.open(`https://wa.me/${WHATSAPP_PRIMARY}?text=${encodeURIComponent(msg)}`, '_blank');
   };
 
@@ -32,10 +36,10 @@ export default function CartDrawer() {
         {/* Header */}
         <div className="p-4 sm:p-6 border-b flex items-center justify-between bg-primary text-white">
           <div className="flex items-center space-x-2">
-            <i className="fa-solid fa-cart-shopping text-xl"></i>
-            <h2 className="font-heading font-bold text-lg">Your Shopping Cart</h2>
+            <i className="fa-solid fa-cart-shopping text-xl !text-white"></i>
+            <h2 className="font-heading font-bold text-lg !text-white">Your Shopping Cart</h2>
           </div>
-          <button onClick={() => setCartOpen(false)} className="p-1 text-slate-200 hover:text-white rounded-full hover:bg-blue-800/50 transition-colors"><i className="fa-solid fa-xmark text-xl"></i></button>
+          <button onClick={() => setCartOpen(false)} className="p-1 text-slate-200 hover:text-white rounded-full hover:bg-blue-800/50 transition-colors"><i className="fa-solid fa-xmark text-xl !text-white"></i></button>
         </div>
 
         {/* Items */}
@@ -77,15 +81,20 @@ export default function CartDrawer() {
           <div className="space-y-2 mb-4">
             <div className="flex justify-between text-slate-655 text-xs sm:text-sm"><span>Subtotal:</span><span>₹{subtotal.toFixed(2)}</span></div>
             <div className="flex justify-between text-blue-600 text-xs sm:text-sm font-medium"><span>Discount Savings:</span><span>-₹{savings.toFixed(2)}</span></div>
-            <div className="flex justify-between text-slate-655 text-xs sm:text-sm"><span>Shipping:</span><span className="text-blue-600 font-semibold text-xs sm:text-sm">FREE Delivery</span></div>
+            <div className="flex justify-between text-slate-655 text-xs sm:text-sm">
+              <span>Shipping:</span>
+              <span className={`font-semibold text-xs sm:text-sm ${shipping > 0 ? 'text-slate-800' : 'text-blue-600'}`}>
+                {shipping > 0 ? `₹${shipping.toFixed(2)}` : 'FREE Delivery'}
+              </span>
+            </div>
             <div className="flex justify-between text-darkText font-bold text-base sm:text-lg pt-2 border-t border-slate-200"><span>Total Payable:</span><span className="text-primary">₹{total.toFixed(2)}</span></div>
           </div>
           <div className="flex flex-col gap-2">
             <button onClick={handleCheckout} className="w-full bg-accent hover:bg-accentHover text-white py-3 rounded-xl font-bold flex items-center justify-center gap-2 shadow-lg shadow-accent/20 transition-all hover:scale-[1.01]">
               <i className="fa-solid fa-circle-check"></i> Checkout & Pay Online
             </button>
-            <button onClick={handleWhatsAppDirect} className="w-full bg-blue-600 hover:bg-blue-700 text-white py-3 rounded-xl font-bold flex items-center justify-center gap-2 shadow-lg shadow-blue-600/20 transition-all hover:scale-[1.01]">
-              <i className="fa-brands fa-whatsapp text-lg"></i> Direct Order on WhatsApp
+            <button onClick={handleWhatsAppBulk} className="w-full bg-[#25D366] hover:bg-[#20ba5a] text-white py-3 rounded-xl font-bold flex items-center justify-center gap-2 shadow-lg shadow-green-600/20 transition-all hover:scale-[1.01]">
+              <i className="fa-brands fa-whatsapp text-lg"></i> For Bulk Orders Contact WhatsApp
             </button>
           </div>
         </div>

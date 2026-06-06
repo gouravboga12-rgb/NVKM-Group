@@ -1,13 +1,14 @@
 const { createClient } = require('@supabase/supabase-js');
 
 const supabaseUrl = process.env.SUPABASE_URL;
-const supabaseServiceKey = process.env.SUPABASE_SERVICE_ROLE_KEY;
+const supabaseKey = process.env.SUPABASE_SERVICE_ROLE_KEY || process.env.SUPABASE_ANON_KEY;
 
 const isConfigured = 
   supabaseUrl && 
-  supabaseServiceKey && 
+  supabaseKey && 
   !supabaseUrl.includes('your-project-id') && 
-  !supabaseServiceKey.includes('your-service-role-key-here');
+  !supabaseKey.includes('your-service-role-key-here') &&
+  !supabaseKey.includes('your-anon-key-here');
 
 let supabase;
 
@@ -17,7 +18,7 @@ if (!isConfigured) {
   supabase = createClient('https://placeholder-project.supabase.co', 'placeholder-key-role-key-etc');
 } else {
   try {
-    supabase = createClient(supabaseUrl, supabaseServiceKey);
+    supabase = createClient(supabaseUrl, supabaseKey);
     console.log('✅ Supabase client initialized');
   } catch (err) {
     console.error('❌ Failed to initialize Supabase client:', err.message);

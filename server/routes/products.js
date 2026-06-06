@@ -1,7 +1,8 @@
 const express = require('express');
 const router = express.Router();
 const supabase = require('../config/db');
-const { PRODUCTS_DATA } = require('../config/fallbackData');
+const { protect } = require('../middleware/auth');
+const { readData, writeData } = require('../utils/mockDb');
 
 const getCategoryGroup = (category) => {
   if (!category) return 'All';
@@ -28,14 +29,18 @@ const transformProduct = (p) => ({
   image: p.image,
   images: p.images || [p.image],
   rating: parseFloat(p.rating) || 0,
-  reviewsCount: p.reviews_count || 0,
+  reviewsCount: (p.reviews || []).length,
   badge: p.badge || '',
+  deliveryCharges: parseFloat(p.delivery_charges) || 0,
+  customFields: p.custom_fields || {},
   variations: (p.variations || []).map(v => ({
     weight: v.weight,
     price: parseFloat(v.price),
     discountPrice: parseFloat(v.discount_price)
   })),
-  reviews: (p.reviews || []).map(r => ({
+  reviews: (p.reviews || []).map((r, idx) => ({
+    id: r.id || `seed-${idx}`,
+    user_id: r.user_id || null,
     name: r.name,
     rating: r.rating,
     date: r.date,
@@ -51,7 +56,7 @@ router.get('/', async (req, res) => {
 
   try {
     if (!supabase.isConfigured) {
-      let filtered = [...PRODUCTS_DATA];
+      let filtered = readData('products.json');
       if (category && category !== 'All') {
         filtered = filtered.filter(p => {
           if (category !== 'Fruits and Vegetable powder' && category !== 'Pooja Accessories') {
@@ -105,14 +110,18 @@ router.get('/', async (req, res) => {
       image: p.image,
       images: p.images || [p.image],
       rating: parseFloat(p.rating) || 0,
-      reviewsCount: p.reviews_count || 0,
+      reviewsCount: (p.product_reviews || []).length,
       badge: p.badge || '',
+      deliveryCharges: parseFloat(p.delivery_charges) || 0,
+      customFields: p.custom_fields || {},
       variations: (p.product_variations || []).map(v => ({
         weight: v.weight,
         price: parseFloat(v.price),
         discountPrice: parseFloat(v.discount_price)
       })),
-      reviews: (p.product_reviews || []).map(r => ({
+      reviews: (p.product_reviews || []).map((r, idx) => ({
+        id: r.id || `seed-${idx}`,
+        user_id: r.user_id,
         name: r.name,
         rating: r.rating,
         date: r.date,
@@ -123,7 +132,7 @@ router.get('/', async (req, res) => {
     res.json(transformed);
   } catch (error) {
     console.error('Products API error, returning fallback local products:', error.message);
-    let filtered = [...PRODUCTS_DATA];
+    let filtered = readData('products.json');
     if (category && category !== 'All') {
       filtered = filtered.filter(p => {
         if (category !== 'Fruits and Vegetable powder' && category !== 'Pooja Accessories') {
@@ -153,7 +162,7 @@ router.get('/:slug', async (req, res) => {
 
   try {
     if (!supabase.isConfigured) {
-      const product = PRODUCTS_DATA.find(p => p.slug === slug);
+      const product = readData('products.json').find(p => p.slug === slug);
       if (!product) {
         return res.status(404).json({ message: 'Product not found.' });
       }
@@ -168,7 +177,7 @@ router.get('/:slug', async (req, res) => {
 
     if (error || !product) {
       // Secondary fallback to mock data
-      const localProduct = PRODUCTS_DATA.find(p => p.slug === slug);
+      const localProduct = readData('products.json').find(p => p.slug === slug);
       if (localProduct) {
         return res.json(transformProduct(localProduct));
       }
@@ -187,14 +196,18 @@ router.get('/:slug', async (req, res) => {
       image: product.image,
       images: product.images || [product.image],
       rating: parseFloat(product.rating) || 0,
-      reviewsCount: product.reviews_count || 0,
+      reviewsCount: (product.product_reviews || []).length,
       badge: product.badge || '',
+      deliveryCharges: parseFloat(product.delivery_charges) || 0,
+      customFields: product.custom_fields || {},
       variations: (product.product_variations || []).map(v => ({
         weight: v.weight,
         price: parseFloat(v.price),
         discountPrice: parseFloat(v.discount_price)
       })),
-      reviews: (product.product_reviews || []).map(r => ({
+      reviews: (product.product_reviews || []).map((r, idx) => ({
+        id: r.id || `seed-${idx}`,
+        user_id: r.user_id,
         name: r.name,
         rating: r.rating,
         date: r.date,
@@ -205,7 +218,7 @@ router.get('/:slug', async (req, res) => {
     res.json(transformed);
   } catch (error) {
     console.error(`Product slug API error for ${slug}, returning fallback:`, error.message);
-    const localProduct = PRODUCTS_DATA.find(p => p.slug === slug);
+    const localProduct = readData('products.json').find(p => p.slug === slug);
     if (localProduct) {
       return res.json(transformProduct(localProduct));
     }
@@ -213,10 +226,7 @@ router.get('/:slug', async (req, res) => {
   }
 });
 
-// @route   POST /api/products/:slug/reviews
-// @desc    Submit a review for a product
-// @access  Public
-router.post('/:slug/reviews', async (req, res) => {
+router.post('/:slug/reviews', protect, async (req, res) => {
   const { name, rating, comment } = req.body;
 
   if (!name || !rating || !comment) {
@@ -224,14 +234,46 @@ router.post('/:slug/reviews', async (req, res) => {
   }
 
   try {
+    // Check if the user has purchased the product
+    let hasPurchased = false;
+
     if (!supabase.isConfigured) {
-      const product = PRODUCTS_DATA.find(p => p.slug === req.params.slug);
+      const orders = readData('orders.json');
+      hasPurchased = orders.some(o => 
+        o.user_id === req.user.id && 
+        o.status !== 'Cancelled' && 
+        o.items.some(item => item.productId === req.params.slug)
+      );
+    } else {
+      const { data: userOrders, error: boughtErr } = await supabase
+        .from('orders')
+        .select('id, status, order_items!inner(product_slug)')
+        .eq('user_id', req.user.id)
+        .neq('status', 'Cancelled')
+        .eq('order_items.product_slug', req.params.slug);
+
+      if (!boughtErr && userOrders && userOrders.length > 0) {
+        hasPurchased = true;
+      }
+    }
+
+    if (!hasPurchased) {
+      return res.status(403).json({ 
+        message: 'Only customers who have purchased this product can leave a review.' 
+      });
+    }
+
+    if (!supabase.isConfigured) {
+      const products = readData('products.json');
+      const product = products.find(p => p.slug === req.params.slug);
       if (!product) {
         return res.status(404).json({ message: 'Product not found.' });
       }
 
       product.reviews = product.reviews || [];
       product.reviews.unshift({
+        id: 'rev-' + Date.now(),
+        user_id: req.user.id,
         name,
         rating: Number(rating),
         date: new Date().toLocaleDateString('en-IN'),
@@ -242,6 +284,7 @@ router.post('/:slug/reviews', async (req, res) => {
       product.rating = Math.round((totalRating / product.reviews.length) * 10) / 10;
       product.reviews_count = product.reviews.length;
 
+      writeData('products.json', products);
       return res.status(201).json({ message: 'Review submitted successfully!' });
     }
 
@@ -264,7 +307,8 @@ router.post('/:slug/reviews', async (req, res) => {
         name,
         rating: Number(rating),
         comment,
-        date: new Date().toLocaleDateString('en-IN')
+        date: new Date().toLocaleDateString('en-IN'),
+        user_id: req.user.id
       });
 
     if (insertErr) throw insertErr;
@@ -288,6 +332,203 @@ router.post('/:slug/reviews', async (req, res) => {
       .eq('id', product.id);
 
     res.status(201).json({ message: 'Review submitted successfully!' });
+  } catch (error) {
+    res.status(500).json({ message: 'Server error: ' + error.message });
+  }
+});
+
+// @route   PUT /api/products/:slug/reviews/:reviewId
+// @desc    Update/Edit a product review
+// @access  Private
+router.put('/:slug/reviews/:reviewId', protect, async (req, res) => {
+  const { rating, comment } = req.body;
+  const { reviewId } = req.params;
+
+  if (!rating || !comment) {
+    return res.status(400).json({ message: 'Please provide rating and comment.' });
+  }
+
+  try {
+    const isAdmin = req.user.email === 'janagondanaveen@gmail.com';
+
+    // --- MOCK MODE ---
+    if (!supabase.isConfigured) {
+      const products = readData('products.json');
+      const product = products.find(p => p.slug === req.params.slug);
+      if (!product) {
+        return res.status(404).json({ message: 'Product not found.' });
+      }
+
+      product.reviews = product.reviews || [];
+      const reviewIndex = product.reviews.findIndex((r, idx) => (r.id || `seed-${idx}`) === reviewId);
+      if (reviewIndex === -1) {
+        return res.status(404).json({ message: 'Review not found.' });
+      }
+
+      const review = product.reviews[reviewIndex];
+      // Check permission
+      if (!isAdmin && review.user_id !== req.user.id) {
+        return res.status(403).json({ message: 'You are not authorized to edit this review.' });
+      }
+
+      review.rating = Number(rating);
+      review.comment = comment;
+      review.date = new Date().toLocaleDateString('en-IN');
+
+      const totalRating = product.reviews.reduce((sum, r) => sum + r.rating, 0);
+      product.rating = Math.round((totalRating / product.reviews.length) * 10) / 10;
+
+      writeData('products.json', products);
+      return res.json({ message: 'Review updated successfully!' });
+    }
+
+    // --- SUPABASE MODE ---
+    const { data: product, error: findErr } = await supabase
+      .from('products')
+      .select('id, reviews_count, rating')
+      .eq('slug', req.params.slug)
+      .single();
+
+    if (findErr || !product) {
+      return res.status(404).json({ message: 'Product not found.' });
+    }
+
+    const { data: review, error: revErr } = await supabase
+      .from('product_reviews')
+      .select('*')
+      .eq('id', reviewId)
+      .single();
+
+    if (revErr || !review) {
+      return res.status(404).json({ message: 'Review not found.' });
+    }
+
+    // Check permission
+    if (!isAdmin && review.user_id !== req.user.id) {
+      return res.status(403).json({ message: 'You are not authorized to edit this review.' });
+    }
+
+    const { error: updateErr } = await supabase
+      .from('product_reviews')
+      .update({
+        rating: Number(rating),
+        comment,
+        date: new Date().toLocaleDateString('en-IN')
+      })
+      .eq('id', reviewId);
+
+    if (updateErr) throw updateErr;
+
+    const { data: allReviews } = await supabase
+      .from('product_reviews')
+      .select('rating')
+      .eq('product_id', product.id);
+
+    const totalRating = allReviews.reduce((sum, r) => sum + r.rating, 0);
+    const avgRating = allReviews.length > 0 ? Math.round((totalRating / allReviews.length) * 10) / 10 : 0;
+
+    await supabase
+      .from('products')
+      .update({
+        rating: avgRating
+      })
+      .eq('id', product.id);
+
+    res.json({ message: 'Review updated successfully!' });
+  } catch (error) {
+    res.status(500).json({ message: 'Server error: ' + error.message });
+  }
+});
+
+// @route   DELETE /api/products/:slug/reviews/:reviewId
+// @desc    Delete a product review
+// @access  Private
+router.delete('/:slug/reviews/:reviewId', protect, async (req, res) => {
+  const { reviewId } = req.params;
+
+  try {
+    const isAdmin = req.user.email === 'janagondanaveen@gmail.com';
+
+    // --- MOCK MODE ---
+    if (!supabase.isConfigured) {
+      const products = readData('products.json');
+      const product = products.find(p => p.slug === req.params.slug);
+      if (!product) {
+        return res.status(404).json({ message: 'Product not found.' });
+      }
+
+      product.reviews = product.reviews || [];
+      const reviewIndex = product.reviews.findIndex((r, idx) => (r.id || `seed-${idx}`) === reviewId);
+      if (reviewIndex === -1) {
+        return res.status(404).json({ message: 'Review not found.' });
+      }
+
+      const review = product.reviews[reviewIndex];
+      // Check permission
+      if (!isAdmin && review.user_id !== req.user.id) {
+        return res.status(403).json({ message: 'You are not authorized to delete this review.' });
+      }
+
+      product.reviews.splice(reviewIndex, 1);
+      product.reviews_count = product.reviews.length;
+
+      const totalRating = product.reviews.reduce((sum, r) => sum + r.rating, 0);
+      product.rating = product.reviews.length > 0 ? Math.round((totalRating / product.reviews.length) * 10) / 10 : 0;
+
+      writeData('products.json', products);
+      return res.json({ message: 'Review deleted successfully!' });
+    }
+
+    // --- SUPABASE MODE ---
+    const { data: product, error: findErr } = await supabase
+      .from('products')
+      .select('id, reviews_count, rating')
+      .eq('slug', req.params.slug)
+      .single();
+
+    if (findErr || !product) {
+      return res.status(404).json({ message: 'Product not found.' });
+    }
+
+    const { data: review, error: revErr } = await supabase
+      .from('product_reviews')
+      .select('*')
+      .eq('id', reviewId)
+      .single();
+
+    if (revErr || !review) {
+      return res.status(404).json({ message: 'Review not found.' });
+    }
+
+    // Check permission
+    if (!isAdmin && review.user_id !== req.user.id) {
+      return res.status(403).json({ message: 'You are not authorized to delete this review.' });
+    }
+
+    const { error: delErr } = await supabase
+      .from('product_reviews')
+      .delete()
+      .eq('id', reviewId);
+
+    if (delErr) throw delErr;
+
+    const { data: allReviews } = await supabase
+      .from('product_reviews')
+      .select('rating')
+      .eq('product_id', product.id);
+
+    const totalRating = allReviews.reduce((sum, r) => sum + r.rating, 0);
+    const avgRating = allReviews.length > 0 ? Math.round((totalRating / allReviews.length) * 10) / 10 : 0;
+
+    await supabase
+      .from('products')
+      .update({
+        rating: avgRating,
+        reviews_count: allReviews.length
+      })
+      .eq('id', product.id);
+
+    res.json({ message: 'Review deleted successfully!' });
   } catch (error) {
     res.status(500).json({ message: 'Server error: ' + error.message });
   }

@@ -1,19 +1,24 @@
 import { useState } from 'react';
 import { useToast } from '../context/ToastContext';
+import api from '../api/api';
 
 export default function Contact() {
   const { showToast } = useToast();
   const [formData, setFormData] = useState({ name: '', phone: '', email: '', subject: '', message: '' });
   const [submitting, setSubmitting] = useState(false);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     setSubmitting(true);
-    setTimeout(() => {
-      showToast('Thank you for contacting NVKM GROUP! We will respond within 24 hours.');
+    try {
+      const { data } = await api.post('/contacts', formData);
+      showToast(data.message || 'Thank you for contacting NVKM GROUP! We will respond within 24 hours.');
       setFormData({ name: '', phone: '', email: '', subject: '', message: '' });
+    } catch (err) {
+      showToast(err.response?.data?.message || 'Failed to send message. Please try again.', 'error');
+    } finally {
       setSubmitting(false);
-    }, 800);
+    }
   };
 
   const handleChange = (e) => {

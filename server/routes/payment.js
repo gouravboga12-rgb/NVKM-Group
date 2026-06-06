@@ -2,6 +2,8 @@ const express = require('express');
 const router = express.Router();
 const crypto = require('crypto');
 
+// Hot-reloaded to apply updated env credentials
+
 const isRazorpayConfigured = 
   process.env.RAZORPAY_KEY_ID && 
   process.env.RAZORPAY_KEY_SECRET &&

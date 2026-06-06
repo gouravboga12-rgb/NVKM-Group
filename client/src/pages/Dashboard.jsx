@@ -271,6 +271,32 @@ export default function Dashboard() {
                           );
                         })}
                       </div>
+
+                      {/* Logistics Tracking Details */}
+                      {ord.deliveryPackageId && (
+                        <div className="mt-4 p-4 bg-slate-50 border border-slate-100 rounded-2xl flex flex-wrap gap-4 text-xs font-semibold justify-between items-center animate-[fadeIn_0.2s_ease-out]">
+                          <div className="space-y-1">
+                            <span className="text-[9px] text-slate-400 font-extrabold uppercase tracking-wider block">Package ID</span>
+                            <span className="text-slate-800 font-black">{ord.deliveryPackageId}</span>
+                          </div>
+                          {ord.trackingLink && (
+                            <div>
+                              <a
+                                href={ord.trackingLink}
+                                target="_blank"
+                                rel="noreferrer"
+                                className="text-blue-600 hover:text-blue-800 inline-flex items-center gap-1.5 transition-colors bg-white hover:bg-slate-50 border border-slate-200 px-3.5 py-2 rounded-xl text-[10px] font-extrabold shadow-sm"
+                              >
+                                <i className="fa-solid fa-arrow-up-right-from-square text-[9px]" /> Track Shipment
+                              </a>
+                            </div>
+                          )}
+                          <div className="text-left sm:text-right space-y-1">
+                            <span className="text-[9px] text-slate-400 font-extrabold uppercase tracking-wider block">Logistics Status</span>
+                            <span className="text-slate-800 font-black">{ord.deliveryTrackerStatus}</span>
+                          </div>
+                        </div>
+                      )}
                     </div>
                   </div>
                 );

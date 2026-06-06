@@ -83,8 +83,8 @@ export default function Header() {
               <i className="fa-solid fa-magnifying-glass absolute left-3.5 top-3.5 text-slate-400 text-xs"></i>
             </div>
 
-            {/* Wishlist — hidden on very small screens, visible from sm+ */}
-            <button onClick={() => setWishlistOpen(true)} className="relative p-2 text-slate-600 hover:text-primary hover:bg-slate-50 rounded-full transition-all duration-200 hidden xs:flex" aria-label="Wishlist">
+            {/* Wishlist */}
+            <button onClick={() => setWishlistOpen(true)} className="relative p-2 text-slate-600 hover:text-primary hover:bg-slate-50 rounded-full transition-all duration-200 flex" aria-label="Wishlist">
               <i className="fa-regular fa-heart text-lg"></i>
               {wishlist.length > 0 && (
                 <span className="absolute top-0 right-0 bg-red-500 text-white text-[9px] font-extrabold w-4.5 h-4.5 rounded-full flex items-center justify-center shadow-sm">{wishlist.length}</span>

@@ -1,7 +1,29 @@
 require('dotenv').config();
+const fs = require('fs');
+const path = require('path');
+
+process.on('uncaughtException', (err) => {
+  try {
+    fs.writeFileSync(
+      path.join(__dirname, 'uncaught_error.log'),
+      err.stack || err.toString()
+    );
+  } catch (e) {}
+  process.exit(1);
+});
+
+process.on('unhandledRejection', (reason, promise) => {
+  try {
+    fs.writeFileSync(
+      path.join(__dirname, 'unhandled_rejection.log'),
+      reason.stack || reason.toString()
+    );
+  } catch (e) {}
+  process.exit(1);
+});
+
 const express = require('express');
 const cors = require('cors');
-const path = require('path');
 
 // Import Supabase client (initializes on require)
 require('./config/db');
@@ -46,3 +68,4 @@ if (require.main === module || !process.env.VERCEL) {
 }
 
 module.exports = app;
+// Trigger nodemon restart 3

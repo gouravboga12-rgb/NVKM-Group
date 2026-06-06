@@ -10,6 +10,7 @@ CREATE TABLE IF NOT EXISTS users (
   phone TEXT NOT NULL,
   email TEXT NOT NULL UNIQUE,
   password TEXT NOT NULL,
+  role TEXT DEFAULT 'user' CHECK (role IN ('user', 'admin')),
   created_at TIMESTAMPTZ DEFAULT NOW()
 );
 
@@ -25,6 +26,7 @@ CREATE TABLE IF NOT EXISTS products (
   ingredients TEXT NOT NULL,
   usage_info TEXT NOT NULL,
   image TEXT NOT NULL,
+  images TEXT[] DEFAULT '{}',
   rating NUMERIC(2,1) DEFAULT 0,
   reviews_count INT DEFAULT 0,
   badge TEXT DEFAULT '',
@@ -44,10 +46,18 @@ CREATE TABLE IF NOT EXISTS product_variations (
 CREATE TABLE IF NOT EXISTS product_reviews (
   id UUID DEFAULT gen_random_uuid() PRIMARY KEY,
   product_id UUID REFERENCES products(id) ON DELETE CASCADE,
+  user_id UUID REFERENCES users(id) ON DELETE CASCADE,
   name TEXT NOT NULL,
   rating INT NOT NULL CHECK (rating >= 1 AND rating <= 5),
   date TEXT,
   comment TEXT NOT NULL,
+  created_at TIMESTAMPTZ DEFAULT NOW()
+);
+
+-- Categories table
+CREATE TABLE IF NOT EXISTS categories (
+  id UUID DEFAULT gen_random_uuid() PRIMARY KEY,
+  name TEXT NOT NULL UNIQUE,
   created_at TIMESTAMPTZ DEFAULT NOW()
 );
 
@@ -66,6 +76,9 @@ CREATE TABLE IF NOT EXISTS orders (
   payment_method TEXT DEFAULT 'COD',
   payment_status TEXT DEFAULT 'Pending',
   payment_id TEXT DEFAULT '',
+  delivery_package_id TEXT DEFAULT '',
+  tracking_link TEXT DEFAULT '',
+  delivery_tracker_status TEXT DEFAULT 'Pending',
   created_at TIMESTAMPTZ DEFAULT NOW()
 );
 
@@ -89,3 +102,24 @@ CREATE INDEX IF NOT EXISTS idx_orders_user ON orders(user_id);
 CREATE INDEX IF NOT EXISTS idx_order_items_order ON order_items(order_id);
 CREATE INDEX IF NOT EXISTS idx_product_variations_product ON product_variations(product_id);
 CREATE INDEX IF NOT EXISTS idx_product_reviews_product ON product_reviews(product_id);
+CREATE INDEX IF NOT EXISTS idx_product_reviews_user ON product_reviews(user_id);
+
+-- Contacts table
+CREATE TABLE IF NOT EXISTS contacts (
+  id UUID DEFAULT gen_random_uuid() PRIMARY KEY,
+  name TEXT NOT NULL,
+  phone TEXT NOT NULL,
+  email TEXT DEFAULT '',
+  subject TEXT DEFAULT '',
+  message TEXT NOT NULL,
+  created_at TIMESTAMPTZ DEFAULT NOW()
+);
+
+-- Activity/Audit logs table to track changes
+CREATE TABLE IF NOT EXISTS activity_logs (
+  id UUID DEFAULT gen_random_uuid() PRIMARY KEY,
+  action TEXT NOT NULL,
+  details TEXT NOT NULL,
+  performed_by TEXT NOT NULL,
+  created_at TIMESTAMPTZ DEFAULT NOW()
+);

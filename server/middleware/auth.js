@@ -11,11 +11,15 @@ const protect = async (req, res, next) => {
 
       // Handle unconfigured/fallback mode
       if (!supabase.isConfigured) {
-        req.user = {
+        const { readData } = require('../utils/mockDb');
+        const users = readData('users.json');
+        const user = users.find(u => u.id === decoded.id);
+        req.user = user || {
           id: decoded.id || 'mock-user-id-555',
           name: 'NVKM Customer',
           phone: '9014274293',
-          email: 'customer@nvkm.com'
+          email: 'customer@nvkm.com',
+          role: 'user'
         };
         return next();
       }
@@ -23,7 +27,7 @@ const protect = async (req, res, next) => {
       // Fetch user from Supabase
       const { data: user, error } = await supabase
         .from('users')
-        .select('id, name, phone, email')
+        .select('id, name, phone, email, role')
         .eq('id', decoded.id)
         .single();
 
@@ -43,5 +47,14 @@ const protect = async (req, res, next) => {
   }
 };
 
-module.exports = { protect };
+const adminProtect = (req, res, next) => {
+  if (req.user && req.user.role === 'admin') {
+    next();
+  } else {
+    res.status(403).json({ message: 'Access denied: Admins only.' });
+  }
+};
+
+module.exports = { protect, adminProtect };
+
 

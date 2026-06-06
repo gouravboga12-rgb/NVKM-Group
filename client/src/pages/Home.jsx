@@ -329,7 +329,7 @@ export default function Home() {
             <div className="animate-spin rounded-full h-10 w-10 border-b-2 border-[#0F2942]" />
           </div>
         ) : (
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 max-w-4xl mx-auto">
+          <div className="product-card-grid max-w-4xl mx-auto">
             {featuredProducts.map(p => <ProductCard key={p.id} product={p} />)}
           </div>
         )}

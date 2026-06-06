@@ -1,5 +1,7 @@
 import { createContext, useContext, useState, useEffect, useCallback } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { useToast } from './ToastContext';
+import { useAuth } from './AuthContext';
 
 const CartContext = createContext();
 
@@ -7,6 +9,8 @@ export const useCart = () => useContext(CartContext);
 
 export function CartProvider({ children }) {
   const { showToast } = useToast();
+  const navigate = useNavigate();
+  const { user, loading: authLoading } = useAuth();
 
   // Cart state
   const [cart, setCart] = useState(() => {
@@ -25,7 +29,24 @@ export function CartProvider({ children }) {
   });
 
   // Drawer/modal visibility states
-  const [cartOpen, setCartOpen] = useState(false);
+  const [cartOpen, _setCartOpen] = useState(false);
+
+  const setCartOpen = useCallback((open) => {
+    if (open && !user) {
+      showToast('Please sign in or register to add products to your cart.', 'error');
+      navigate('/login');
+      return;
+    }
+    _setCartOpen(open);
+  }, [user, navigate, showToast]);
+
+  // Clear cart when user is logged out
+  useEffect(() => {
+    if (!authLoading && !user) {
+      setCart([]);
+      localStorage.removeItem('nvkm_cart');
+    }
+  }, [user, authLoading]);
   const [wishlistOpen, setWishlistOpen] = useState(false);
   const [quickViewProduct, setQuickViewProduct] = useState(null);
   const [checkoutOpen, setCheckoutOpen] = useState(false);
@@ -41,8 +62,14 @@ export function CartProvider({ children }) {
   }, [wishlist]);
 
   const addToCart = useCallback((product, weight, quantity = 1, silent = false) => {
+    if (!user) {
+      showToast('Please sign in or register to add products to your cart.', 'error');
+      setCartOpen(false);
+      navigate('/login');
+      return false;
+    }
     const variation = product.variations.find(v => v.weight === weight);
-    if (!variation) return;
+    if (!variation) return false;
 
     setCart(prev => {
       const existingIndex = prev.findIndex(item => item.productId === product.id && item.weight === weight);
@@ -58,6 +85,7 @@ export function CartProvider({ children }) {
         price: variation.discountPrice,
         originalPrice: variation.price,
         image: product.image,
+        deliveryCharges: product.deliveryCharges !== undefined ? parseFloat(product.deliveryCharges) : 0,
         quantity
       }];
     });
@@ -99,7 +127,8 @@ export function CartProvider({ children }) {
         'success'
       );
     }
-  }, [showToast, setCartOpen]);
+    return true;
+  }, [showToast, setCartOpen, user, navigate]);
 
   const updateCartQuantity = useCallback((productId, weight, change) => {
     setCart(prev => {
@@ -143,14 +172,17 @@ export function CartProvider({ children }) {
   const calculateTotals = useCallback(() => {
     let subtotal = 0;
     let originalSubtotal = 0;
+    let shipping = 0;
     cart.forEach(item => {
       subtotal += item.price * item.quantity;
       originalSubtotal += item.originalPrice * item.quantity;
+      shipping += (item.deliveryCharges || 0) * item.quantity;
     });
     return {
       subtotal: originalSubtotal,
       savings: originalSubtotal - subtotal,
-      total: subtotal
+      shipping,
+      total: subtotal + shipping
     };
   }, [cart]);
 

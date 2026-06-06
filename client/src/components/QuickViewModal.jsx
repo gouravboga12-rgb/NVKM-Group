@@ -25,7 +25,13 @@ export default function QuickViewModal() {
   };
 
   const handleAddToCart = () => { addToCart(product, activeWeight, qty); handleClose(); };
-  const handleBuyNow = () => { addToCart(product, activeWeight, qty, true); handleClose(); setCartOpen(true); };
+  const handleBuyNow = () => { 
+    const success = addToCart(product, activeWeight, qty, true); 
+    if (success) {
+      handleClose(); 
+      setCartOpen(true); 
+    }
+  };
 
   const handleWhatsApp = () => {
     const msg = `Hello NVKM GROUP, I am interested in purchasing your natural powder:\n- Product: ${product.name}\n- Packaging Weight: ${activeWeight}\n- Quantity: ${qty}\nCould you please provide bulk wholesale rates and retail delivery details for my pincode?`;

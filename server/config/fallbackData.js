@@ -3,8 +3,8 @@ const PRODUCTS_DATA = [
   {
     slug: "tomato-powder-250g",
     name: "Tomato Powder 250 Grams",
-    category: "Tomato Powder",
-    short_desc: "Experience the pure, natural goodness of NVKM Dry-Fresh Tomato Powder — crafted for health-conscious consumers and professional culinary applications.",
+    category: "Fruits and Vegetable Powder",
+    short_desc: "Experience the pure, natural goodness of NVKM Dry-Fresh Tomato Powder â€” crafted for health-conscious consumers and professional culinary applications.",
     long_desc: "Experience the pure, natural goodness of NVKM Dry-Fresh Tomato Powder, crafted for health-conscious consumers and professional culinary applications. Our premium powder is derived from high-quality, farm-fresh Tomato, utilizing advanced dehydration technology to lock in essential nutrients, natural sweetness, and authentic flavor.",
     benefits: [
       "100% Pure & Natural Farm-Fresh Tomatoes",
@@ -29,7 +29,8 @@ const PRODUCTS_DATA = [
     ],
     reviews: [
       { name: "Lakshmi R.", rating: 5, date: "2026-05-10", comment: "Very fresh aroma and rich tomato color. Excellent for daily cooking!" },
-      { name: "Venkat S.", rating: 4, date: "2026-05-14", comment: "Great quality tomato powder. Mixes well in gravies without lumps." }
+      { name: "Venkat S.", rating: 4, date: "2026-05-14", comment: "Great quality tomato powder. Mixes well in gravies without lumps." },
+      { name: "Rajesh K.", rating: 5, date: "2026-05-20", comment: "Absolutely pure and natural. Highly recommended!" }
     ]
   },
 
@@ -37,8 +38,8 @@ const PRODUCTS_DATA = [
   {
     slug: "raw-banana-powder-250g",
     name: "Raw Banana Powder 250 Grams",
-    category: "Banana Powder",
-    short_desc: "Experience the pure, natural goodness of NVKM Dry-Fresh Banana Powder — crafted for health-conscious consumers and professional culinary applications.",
+    category: "Fruits and Vegetable Powder",
+    short_desc: "Experience the pure, natural goodness of NVKM Dry-Fresh Banana Powder â€” crafted for health-conscious consumers and professional culinary applications.",
     long_desc: "Experience the pure, natural goodness of NVKM Dry-Fresh Banana Powder, crafted for health-conscious consumers and professional culinary applications. Our premium powder is derived from high-quality, farm-fresh Raw Banana, utilizing advanced dehydration technology to lock in essential nutrients, natural sweetness, and authentic flavor.",
     benefits: [
       "100% Pure & Natural Farm-Fresh Raw Banana",
@@ -62,7 +63,8 @@ const PRODUCTS_DATA = [
     ],
     reviews: [
       { name: "Priya M.", rating: 5, date: "2026-05-02", comment: "Very natural sweetness, no artificial smell. Highly recommend for infants as a healthy porridge mix." },
-      { name: "Suresh K.", rating: 5, date: "2026-04-12", comment: "Excellent product! Smells so fresh and mixability is perfect. My kids love it in their milkshakes." }
+      { name: "Suresh K.", rating: 5, date: "2026-04-12", comment: "Excellent product! Smells so fresh and mixability is perfect. My kids love it in their milkshakes." },
+      { name: "Nandini P.", rating: 4, date: "2026-05-18", comment: "Very good for health. Mixes well in baby food." }
     ]
   },
 
@@ -70,8 +72,8 @@ const PRODUCTS_DATA = [
   {
     slug: "carrot-powder-250g",
     name: "Carrot Powder 250 Grams",
-    category: "Carrot Powder",
-    short_desc: "Experience the pure, natural goodness of NVKM Dry-Fresh Carrot Powder — crafted for health-conscious consumers and professional culinary applications.",
+    category: "Fruits and Vegetable Powder",
+    short_desc: "Experience the pure, natural goodness of NVKM Dry-Fresh Carrot Powder â€” crafted for health-conscious consumers and professional culinary applications.",
     long_desc: "Experience the pure, natural goodness of NVKM Dry-Fresh Carrot Powder, crafted for health-conscious consumers and professional culinary applications. Our premium powder is derived from high-quality, farm-fresh Carrot, utilizing advanced dehydration technology to lock in essential nutrients, natural sweetness, and authentic flavor.",
     benefits: [
       "100% Pure & Natural Farm-Fresh Carrots",
@@ -103,14 +105,14 @@ const PRODUCTS_DATA = [
   {
     slug: "beetroot-powder-250g",
     name: "Beetroot Powder 250 Grams",
-    category: "Beetroot Powder",
-    short_desc: "Experience the pure, natural goodness of NVKM Dry-Fresh Beetroot Powder — crafted for health-conscious consumers and professional culinary applications.",
+    category: "Fruits and Vegetable Powder",
+    short_desc: "Experience the pure, natural goodness of NVKM Dry-Fresh Beetroot Powder â€” crafted for health-conscious consumers and professional culinary applications.",
     long_desc: "Experience the pure, natural goodness of NVKM Dry-Fresh Beetroot Powder, crafted for health-conscious consumers and professional culinary applications. Our premium powder is derived from high-quality, farm-fresh Beetroot, utilizing advanced dehydration technology to lock in essential nutrients, natural sweetness, and authentic flavor.",
     benefits: [
       "100% Pure & Natural Farm-Fresh Beetroot",
       "Rich in Natural Nitrates, Iron, Folate, and Antioxidants",
       "Supports healthy blood pressure, stamina, and detox",
-      "Vibrant natural color — no artificial dyes added"
+      "Vibrant natural color â€” no artificial dyes added"
     ],
     ingredients: "100% Pure Dehydrated Farm-Fresh Beetroot",
     usage_info: "Mix 1 teaspoon in water, smoothies, or juices. Use as a natural food color for rotis and cakes. Excellent pre-workout natural energy drink.",
@@ -136,8 +138,8 @@ const PRODUCTS_DATA = [
   {
     slug: "moringa-powder-250g",
     name: "Moringa Powder 250 Grams",
-    category: "Moringa Powder",
-    short_desc: "Experience the pure, natural goodness of NVKM Dry-Fresh Moringa Leaves Powder — crafted for health-conscious consumers and professional culinary applications.",
+    category: "Fruits and Vegetable Powder",
+    short_desc: "Experience the pure, natural goodness of NVKM Dry-Fresh Moringa Leaves Powder â€” crafted for health-conscious consumers and professional culinary applications.",
     long_desc: "Experience the pure, natural goodness of NVKM Dry-Fresh Moringa Leaves Powder, crafted for health-conscious consumers and professional culinary applications. Our premium powder is derived from high-quality, farm-fresh Moringa Leaves, utilizing advanced dehydration technology to lock in essential nutrients, natural sweetness, and authentic flavor.",
     benefits: [
       "100% Pure Organic Moringa Oleifera Leaf Powder",
@@ -226,7 +228,8 @@ const PRODUCTS_DATA = [
     ],
     reviews: [
       { name: "Padmavathi R.", rating: 5, date: "2026-05-03", comment: "Very good quality long cotton wicks. Burns evenly throughout the entire wick." },
-      { name: "Subramanian K.", rating: 4, date: "2026-05-16", comment: "Good for festival use. Lasts longer than regular wicks." }
+      { name: "Subramanian K.", rating: 4, date: "2026-05-16", comment: "Good for festival use. Lasts longer than regular wicks." },
+      { name: "Gopal V.", rating: 5, date: "2026-05-20", comment: "Exceptional wicks, very long burning time. Highly satisfied!" }
     ]
   },
 
@@ -239,7 +242,7 @@ const PRODUCTS_DATA = [
     long_desc: "We use Pure White And 1st quality of cotton for Wicks, and each pack contains 100 Wicks. Our 4-inch Long Cotton Wicks are crafted from the finest quality pure white cotton, ensuring a clean and steady flame for your oil lamps and diyas. The precise 4-inch length is ideal for standard puja lamps and decorative diyas, providing consistent burn time for your daily and festive rituals.",
     benefits: [
       "100% Pure White First Quality Cotton",
-      "Pack of 100 wicks — excellent value for daily use",
+      "Pack of 100 wicks â€” excellent value for daily use",
       "Precise 4-inch length for standard oil lamps",
       "Clean, steady burn with no black smoke"
     ],

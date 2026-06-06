@@ -140,7 +140,7 @@ export default function CheckoutModal() {
       const scriptLoaded = await loadRazorpayScript();
       if (!scriptLoaded) {
         setLoading(false);
-        showToast('Failed to load Razorpay payment gateway. Please try Cash on Delivery.', 'error');
+        showToast('Failed to load Razorpay payment gateway. Please check your internet connection and try again.', 'error');
         return;
       }
 
@@ -215,6 +215,38 @@ export default function CheckoutModal() {
                 <label className="block text-sm font-semibold text-darkText mb-1.5">Full Shipping Address *</label>
                 <textarea required rows="3" value={form.address} onChange={e => setForm(f => ({ ...f, address: e.target.value }))} className="w-full bg-slate-50 border border-slate-200 p-2.5 rounded-xl text-sm focus:outline-none focus:border-accent transition-all" placeholder="House/Flat No, Street, Landmark, Town, District, State & Pincode"></textarea>
               </div>
+
+              {/* Order Summary */}
+              {(() => {
+                const { subtotal, savings, shipping, total } = calculateTotals();
+                return (
+                  <div className="border border-slate-200 rounded-2xl p-4 bg-slate-50 space-y-2 animate-[fadeIn_0.2s_ease-out]">
+                    <h3 className="text-xs font-bold text-slate-800 uppercase tracking-wider mb-2 flex items-center gap-1.5">
+                      <i className="fa-solid fa-receipt text-accent"></i> Order Summary
+                    </h3>
+                    <div className="flex justify-between text-xs text-slate-600">
+                      <span>Items Subtotal:</span>
+                      <span>₹{subtotal.toFixed(2)}</span>
+                    </div>
+                    {savings > 0 && (
+                      <div className="flex justify-between text-xs text-blue-600 font-medium">
+                        <span>Discount Savings:</span>
+                        <span>-₹{savings.toFixed(2)}</span>
+                      </div>
+                    )}
+                    <div className="flex justify-between text-xs text-slate-600">
+                      <span>Shipping/Delivery:</span>
+                      <span className={shipping > 0 ? 'text-slate-800 font-bold' : 'text-green-600 font-bold'}>
+                        {shipping > 0 ? `₹${shipping.toFixed(2)}` : 'FREE'}
+                      </span>
+                    </div>
+                    <div className="flex justify-between text-sm text-slate-800 font-extrabold border-t border-slate-250 pt-2 mt-1">
+                      <span>Total Payable:</span>
+                      <span className="text-primary">₹{total.toFixed(2)}</span>
+                    </div>
+                  </div>
+                );
+              })()}
 
               <div className="bg-blue-50/40 border border-blue-200 p-4 rounded-2xl flex flex-col gap-1.5 animate-[fadeIn_0.2s_ease-out]">
                 <h3 className="text-sm font-bold text-primary flex items-center gap-1.5"><i className="fa-solid fa-shield-halved"></i> Secure Online Payment</h3>

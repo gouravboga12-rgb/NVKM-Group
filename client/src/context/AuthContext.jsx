@@ -32,8 +32,8 @@ export function AuthProvider({ children }) {
     return data;
   };
 
-  const loginWithGoogle = async (email, name, googleId) => {
-    const { data } = await api.post('/auth/google', { email, name, googleId });
+  const loginWithGoogle = async (credential) => {
+    const { data } = await api.post('/auth/google', { credential });
     localStorage.setItem('nvkm_user', JSON.stringify(data));
     setUser(data);
     showToast(`Welcome back, signed in as ${data.name}!`);
@@ -63,6 +63,38 @@ export function AuthProvider({ children }) {
     return data;
   };
 
+  const requestRegisterOtp = async (name, phone, email, password) => {
+    const { data } = await api.post('/auth/register-otp', { name, phone, email, password });
+    showToast(data.message);
+    return data;
+  };
+
+  const verifyRegisterOtp = async (email, otp) => {
+    const { data } = await api.post('/auth/register-verify', { email, otp });
+    localStorage.setItem('nvkm_user', JSON.stringify(data));
+    setUser(data);
+    showToast('Account created and verified successfully!');
+    return data;
+  };
+
+  const forgotPassword = async (email) => {
+    const { data } = await api.post('/auth/forgot-password', { email });
+    showToast(data.message);
+    return data;
+  };
+
+  const resetPassword = async (token, password) => {
+    const { data } = await api.post('/auth/reset-password', { token, password });
+    showToast(data.message);
+    return data;
+  };
+
+  const resetPasswordWithOtp = async (email, otp, password) => {
+    const { data } = await api.post('/auth/reset-password', { email, otp, password });
+    showToast(data.message);
+    return data;
+  };
+
   const logout = () => {
     localStorage.removeItem('nvkm_user');
     setUser(null);
@@ -70,7 +102,21 @@ export function AuthProvider({ children }) {
   };
 
   return (
-    <AuthContext.Provider value={{ user, loading, login, loginWithGoogle, requestPhoneOtp, verifyPhoneOtp, register, logout }}>
+    <AuthContext.Provider value={{ 
+      user, 
+      loading, 
+      login, 
+      loginWithGoogle, 
+      requestPhoneOtp, 
+      verifyPhoneOtp, 
+      register, 
+      requestRegisterOtp, 
+      verifyRegisterOtp, 
+      forgotPassword,
+      resetPassword,
+      resetPasswordWithOtp,
+      logout 
+    }}>
       {children}
     </AuthContext.Provider>
   );

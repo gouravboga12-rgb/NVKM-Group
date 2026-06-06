@@ -3,9 +3,7 @@ const router = express.Router();
 const supabase = require('../config/db');
 const jwt = require('jsonwebtoken');
 const { protect } = require('../middleware/auth');
-
-// In-memory store for mock orders (fallback mode only)
-const mockOrders = [];
+const { readData, writeData } = require('../utils/mockDb');
 
 // Generate a random order ID
 const generateOrderId = () => {
@@ -85,7 +83,9 @@ router.post('/', async (req, res) => {
       paymentId: paymentDetails?.paymentId || null
     };
 
-    mockOrders.push(orderRecord);
+    const orders = readData('orders.json');
+    orders.push(orderRecord);
+    writeData('orders.json', orders);
 
     return res.status(201).json({
       orderId,
@@ -167,7 +167,7 @@ router.post('/', async (req, res) => {
 router.get('/my', protect, async (req, res) => {
   // --- MOCK FALLBACK MODE ---
   if (!supabase.isConfigured) {
-    const userOrders = mockOrders.filter(o => o.user_id === req.user.id);
+    const userOrders = readData('orders.json').filter(o => o.user_id === req.user.id);
     return res.json(userOrders);
   }
 
@@ -203,7 +203,10 @@ router.get('/my', protect, async (req, res) => {
       status: o.status,
       paymentMethod: o.payment_method || 'COD',
       paymentStatus: o.payment_status || 'Pending',
-      paymentId: o.payment_id || ''
+      paymentId: o.payment_id || '',
+      deliveryPackageId: o.delivery_package_id || '',
+      trackingLink: o.tracking_link || '',
+      deliveryTrackerStatus: o.delivery_tracker_status || 'Pending'
     }));
 
     res.json(transformed);

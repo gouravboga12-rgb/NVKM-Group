@@ -4,6 +4,7 @@ import path from 'path';
 
 export default defineConfig({
   plugins: [react()],
+  envDir: '../',
   server: {
     port: 5173,
     proxy: {
