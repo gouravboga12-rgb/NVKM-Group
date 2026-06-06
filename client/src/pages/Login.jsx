@@ -58,7 +58,7 @@ export default function Login() {
   const [regOtpCode, setRegOtpCode] = useState('');
 
   useEffect(() => {
-    if (user) navigate('/dashboard');
+    if (user) navigate('/shop');
   }, [user, navigate]);
 
   // Sync otpValues array to the single string otpCode (Phone Login)
