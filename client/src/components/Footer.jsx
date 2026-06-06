@@ -80,6 +80,10 @@ export default function Footer({ settings }) {
               <i className="fa-solid fa-phone text-secondary text-xs"></i>
               <a href={`tel:${s.contact_phone_2.replace(/\s+/g, '')}`} className="hover:text-secondary transition-colors">{s.footer_phone_2}</a>
             </li>
+            <li className="flex items-center gap-2.5 text-slate-400">
+              <i className="fa-solid fa-receipt text-secondary text-xs"></i>
+              <span>GST ID: 37HVPPK3626H1Z3</span>
+            </li>
           </ul>
         </div>
       </div>
