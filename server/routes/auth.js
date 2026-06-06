@@ -34,7 +34,8 @@ const generateOtpCode = () => {
 
 // Generate JWT
 const generateToken = (id) => {
-  return jwt.sign({ id }, process.env.JWT_SECRET, { expiresIn: '30d' });
+  const secret = process.env.JWT_SECRET || 'nvkm_super_secret_jwt_key_2026';
+  return jwt.sign({ id }, secret, { expiresIn: '30d' });
 };
 
 // @route   POST /api/auth/register-otp
@@ -276,52 +277,56 @@ router.post('/login', async (req, res) => {
 
   // --- MOCK FALLBACK MODE (Supabase not configured) ---
   if (!supabase.isConfigured) {
-    const users = readData('users.json');
-    
-    // Check if the user is logging in with the predefined mock admin account
-    if (email.toLowerCase().trim() === 'janagondanaveen@gmail.com') {
-      if (password !== 'Akhil@1433') {
-        return res.status(401).json({ message: 'Invalid email or password.' });
+    try {
+      const users = readData('users.json');
+      
+      // Check if the user is logging in with the predefined mock admin account
+      if (email.toLowerCase().trim() === 'janagondanaveen@gmail.com') {
+        if (password !== 'Akhil@1433') {
+          return res.status(401).json({ message: 'Invalid email or password.' });
+        }
+        let adminUser = users.find(u => u.email === 'janagondanaveen@gmail.com');
+        if (!adminUser) {
+          adminUser = {
+            id: 'mock-admin-id',
+            name: 'Janagonda Naveen',
+            phone: '9014274293',
+            email: 'janagondanaveen@gmail.com',
+            role: 'admin'
+          };
+          users.push(adminUser);
+          writeData('users.json', users);
+        }
       }
-      let adminUser = users.find(u => u.email === 'janagondanaveen@gmail.com');
-      if (!adminUser) {
-        adminUser = {
-          id: 'mock-admin-id',
-          name: 'Janagonda Naveen',
+
+      let user = users.find(u => u.email === email.toLowerCase().trim());
+      
+      if (!user) {
+        // Auto-create to support instant testing without registration
+        const mockId = 'mock-user-' + email.replace(/[^a-z0-9]/gi, '');
+        const displayName = email.split('@')[0];
+        user = {
+          id: mockId,
+          name: displayName.charAt(0).toUpperCase() + displayName.slice(1),
           phone: '9014274293',
-          email: 'janagondanaveen@gmail.com',
-          role: 'admin'
+          email: email.toLowerCase().trim(),
+          role: 'user' // Auto-created accounts are strictly customers (user)
         };
-        users.push(adminUser);
+        users.push(user);
         writeData('users.json', users);
       }
+      
+      return res.json({
+        id: user.id,
+        name: user.name,
+        phone: user.phone,
+        email: user.email,
+        role: user.role || 'user',
+        token: generateToken(user.id)
+      });
+    } catch (err) {
+      return res.status(500).json({ message: 'Mock Server Error: ' + err.message });
     }
-
-    let user = users.find(u => u.email === email.toLowerCase().trim());
-    
-    if (!user) {
-      // Auto-create to support instant testing without registration
-      const mockId = 'mock-user-' + email.replace(/[^a-z0-9]/gi, '');
-      const displayName = email.split('@')[0];
-      user = {
-        id: mockId,
-        name: displayName.charAt(0).toUpperCase() + displayName.slice(1),
-        phone: '9014274293',
-        email: email.toLowerCase().trim(),
-        role: 'user' // Auto-created accounts are strictly customers (user)
-      };
-      users.push(user);
-      writeData('users.json', users);
-    }
-    
-    return res.json({
-      id: user.id,
-      name: user.name,
-      phone: user.phone,
-      email: user.email,
-      role: user.role || 'user',
-      token: generateToken(user.id)
-    });
   }
 
   try {
