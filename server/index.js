@@ -55,17 +55,7 @@ app.get('/api/health', (req, res) => {
   res.json({ status: 'ok', message: 'NVKM GROUP API is running' });
 });
 
-// Safe environment debug check
-app.get('/api/debug', (req, res) => {
-  res.json({
-    supabaseUrl: !!process.env.SUPABASE_URL,
-    supabaseUrlLength: process.env.SUPABASE_URL ? process.env.SUPABASE_URL.length : 0,
-    supabaseKey: !!(process.env.SUPABASE_SERVICE_ROLE_KEY || process.env.SUPABASE_ANON_KEY),
-    jwtSecret: !!process.env.JWT_SECRET,
-    nodeEnv: process.env.NODE_ENV,
-    vercel: process.env.VERCEL
-  });
-});
+
 
 // Serve React frontend in production (only when not running on Vercel)
 if (process.env.NODE_ENV === 'production' && !process.env.VERCEL) {
