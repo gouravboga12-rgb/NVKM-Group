@@ -33,6 +33,8 @@ const authRoutes = require('./routes/auth');
 const productRoutes = require('./routes/products');
 const orderRoutes = require('./routes/orders');
 const paymentRoutes = require('./routes/payment');
+const adminRoutes = require('./routes/admin');
+const contactRoutes = require('./routes/contacts');
 
 const app = express();
 
@@ -45,6 +47,8 @@ app.use('/api/auth', authRoutes);
 app.use('/api/products', productRoutes);
 app.use('/api/orders', orderRoutes);
 app.use('/api/payment', paymentRoutes);
+app.use('/api/admin', adminRoutes);
+app.use('/api/contacts', contactRoutes);
 
 // Health check
 app.get('/api/health', (req, res) => {
@@ -68,4 +72,4 @@ if (require.main === module || !process.env.VERCEL) {
 }
 
 module.exports = app;
-// Trigger nodemon restart 4
+// Trigger nodemon restart 5
