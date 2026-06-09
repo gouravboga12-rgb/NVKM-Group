@@ -18,7 +18,9 @@ export default function AdminCustomers() {
       const { data } = await api.get('/admin/customers');
       setCustomers(data);
     } catch (err) {
-      showToast('Could not load client directories.', 'error');
+      if (err.response?.status !== 401) {
+        showToast('Could not load client directories.', 'error');
+      }
     } finally {
       setLoading(false);
     }

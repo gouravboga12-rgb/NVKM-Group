@@ -89,7 +89,9 @@ export default function AdminOrders() {
         setOrders(data);
       }
     } catch (err) {
-      showToast(err.response?.data?.message || 'Could not load orders queue.', 'error');
+      if (err.response?.status !== 401) {
+        showToast(err.response?.data?.message || 'Could not load orders queue.', 'error');
+      }
     } finally {
       setLoading(false);
     }

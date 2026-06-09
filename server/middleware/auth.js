@@ -42,13 +42,11 @@ const protect = async (req, res, next) => {
         .eq('id', decoded.id)
         .maybeSingle();
 
-      if (error) {
-        console.error('❌ Supabase error in auth middleware:', error.message || error);
-        return res.status(500).json({ message: 'Database connection error' });
-      }
-
-      if (!user) {
-        return res.status(401).json({ message: 'Not authorized, user not found.' });
+      if (error || !user) {
+        if (error) {
+          console.error('❌ Supabase error in auth middleware:', error.message || error);
+        }
+        return res.status(401).json({ message: 'Session expired. Please sign in again.' });
       }
 
       req.user = user;

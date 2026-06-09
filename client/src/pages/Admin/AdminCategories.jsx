@@ -22,7 +22,9 @@ export default function AdminCategories() {
       const { data } = await api.get('/admin/categories');
       setCategories(data);
     } catch (err) {
-      showToast('Could not load categories list.', 'error');
+      if (err.response?.status !== 401) {
+        showToast('Could not load categories list.', 'error');
+      }
     } finally {
       setLoading(false);
     }

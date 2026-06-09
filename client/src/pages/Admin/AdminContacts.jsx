@@ -24,7 +24,9 @@ export default function AdminContacts({ showLogs = false }) {
       const { data } = await api.get(endpoint, { params });
       setItems(data);
     } catch (err) {
-      showToast(`Could not load ${showLogs ? 'activity log history' : 'customer inquiries'}.`, 'error');
+      if (err.response?.status !== 401) {
+        showToast(`Could not load ${showLogs ? 'activity log history' : 'customer inquiries'}.`, 'error');
+      }
     } finally {
       setLoading(false);
     }
