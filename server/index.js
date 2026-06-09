@@ -26,7 +26,7 @@ const express = require('express');
 const cors = require('cors');
 
 // Import Supabase client (initializes on require)
-require('./config/db');
+const supabase = require('./config/db');
 
 // Import routes
 const authRoutes = require('./routes/auth');
@@ -52,9 +52,26 @@ app.use('/api/admin', adminRoutes);
 app.use('/api/contacts', contactRoutes);
 app.use('/', seoRoutes);
 
-// Health check
-app.get('/api/health', (req, res) => {
-  res.json({ status: 'ok', message: 'NVKM GROUP API is running' });
+// Health check (keeps Supabase awake when pinged by a monitoring tool)
+app.get('/api/health', async (req, res) => {
+  try {
+    if (supabase.isConfigured) {
+      // Perform a lightweight database query to keep Supabase awake
+      const { data, error } = await supabase.from('categories').select('id').limit(1);
+      if (error) throw error;
+    }
+    res.json({ 
+      status: 'ok', 
+      message: 'NVKM GROUP API is running',
+      database: supabase.isConfigured ? 'connected' : 'mock_fallback'
+    });
+  } catch (err) {
+    console.error('Health check database query failed:', err.message);
+    res.status(500).json({ 
+      status: 'error', 
+      message: 'Database query failed: ' + err.message 
+    });
+  }
 });
 
 
