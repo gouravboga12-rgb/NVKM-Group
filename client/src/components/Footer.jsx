@@ -23,7 +23,13 @@ export default function Footer({ settings }) {
           </div>
           <p className="text-xs text-slate-400 leading-relaxed max-w-sm">NVKM GROUP manufactures premium natural fruit & vegetable powders. 100% organic, preservative-free, and nutrient-rich for healthy living.</p>
           <div className="flex space-x-3 mt-4">
-            {[['fa-facebook-f', '#'], ['fa-instagram', '#'], ['fa-whatsapp', `https://wa.me/${(s.whatsapp_phone_1 || '9014274293').replace(/[^0-9]/g, '')}`], ['fa-youtube', '#']].map(([icon, link], idx) => (
+            {[
+              ['fa-facebook-f', '#'], 
+              ['fa-instagram', 'https://www.instagram.com/nvkm.group?utm_source=qr&igsh=NHRtY3ZrcHpscGJy'], 
+              ['fa-linkedin-in', 'https://www.linkedin.com/in/janagonda-naveen-5aa338175?utm_source=share_via&utm_content=profile&utm_medium=member_android'], 
+              ['fa-whatsapp', `https://wa.me/${(s.whatsapp_phone_1 || '9014274293').replace(/[^0-9]/g, '')}`], 
+              ['fa-youtube', '#']
+            ].map(([icon, link], idx) => (
               <a 
                 key={idx} 
                 href={link} 
