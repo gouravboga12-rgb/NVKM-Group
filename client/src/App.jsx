@@ -46,6 +46,18 @@ function App() {
   }, []);
 
   useEffect(() => {
+    if (settings?.google_site_verification) {
+      let meta = document.querySelector('meta[name="google-site-verification"]');
+      if (!meta) {
+        meta = document.createElement('meta');
+        meta.setAttribute('name', 'google-site-verification');
+        document.head.appendChild(meta);
+      }
+      meta.setAttribute('content', settings.google_site_verification);
+    }
+  }, [settings]);
+
+  useEffect(() => {
     // Initialize AOS
     if (window.AOS) {
       window.AOS.init({
@@ -84,7 +96,7 @@ function App() {
 
       <main className={isAdminPath ? "min-h-screen overflow-x-hidden bg-slate-50" : "min-h-screen pt-20 pb-12 overflow-x-hidden"}>
         <Routes>
-          <Route path="/" element={<Home />} />
+          <Route path="/" element={<Home settings={settings} />} />
           <Route path="/shop" element={<Shop />} />
           <Route path="/products/:slug" element={<ProductDetail />} />
           <Route path="/about" element={<About />} />

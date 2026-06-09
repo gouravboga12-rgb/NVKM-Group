@@ -24,6 +24,18 @@ export function AuthProvider({ children }) {
     setLoading(false);
   }, []);
 
+  // Listen for global session expiration (401) events
+  useEffect(() => {
+    const handleAuthLogout = () => {
+      setUser(null);
+      localStorage.removeItem('nvkm_user');
+      showToast('Your session has expired. Please sign in again.', 'warning');
+    };
+
+    window.addEventListener('auth_logout', handleAuthLogout);
+    return () => window.removeEventListener('auth_logout', handleAuthLogout);
+  }, [showToast]);
+
   const login = async (email, password) => {
     const { data } = await api.post('/auth/login', { email, password });
     localStorage.setItem('nvkm_user', JSON.stringify(data));

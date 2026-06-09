@@ -61,7 +61,9 @@ export default function Dashboard() {
           setOrders(data);
         }
       } catch (err) {
-        showToast(err.response?.data?.message || 'Could not fetch order history.', 'error');
+        if (err.response?.status !== 401) {
+          showToast(err.response?.data?.message || 'Could not fetch order history.', 'error');
+        }
       } finally {
         setFetching(false);
       }

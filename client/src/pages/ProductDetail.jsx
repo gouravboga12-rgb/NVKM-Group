@@ -5,6 +5,7 @@ import { useCart } from '../context/CartContext';
 import { useToast } from '../context/ToastContext';
 import { useAuth } from '../context/AuthContext';
 import ProductCard, { StarRating } from '../components/ProductCard';
+import SEO from '../components/SEO';
 
 export default function ProductDetail() {
   const { slug } = useParams();
@@ -215,6 +216,13 @@ export default function ProductDetail() {
 
   return (
     <>
+      <SEO 
+        title={`${product.name} | NVKM GROUP`}
+        description={product.shortDesc}
+        keywords={`${product.name.toLowerCase()}, ${product.category.toLowerCase()}, pure ${product.category.toLowerCase()}, buy organic ${product.name.toLowerCase()}`}
+        ogImage={product.image}
+        ogUrl={window.location.href}
+      />
       <div className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 pt-6 pb-24 sm:py-10 page-transition">
       {/* Breadcrumb */}
       <nav className="flex items-center gap-1.5 text-xs text-slate-500 mb-6 sm:mb-8 font-semibold overflow-hidden">

@@ -16,7 +16,9 @@ export default function AdminDashboard() {
         const { data: dashboardData } = await api.get('/admin/dashboard');
         setData(dashboardData);
       } catch (err) {
-        showToast(err.response?.data?.message || 'Failed to fetch dashboard analytics.', 'error');
+        if (err.response?.status !== 401) {
+          showToast(err.response?.data?.message || 'Failed to fetch dashboard analytics.', 'error');
+        }
       } finally {
         setLoading(false);
       }

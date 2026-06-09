@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { useToast } from '../context/ToastContext';
 import api, { DEFAULT_SETTINGS } from '../api/api';
+import SEO from '../components/SEO';
 
 export default function Contact({ settings }) {
   const s = settings || DEFAULT_SETTINGS;
@@ -84,6 +85,11 @@ export default function Contact({ settings }) {
 
   return (
     <div className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 py-4 sm:py-6 space-y-10 sm:space-y-16 page-transition">
+      <SEO 
+        title="Contact Us | NVKM GROUP - Customer Support & Bulk Sales"
+        description="Get in touch with NVKM GROUP in Bathalapalli AP. Call us, chat on WhatsApp, or send a message for retail orders, dealer inquiries, and bulk wholesale rates."
+        keywords="contact nvkm, bulk wholesale powders, client support, phone number, factory address Bathalapalli, custom packaging"
+      />
 
       {/* ── PAGE HEADER ── */}
       <div className="text-center max-w-2xl mx-auto space-y-3 sm:space-y-4" data-aos="fade-up">

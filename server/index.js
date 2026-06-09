@@ -35,6 +35,7 @@ const orderRoutes = require('./routes/orders');
 const paymentRoutes = require('./routes/payment');
 const adminRoutes = require('./routes/admin');
 const contactRoutes = require('./routes/contacts');
+const seoRoutes = require('./routes/seo');
 
 const app = express();
 
@@ -49,6 +50,7 @@ app.use('/api/orders', orderRoutes);
 app.use('/api/payment', paymentRoutes);
 app.use('/api/admin', adminRoutes);
 app.use('/api/contacts', contactRoutes);
+app.use('/', seoRoutes);
 
 // Health check
 app.get('/api/health', (req, res) => {
@@ -66,7 +68,7 @@ if (process.env.NODE_ENV === 'production' && !process.env.VERCEL) {
 }
 
 if (require.main === module || !process.env.VERCEL) {
-  const PORT = process.env.PORT || 5000;
+  const PORT = process.env.PORT || 5005;
   app.listen(PORT, () => {
     console.log(`🚀 NVKM Server running on port ${PORT}`);
     console.log(`📡 API available at http://localhost:${PORT}/api`);

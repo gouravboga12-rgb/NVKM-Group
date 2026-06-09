@@ -15,7 +15,12 @@ export default function AdminSettings() {
     address: '',
     footer_address: '',
     footer_phone_1: '',
-    footer_phone_2: ''
+    footer_phone_2: '',
+    seo_title: '',
+    seo_description: '',
+    seo_keywords: '',
+    google_site_verification: '',
+    robots_txt: ''
   });
 
   useEffect(() => {
@@ -261,6 +266,8 @@ export default function AdminSettings() {
           </div>
 
         </div>
+
+
 
         {/* Buttons Panel */}
         <div className="flex flex-col sm:flex-row items-center justify-between gap-4 p-5 bg-white border border-slate-100 rounded-3xl shadow-sm">

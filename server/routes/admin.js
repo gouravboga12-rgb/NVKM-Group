@@ -1308,14 +1308,28 @@ router.get('/settings', async (req, res) => {
     address: "Near bypass Anantapur Road, Bathalapalli, Sri Sathya Sai Dist, Andhra Pradesh 515661",
     footer_address: "NVKM GROUP Manufacturing, Andhra Pradesh, India",
     footer_phone_1: "+91 90142 74293",
-    footer_phone_2: "+91 70756 04700"
+    footer_phone_2: "+91 70756 04700",
+    seo_title: "NVKM GROUP | Premium Natural Fruit & Vegetable Powders",
+    seo_description: "Buy premium natural fruit and vegetable powders including Banana Powder and Moringa Powder from NVKM GROUP. Natural, healthy, and high-quality powders.",
+    seo_keywords: "banana powder, moringa powder, natural fruit powder, vegetable powder, organic herbal powder, nvkm group",
+    google_site_verification: "",
+    robots_txt: "User-agent: *\nAllow: /\n\nSitemap: {site_url}/sitemap.xml"
+  };
+
+  // --- MOCK FALLBACK MODE ---
+  const mergeEnvSettings = (s) => {
+    const merged = { ...DEFAULT_SETTINGS, ...s };
+    if (!merged.google_site_verification) {
+      merged.google_site_verification = process.env.GOOGLE_SITE_VERIFICATION || "";
+    }
+    return merged;
   };
 
   // --- MOCK FALLBACK MODE ---
   if (!supabase.isConfigured) {
     const settingsList = readData('settings.json');
     const settings = Array.isArray(settingsList) ? settingsList[0] : settingsList;
-    return res.json(settings || DEFAULT_SETTINGS);
+    return res.json(mergeEnvSettings(settings));
   }
 
   // --- SUPABASE MODE ---
@@ -1330,23 +1344,23 @@ router.get('/settings', async (req, res) => {
       if (error.code === 'PGRST205' || error.code === '42P01') {
         const settingsList = readData('settings.json');
         const settings = Array.isArray(settingsList) ? settingsList[0] : settingsList;
-        return res.json(settings || DEFAULT_SETTINGS);
+        return res.json(mergeEnvSettings(settings));
       }
       throw error;
     }
 
     if (data && data.value) {
-      return res.json(data.value);
+      return res.json(mergeEnvSettings(data.value));
     }
 
     const settingsList = readData('settings.json');
     const settings = Array.isArray(settingsList) ? settingsList[0] : settingsList;
-    res.json(settings || DEFAULT_SETTINGS);
+    res.json(mergeEnvSettings(settings));
   } catch (error) {
     console.error('Settings query error, falling back to JSON:', error.message);
     const settingsList = readData('settings.json');
     const settings = Array.isArray(settingsList) ? settingsList[0] : settingsList;
-    res.json(settings || DEFAULT_SETTINGS);
+    res.json(mergeEnvSettings(settings));
   }
 });
 

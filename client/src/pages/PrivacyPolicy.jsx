@@ -1,6 +1,13 @@
+import SEO from '../components/SEO';
+
 export default function PrivacyPolicy() {
   return (
     <div className="max-w-4xl mx-auto px-4 py-8 sm:py-12 space-y-6 page-transition">
+      <SEO 
+        title="Privacy Policy | NVKM GROUP - Pure Natural Powders"
+        description="Read NVKM GROUP privacy policy. Learn how we handle your personal data securely for contact and shipping purposes."
+        keywords="privacy policy, data collection, data security, customer rights, packaging safety, bathalapalli AP"
+      />
       <div className="text-center space-y-3" data-aos="fade-up">
         <span className="inline-flex items-center gap-1.5 bg-blue-500/10 border border-blue-500/25 text-blue-600 text-[10px] font-extrabold px-3.5 py-1.5 rounded-full tracking-wider uppercase shadow-sm">
           <i className="fa-solid fa-shield-halved" /> Legal Information

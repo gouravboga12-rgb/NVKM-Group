@@ -1,6 +1,13 @@
+import SEO from '../components/SEO';
+
 export default function RefundPolicy() {
   return (
     <div className="max-w-4xl mx-auto px-4 py-8 sm:py-12 space-y-6 page-transition">
+      <SEO 
+        title="Refund & Cancellation Policy | NVKM GROUP"
+        description="Learn about NVKM GROUP refund eligibility. Continuous unboxing video is strictly mandatory for damage claims or wrong items."
+        keywords="refund policy, order cancellation, unboxing video proof, damage claims, return rules, store pickup, customer refund AP"
+      />
       <div className="text-center space-y-3" data-aos="fade-up">
         <span className="inline-flex items-center gap-1.5 bg-rose-500/10 border border-rose-500/25 text-rose-600 text-[10px] font-extrabold px-3.5 py-1.5 rounded-full tracking-wider uppercase shadow-sm">
           <i className="fa-solid fa-rotate-left" /> Returns & Refunds

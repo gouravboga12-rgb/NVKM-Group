@@ -1,6 +1,13 @@
+import SEO from '../components/SEO';
+
 export default function TermsConditions() {
   return (
     <div className="max-w-4xl mx-auto px-4 py-8 sm:py-12 space-y-6 page-transition">
+      <SEO 
+        title="Terms & Conditions | NVKM GROUP - Agreement Terms"
+        description="Read NVKM GROUP agreement terms. Learn about account registration, natural product specifications, pricing, payment methods, and shipping details."
+        keywords="terms and conditions, user agreement, billing details, organic powder shipping, factory pickup rules"
+      />
       <div className="text-center space-y-3" data-aos="fade-up">
         <span className="inline-flex items-center gap-1.5 bg-blue-500/10 border border-blue-500/25 text-blue-600 text-[10px] font-extrabold px-3.5 py-1.5 rounded-full tracking-wider uppercase shadow-sm">
           <i className="fa-solid fa-file-contract" /> Agreement Terms

@@ -1,3 +1,5 @@
+import SEO from '../components/SEO';
+
 export default function About() {
   const GENERAL_WA_MSG = 'Hello NVKM GROUP, I would like to know more about your company and products.';
 
@@ -19,6 +21,11 @@ export default function About() {
 
   return (
     <div className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 py-4 sm:py-6 space-y-10 sm:space-y-16 page-transition">
+      <SEO 
+        title="About Us | NVKM GROUP - Pure Natural Powders Heritage"
+        description="Learn about NVKM GROUP heritage and commitment to pure natural fruit, vegetable, and herbal powders, founded in Bathalapalli AP by Janagonda Naveen."
+        keywords="about nvkm, janagonda naveen, bathalapalli AP, pure natural powders history, organic manufacturing company"
+      />
 
       {/* ── PAGE HEADER ── */}
       <div className="text-center max-w-2xl mx-auto space-y-3 sm:space-y-4" data-aos="fade-up">

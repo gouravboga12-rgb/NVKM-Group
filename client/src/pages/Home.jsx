@@ -2,6 +2,7 @@ import { useState, useEffect, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 import api from '../api/api';
 import ProductCard from '../components/ProductCard';
+import SEO from '../components/SEO';
 
 // Local fallback products — renders instantly if API is unavailable
 const FALLBACK_PRODUCTS = [
@@ -142,7 +143,7 @@ function Counter({ target, suffix, duration = 1500 }) {
   return <span ref={elementRef}>{count}{suffix}</span>;
 }
 
-export default function Home() {
+export default function Home({ settings }) {
   const [featuredProducts, setFeaturedProducts] = useState(FALLBACK_PRODUCTS);
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
@@ -166,6 +167,11 @@ export default function Home() {
 
   return (
     <div className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 space-y-10 sm:space-y-16 page-transition">
+      <SEO 
+        title={settings?.seo_title} 
+        description={settings?.seo_description} 
+        keywords={settings?.seo_keywords} 
+      />
 
       {/* ── HERO ── */}
       <section className="relative overflow-hidden py-8 sm:py-20 lg:py-32 rounded-[20px] sm:rounded-[40px] text-white shadow-2xl mt-3 sm:mt-4">
