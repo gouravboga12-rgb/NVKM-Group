@@ -198,7 +198,7 @@ export default function CheckoutModal() {
         amount: rpOrder.amount,
         currency: rpOrder.currency,
         name: 'NVKM GROUP',
-        description: 'Purchase organic powders',
+        description: 'Purchase nutrition powders',
         order_id: rpOrder.id,
         handler: handlePaymentSuccess,
         prefill: {

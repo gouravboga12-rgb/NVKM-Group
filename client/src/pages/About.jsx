@@ -5,14 +5,14 @@ export default function About() {
 
   const coreValues = [
     { icon: 'fa-award', title: 'Quality First', desc: 'Zero compromises on raw harvest selection.', color: 'from-blue-500 to-sky-600' },
-    { icon: 'fa-seedling', title: 'Natural Content', desc: '100% preservative-free powders.', color: 'from-sky-500 to-blue-600' },
+    { icon: 'fa-seedling', title: 'Pure Content', desc: 'Completely preservative-free powders.', color: 'from-sky-500 to-blue-600' },
     { icon: 'fa-heart-pulse', title: 'Daily Nutrition', desc: 'Formulated to enrich bodily health.', color: 'from-sky-600 to-blue-600' },
     { icon: 'fa-shield-halved', title: 'Total Trust', desc: 'Transparency in origins and labeling.', color: 'from-blue-600 to-sky-700' },
     { icon: 'fa-face-smile-wink', title: 'Satisfaction', desc: 'Reliable logistics and fast customer response.', color: 'from-sky-600 to-blue-700' }
   ];
 
   const timeline = [
-    { year: '2020', event: 'NVKM GROUP founded in Bathalapalli by Janagonda Naveen with a vision for pure natural powders.', icon: 'fa-flag' },
+    { year: '2020', event: 'NVKM GROUP founded in Bathalapalli by Janagonda Naveen with a vision for pure dehydrated powders.', icon: 'fa-flag' },
     { year: '2021', event: 'Launched Banana Powder — quickly became a bestseller for infant and health food consumers.', icon: 'fa-seedling' },
     { year: '2022', event: 'Expanded to Moringa Powder, Fruit Powders, and Vegetable Powder product lines.', icon: 'fa-leaf' },
     { year: '2023', event: 'Started B2B wholesale supply to food manufacturers, bakeries, and nutrition brands.', icon: 'fa-handshake' },
@@ -22,9 +22,9 @@ export default function About() {
   return (
     <div className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 py-4 sm:py-6 space-y-10 sm:space-y-16 page-transition">
       <SEO 
-        title="About Us | NVKM GROUP - Pure Natural Powders Heritage"
-        description="Learn about NVKM GROUP heritage and commitment to pure natural fruit, vegetable, and herbal powders, founded in Bathalapalli AP by Janagonda Naveen."
-        keywords="about nvkm, janagonda naveen, bathalapalli AP, pure natural powders history, organic manufacturing company"
+        title="About Us | NVKM GROUP - Pure Dehydrated Powders Heritage"
+        description="Learn about NVKM GROUP heritage and commitment to pure dehydrated fruit and vegetable powders, founded in Bathalapalli AP by Janagonda Naveen."
+        keywords="about nvkm, janagonda naveen, bathalapalli AP, pure powders history, dehydrated powder manufacturing company"
       />
 
       {/* ── PAGE HEADER ── */}
@@ -36,7 +36,7 @@ export default function About() {
           About NVKM GROUP
         </h1>
         <p className="text-sm text-slate-500 leading-relaxed max-w-xl mx-auto font-medium">
-          Providing high-quality natural fruit and vegetable nutrition powders for retail &amp; wholesale wellness customers across India.
+          Providing high-quality fruit and vegetable nutrition powders for retail &amp; wholesale wellness customers across India.
         </p>
       </div>
 
@@ -45,13 +45,13 @@ export default function About() {
         <div className="lg:col-span-5 relative rounded-[28px] overflow-hidden aspect-[4/5] shadow-2xl group w-full max-w-md mx-auto lg:max-w-none">
           <img
             src="/about_hero.png"
-            alt="NVKM GROUP - Natural Powders"
+            alt="NVKM GROUP - Dehydrated Powders"
             className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
           />
           {/* Overlay gradient */}
           <div className="absolute inset-0 bg-gradient-to-t from-blue-950/60 via-transparent to-transparent pointer-events-none" />
           <div className="absolute bottom-5 left-5 right-5 bg-white/90 backdrop-blur-md border border-white/60 p-4 rounded-2xl shadow-lg">
-            <h3 className="font-heading font-extrabold text-sm text-slate-900">100% Pure &amp; Natural</h3>
+            <h3 className="font-heading font-extrabold text-sm text-slate-900">Pure &amp; Preservative-Free</h3>
             <span className="text-[10px] text-blue-600 font-bold uppercase tracking-wider">Sourced &amp; Processed Locally</span>
           </div>
         </div>
@@ -103,7 +103,7 @@ export default function About() {
           </div>
           <h3 className="font-heading font-black text-2xl mb-4 tracking-tight">Our Vision</h3>
           <p className="text-xs sm:text-sm text-blue-100/90 leading-relaxed font-medium">
-            To provide healthy and natural nutrition products to customers worldwide through premium quality fruit, vegetable, and herbal powders — cultivating a toxicant-free natural lifestyle and empowering communities through nutrition.
+            To provide healthy and wholesome nutrition products to customers worldwide through premium quality fruit, vegetable, and herbal powders — cultivating a clean, toxicant-free lifestyle and empowering communities through nutrition.
           </p>
         </div>
         {/* Mission */}
@@ -114,7 +114,7 @@ export default function About() {
           </div>
           <h3 className="font-heading font-black text-2xl mb-4 text-slate-900 tracking-tight">Our Mission</h3>
           <p className="text-xs sm:text-sm text-slate-600 leading-relaxed font-medium">
-            To manufacture and deliver high-quality, pure natural powders while maintaining complete freshness, high nutrition value, affordable retail-wholesale pricing, and total customer satisfaction — with complete origin transparency.
+            To manufacture and deliver high-quality, pure dehydrated powders while maintaining complete freshness, high nutrition value, affordable retail-wholesale pricing, and total customer satisfaction — with complete origin transparency.
           </p>
         </div>
       </div>
@@ -175,7 +175,7 @@ export default function About() {
         <div className="absolute top-[-80px] right-[-80px] w-[300px] h-[300px] rounded-full bg-radial-gradient(circle,rgba(56,189,248,.08),transparent) pointer-events-none" />
         <div className="relative z-10">
           <h2 className="font-heading font-black text-xl sm:text-3xl lg:text-4xl mb-3 sm:mb-4 tracking-tight">
-            Ready to Experience Pure Natural Nutrition?
+            Ready to Experience Pure Nutrition?
           </h2>
           <p className="text-xs sm:text-sm text-blue-100/80 max-w-md mx-auto mb-6 sm:mb-8 leading-relaxed font-medium">
             Join hundreds of health-conscious families and businesses who trust NVKM GROUP for their daily nutrition powders.

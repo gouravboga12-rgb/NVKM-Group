@@ -10,10 +10,10 @@ const FALLBACK_PRODUCTS = [
     id: 'tomato-powder-250g',
     name: 'Tomato Powder 250 Grams',
     category: 'Tomato Powder',
-    shortDesc: 'Experience the pure, natural goodness of NVKM Dry-Fresh Tomato Powder — crafted for health-conscious consumers and professional culinary applications.',
+    shortDesc: 'Experience the pure, fresh goodness of NVKM Dry-Fresh Tomato Powder — crafted for health-conscious consumers and professional culinary applications.',
     longDesc: '',
-    benefits: ['100% Pure & Natural Farm-Fresh Tomatoes', 'Rich in Lycopene, Vitamin C, and Antioxidants', 'No artificial preservatives, colors, or additives', 'Ideal for soups, gravies, sauces, and culinary use'],
-    ingredients: '100% Pure Dehydrated Farm-Fresh Tomatoes',
+    benefits: ['Pure Farm-Fresh Tomatoes', 'Rich in Lycopene, Vitamin C, and Antioxidants', 'No artificial preservatives, colors, or additives', 'Ideal for soups, gravies, sauces, and culinary use'],
+    ingredients: 'Pure Dehydrated Farm-Fresh Tomatoes',
     usage: 'Add 1-2 teaspoons to soups, curries, pasta sauces, or gravies.',
     image: '/products images/tomato_main.png',
     images: ['/products images/tomato_main.png', '/products images/tomato_2.png', '/products images/tomato_3.png', '/products images/tomato_4.png'],
@@ -27,10 +27,10 @@ const FALLBACK_PRODUCTS = [
     id: 'raw-banana-powder-250g',
     name: 'Raw Banana Powder 250 Grams',
     category: 'Banana Powder',
-    shortDesc: 'Experience the pure, natural goodness of NVKM Dry-Fresh Banana Powder — crafted for health-conscious consumers and professional culinary applications.',
+    shortDesc: 'Experience the pure, fresh goodness of NVKM Dry-Fresh Banana Powder — crafted for health-conscious consumers and professional culinary applications.',
     longDesc: '',
-    benefits: ['100% Pure & Natural Farm-Fresh Raw Banana', 'Rich in Resistant Starch, Potassium, and Dietary Fiber', 'Supports digestion, gut health, and natural energy', 'Gluten-free, vegan-friendly, zero artificial preservatives'],
-    ingredients: '100% Pure Dehydrated Farm-Fresh Raw Banana',
+    benefits: ['Pure Farm-Fresh Raw Banana', 'Rich in Resistant Starch, Potassium, and Dietary Fiber', 'Supports digestion, gut health, and daily energy', 'Gluten-free, vegan-friendly, zero artificial preservatives'],
+    ingredients: 'Pure Dehydrated Farm-Fresh Raw Banana',
     usage: 'Add 1-2 tablespoons to baby food, porridge, smoothies, or baking recipes.',
     image: '/products images/banana_main.png',
     images: ['/products images/banana_main.png', '/products images/banana_2.png', '/products images/banana_3.png'],
@@ -44,10 +44,10 @@ const FALLBACK_PRODUCTS = [
     id: 'moringa-powder-250g',
     name: 'Moringa Powder 250 Grams',
     category: 'Moringa Powder',
-    shortDesc: 'Experience the pure, natural goodness of NVKM Dry-Fresh Moringa Leaves Powder — crafted for health-conscious consumers and professional culinary applications.',
+    shortDesc: 'Experience the pure, wholesome goodness of NVKM Dry-Fresh Moringa Leaves Powder — crafted for health-conscious consumers and professional culinary applications.',
     longDesc: '',
-    benefits: ['100% Pure Organic Moringa Oleifera Leaf Powder', 'Rich in Antioxidants, Vitamin A, Vitamin C, Iron, and Calcium', 'Supports immune defense, skin health, and energy levels', 'Natural anti-inflammatory and detoxifying properties'],
-    ingredients: '100% Pure Organic Dried Moringa Leaves',
+    benefits: ['Pure Moringa Oleifera Leaf Powder', 'Rich in Antioxidants, Vitamin A, Vitamin C, Iron, and Calcium', 'Supports immune defense, skin health, and energy levels', 'Detoxifying and revitalizing properties'],
+    ingredients: 'Pure Dried Moringa Leaves',
     usage: 'Take 1 teaspoon daily. Mix in warm water, herbal teas, or smoothies.',
     image: '/products images/moringa_main.png',
     images: ['/products images/moringa_main.png', '/products images/moringa_2.png', '/products images/moringa_3.png'],
@@ -63,8 +63,8 @@ const FALLBACK_PRODUCTS = [
     category: 'Pooja Accessories',
     shortDesc: 'Pure white 4-inch long cotton wicks, pack of 100 count. Premium 1st quality cotton for oil lamps and religious puja ceremonies.',
     longDesc: '',
-    benefits: ['100% Pure White First Quality Cotton', 'Pack of 100 wicks — excellent value for daily use', 'Precise 4-inch length for standard oil lamps', 'Clean, steady burn with no black smoke'],
-    ingredients: '100% Pure White Cotton',
+    benefits: ['Pure White First Quality Cotton', 'Pack of 100 wicks — excellent value for daily use', 'Precise 4-inch length for standard oil lamps', 'Clean, steady burn with no black smoke'],
+    ingredients: 'Pure White Cotton',
     usage: 'Place wick in lamp, soak in oil or ghee before lighting.',
     image: '/products images/cotton_wicks_main.png',
     images: ['/products images/cotton_wicks_main.png', '/products images/cotton_wicks_2.png', '/products images/cotton_wicks_3.png', '/products images/cotton_wicks_4.png'],
@@ -79,10 +79,9 @@ const FALLBACK_PRODUCTS = [
 const categories = [
   { name: 'Tomato Powder', icon: 'fa-solid fa-apple-whole', color: 'from-red-100 to-orange-100', text: 'Rich in lycopene & Vitamin C, perfect for culinary bases.' },
   { name: 'Banana Powder', icon: 'fa-solid fa-seedling', color: 'from-amber-100 to-yellow-100', text: 'Rich in potassium & fiber, ideal for infants & baking.' },
-  { name: 'Carrot Powder', icon: 'fa-solid fa-carrot', color: 'from-orange-100 to-amber-100', text: 'Rich in beta-carotene & Vitamin A for natural wellness.' },
+  { name: 'Carrot Powder', icon: 'fa-solid fa-carrot', color: 'from-orange-100 to-amber-100', text: 'Rich in beta-carotene & Vitamin A for daily wellness.' },
   { name: 'Beetroot Powder', icon: 'fa-solid fa-heart-pulse', color: 'from-pink-100 to-red-100', text: 'Loaded with nitrates & iron for stamina and active life.' },
-  { name: 'Moringa Powder', icon: 'fa-solid fa-leaf', color: 'from-sky-100 to-blue-100', text: 'Organic leaves superfood filled with minerals & antioxidants.' },
-  { name: 'Pooja Accessories', icon: 'fa-solid fa-hands-praying', color: 'from-yellow-100 to-orange-200', text: 'Hand-made pure cotton round and long wicks for daily puja.' }
+  { name: 'Moringa Powder', icon: 'fa-solid fa-leaf', color: 'from-sky-100 to-blue-100', text: 'Nutrient-rich superfood leaf powder filled with minerals & antioxidants.' }
 ];
 
 // Counter component for animated stats counting
@@ -151,7 +150,14 @@ export default function Home({ settings }) {
   useEffect(() => {
     api.get('/products')
       .then(res => {
-        const featuredSlugs = ['tomato-powder-250g', 'raw-banana-powder-250g', 'moringa-powder-250g', '4-inch-long-cotton-wicks'];
+        const featuredSlugs = [
+          'tomato-powder-250g', 
+          'raw-banana-powder-250g', 
+          'moringa-powder-250-grams', 
+          'moringa-powder-250g', 
+          'carrot-powder-250g', 
+          'beetroot-powder-250g'
+        ];
         const featured = res.data.filter(p => featuredSlugs.includes(p.id));
         if (featured.length > 0) setFeaturedProducts(featured);
       })
@@ -163,7 +169,7 @@ export default function Home({ settings }) {
     navigate(`/shop?category=${encodeURIComponent(catName)}`);
   };
 
-  const GENERAL_WA_MSG = 'Hello NVKM GROUP, I am interested in your natural powder products.';
+  const GENERAL_WA_MSG = 'Hello NVKM GROUP, I am interested in your dehydrated powder products.';
 
   return (
     <div className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 space-y-10 sm:space-y-16 page-transition">
@@ -197,13 +203,13 @@ export default function Home({ settings }) {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-12 items-center relative px-3 xs:px-5 sm:px-12 lg:px-16" style={{ zIndex: 10 }}>
           <div className="lg:col-span-7 space-y-4 sm:space-y-6 lg:space-y-7 text-center lg:text-left" data-aos="fade-right">
             <span className="inline-flex items-center gap-2 bg-blue-800/40 border border-blue-700/40 px-4 py-1.5 rounded-full text-xs font-bold tracking-wider text-[#38BDF8] shadow-sm animate-pulse-glow">
-              <i className="fa-solid fa-leaf text-xs" /> 100% Pure, Organic &amp; Natural
+              <i className="fa-solid fa-shield-halved text-xs" /> Pure &amp; Preservative-Free
             </span>
             <h1 className="font-heading font-extrabold text-2xl xs:text-3xl sm:text-5xl lg:text-6xl leading-[1.15] tracking-tight text-white">
-              Premium Natural Fruit &amp; <span className="bg-gradient-to-r from-[#38BDF8] via-[#2563EB] to-[#93C5FD] bg-clip-text text-transparent">Vegetable Powders</span>
+              Premium Dehydrated Fruit &amp; <span className="bg-gradient-to-r from-[#38BDF8] via-[#2563EB] to-[#93C5FD] bg-clip-text text-transparent">Vegetable Powders</span>
             </h1>
             <p className="text-[11px] sm:text-sm text-slate-300 max-w-xl mx-auto lg:mx-0 font-medium leading-relaxed">
-              NVKM GROUP manufactures nutrient-rich powders for daily wellness. Sourced from natural harvests and processed under strict hygienic standards — healthy, organic, and preservative-free nutrition for retail &amp; wholesale buyers.
+              NVKM GROUP manufactures nutrient-rich powders for daily wellness. Sourced from farm-fresh harvests and processed under strict hygienic standards — pure, healthy, and preservative-free nutrition for retail &amp; wholesale buyers.
             </p>
             <div className="flex flex-wrap justify-center lg:justify-start gap-3 sm:gap-4 pt-1 sm:pt-2">
               <button onClick={() => navigate('/shop')} className="bg-[#2563EB] hover:bg-[#1D4ED8] text-white font-extrabold px-5 sm:px-8 py-3 sm:py-4 rounded-2xl shadow-xl shadow-blue-950/40 transition-all duration-300 hover:scale-[1.02] flex items-center gap-2 text-xs uppercase tracking-wider">
@@ -252,7 +258,7 @@ export default function Home({ settings }) {
         {[
           { target: '500', suffix: '+', label: 'Happy Customers' },
           { target: '6', suffix: '+', label: 'Product Variants' },
-          { target: '100', suffix: '%', label: 'Natural & Organic' },
+          { target: '5', suffix: '★', label: 'Customer Rating' },
           { target: '48', suffix: 'hr', label: 'Express Delivery' }
         ].map(({ target, suffix, label }) => (
           <div key={label} className="bg-white border border-slate-100 rounded-2xl sm:rounded-3xl p-4 sm:p-7 text-center shadow-sm hover:shadow-lg transition-all duration-300 hover:scale-[1.02] border-glow-blue">
@@ -268,12 +274,12 @@ export default function Home({ settings }) {
       <section className="py-4" data-aos="fade-up">
         <div className="text-center max-w-2xl mx-auto space-y-2 mb-12">
           <span className="text-xs font-bold text-[#2563EB] tracking-widest uppercase">Healthy &amp; Nutritious</span>
-          <h2 className="font-heading font-extrabold text-3xl md:text-4xl text-[#111827]">Benefits of Natural Powders</h2>
-          <p className="text-xs sm:text-sm text-slate-500 leading-relaxed">Our powders are produced from chosen natural produce, containing high nutrition concentration to enrich your daily diet.</p>
+          <h2 className="font-heading font-extrabold text-3xl md:text-4xl text-[#111827]">Benefits of Dehydrated Powders</h2>
+          <p className="text-xs sm:text-sm text-slate-500 leading-relaxed">Our powders are produced from chosen farm-fresh produce, containing high nutrition concentration to enrich your daily diet.</p>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {[
-            { icon: 'fa-certificate', title: '100% Pure & Natural', desc: 'No added preservatives, artificial flavorings, MSG, colorants, or binding fillers. You experience only pure organic nutrients directly from nature.' },
+            { icon: 'fa-certificate', title: 'Pure & Additive-Free', desc: 'No added preservatives, artificial flavorings, MSG, colorants, or binding fillers. Experience clean, nutrient-dense nutrition directly from farm-fresh harvests.' },
             { icon: 'fa-dna', title: 'Nutrient Lock-in System', desc: 'Our low-temperature dehydration process preserves high vitamins, dietary fibers, enzymes, and active mineral profiles of fresh raw ingredients.' },
             { icon: 'fa-box', title: 'Food-Grade Packaging', desc: 'Packaged in food-safe standup ziplock bags that block UV rays, keeping powders moisture-free with a long shelf life of up to 12 months.' }
           ].map(({ icon, title, desc }, index) => (
@@ -295,7 +301,7 @@ export default function Home({ settings }) {
           <h2 className="font-heading font-extrabold text-3xl md:text-4xl text-[#111827]">Product Categories</h2>
           <p className="text-xs sm:text-sm text-slate-500 leading-relaxed">We manufacture a diverse range of fruit, vegetable, health, and botanical powders catering to all nutritional needs.</p>
         </div>
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-3 sm:gap-5">
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-3 sm:gap-5">
           {categories.map((cat, index) => (
             <div
               key={index}
@@ -384,7 +390,7 @@ export default function Home({ settings }) {
         </div>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">
           {[
-            { icon: 'fa-seedling', title: '100% Organic', desc: 'Purity direct from green farm harvests.' },
+            { icon: 'fa-shield-halved', title: 'Purity Guaranteed', desc: 'Direct from clean, farm-fresh harvests.' },
             { icon: 'fa-award', title: 'Premium Quality', desc: 'Processed under certified hygiene guidelines.' },
             { icon: 'fa-tags', title: 'Best Rates', desc: 'Dynamic wholesale discounts available.' },
             { icon: 'fa-truck', title: 'Fast Delivery', desc: 'Express door shipping across towns.' },
@@ -410,7 +416,7 @@ export default function Home({ settings }) {
         </div>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {[
-            { q: "NVKM's Banana Powder has become a staple for my baby's daily meals. Completely natural and very easy to prepare. Excellent texture and great aroma!", name: 'Priya Madhav', role: 'Mother of 10-month-old', initial: 'P' },
+            { q: "NVKM's Banana Powder has become a staple for my baby's daily meals. Completely pure and very easy to prepare. Excellent texture and great aroma!", name: 'Priya Madhav', role: 'Mother of 10-month-old', initial: 'P' },
             { q: "We order Moringa powder in bulk batches of 20 kg for our energy bar brand. The color is bright green, indicating premium freshness. Naveen's service is top notch.", name: 'Ramesh Reddy', role: 'B2B Health Foods Maker', initial: 'R' },
             { q: "The Ashwagandha vitality mix is incredibly pure. I feel very active and immune from normal seasonal colds. Highly recommended daily supplement.", name: 'Kiran Prasad', role: 'Retail Customer', initial: 'K' }
           ].map(({ q, name, role, initial }) => (
@@ -436,7 +442,7 @@ export default function Home({ settings }) {
         <div className="text-center max-w-2xl mx-auto space-y-2 mb-10">
           <span className="text-xs font-bold text-[#2563EB] tracking-widest uppercase">Healthy Inspirations</span>
           <h2 className="font-heading font-extrabold text-3xl text-[#111827]">Social Proof &amp; Lifestyle</h2>
-          <p className="text-sm text-slate-500 leading-relaxed">Follow our organic manufacturing steps and see how health experts use natural powders.</p>
+          <p className="text-sm text-slate-500 leading-relaxed">Follow our clean dehydration process and see how health experts use nutrient-rich powders.</p>
         </div>
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
           {[

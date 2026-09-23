@@ -210,7 +210,7 @@ export default function ProductDetail() {
   };
 
   const handleWhatsAppInquiry = () => {
-    const textMsg = `Hello NVKM GROUP, I am interested in purchasing your natural powder:\n- Product: ${product.name}\n- Packaging Weight: ${selectedWeight}\n- Quantity: ${qty}\nCould you please provide bulk wholesale rates and retail delivery details for my pincode?`;
+    const textMsg = `Hello NVKM GROUP, I am interested in purchasing your dehydrated powder:\n- Product: ${product.name}\n- Packaging Weight: ${selectedWeight}\n- Quantity: ${qty}\nCould you please provide bulk wholesale rates and retail delivery details for my pincode?`;
     window.open(`https://wa.me/9014274293?text=${encodeURIComponent(textMsg)}`, '_blank');
   };
 
@@ -219,7 +219,7 @@ export default function ProductDetail() {
       <SEO 
         title={`${product.name} | NVKM GROUP`}
         description={product.shortDesc}
-        keywords={`${product.name.toLowerCase()}, ${product.category.toLowerCase()}, pure ${product.category.toLowerCase()}, buy organic ${product.name.toLowerCase()}`}
+        keywords={`${product.name.toLowerCase()}, ${product.category.toLowerCase()}, pure ${product.category.toLowerCase()}, buy pure ${product.name.toLowerCase()}`}
         ogImage={product.image}
         ogUrl={window.location.href}
       />

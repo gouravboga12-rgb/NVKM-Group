@@ -43,9 +43,9 @@ export const DEFAULT_SETTINGS = {
   footer_address: "NVKM GROUP Manufacturing, Andhra Pradesh, India",
   footer_phone_1: "+91 90142 74293",
   footer_phone_2: "+91 70756 04700",
-  seo_title: "NVKM GROUP | Premium Natural Fruit & Vegetable Powders",
-  seo_description: "Buy premium natural fruit and vegetable powders including Banana Powder and Moringa Powder from NVKM GROUP. Natural, healthy, and high-quality powders.",
-  seo_keywords: "banana powder, moringa powder, natural fruit powder, vegetable powder, organic herbal powder, nvkm group",
+  seo_title: "NVKM GROUP | Premium Dehydrated Fruit & Vegetable Powders",
+  seo_description: "Buy premium dehydrated fruit and vegetable powders including Banana Powder and Moringa Powder from NVKM GROUP. Pure, healthy, and high-quality powders.",
+  seo_keywords: "banana powder, moringa powder, dehydrated fruit powder, vegetable powder, herbal powder, nvkm group",
   google_site_verification: "",
   robots_txt: "User-agent: *\nAllow: /\n\nSitemap: {site_url}/sitemap.xml"
 };

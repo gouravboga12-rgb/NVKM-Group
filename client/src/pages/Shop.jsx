@@ -104,15 +104,15 @@ export default function Shop() {
   return (
     <div className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 py-6 sm:py-10 page-transition">
       <SEO 
-        title={categoryQuery !== 'All' ? `${categoryQuery} - Shop | NVKM GROUP` : "Shop Natural Fruit & Vegetable Powders | NVKM GROUP"}
-        description={searchQuery ? `Search results for "${searchQuery}" in NVKM GROUP shop. Buy premium natural organic fruit and vegetable powders.` : "Browse and buy premium organic and natural fruit and vegetable powders from NVKM GROUP. Certified pure, healthy, and preservative-free."}
-        keywords={`organic powders, shop ${categoryQuery.toLowerCase()}, natural powders, fruit powder, vegetable powder, moringa, banana powder`}
+        title={categoryQuery !== 'All' ? `${categoryQuery} - Shop | NVKM GROUP` : "Shop Fruit & Vegetable Powders | NVKM GROUP"}
+        description={searchQuery ? `Search results for "${searchQuery}" in NVKM GROUP shop. Buy premium dehydrated fruit and vegetable powders.` : "Browse and buy premium dehydrated fruit and vegetable powders from NVKM GROUP. Certified pure, healthy, and preservative-free."}
+        keywords={`powders, shop ${categoryQuery.toLowerCase()}, dehydrated powders, fruit powder, vegetable powder, moringa, banana powder`}
       />
       <div className="text-left space-y-2 mb-10" data-aos="fade-right">
-        <span className="text-xs font-bold text-accent tracking-widest uppercase">Pure & Organic</span>
-        <h1 className="font-heading font-extrabold text-4xl text-darkText tracking-tight">Shop Organic Powders</h1>
+        <span className="text-xs font-bold text-accent tracking-widest uppercase">Pure &amp; Preservative-Free</span>
+        <h1 className="font-heading font-extrabold text-4xl text-darkText tracking-tight">Shop Powders</h1>
         <div className="h-1 w-12 bg-accent rounded-full mt-2"></div>
-        <p className="text-sm text-slate-500 max-w-2xl pt-1">Search and filter our natural, nutrient-dense manufacturing powder stock. Preservative-free products direct from Bathalapalli.</p>
+        <p className="text-sm text-slate-500 max-w-2xl pt-1">Search and filter our nutrient-dense manufacturing powder stock. Preservative-free products direct from Bathalapalli.</p>
       </div>
 
       {/* Search, Sorting & Categories Toolbar */}

@@ -48,7 +48,7 @@ export default function CartDrawer() {
             <div className="h-full flex flex-col items-center justify-center text-center py-12">
               <i className="fa-solid fa-cart-shopping text-6xl text-slate-200 mb-4"></i>
               <p className="font-heading font-semibold text-lg text-slate-500">Your cart is empty!</p>
-              <p className="text-sm text-slate-400 mt-1 max-w-[280px]">Add organic powders to start healthy living.</p>
+              <p className="text-sm text-slate-400 mt-1 max-w-[280px]">Add healthy powders to start your daily wellness.</p>
               <button onClick={() => { navigate('/shop'); setCartOpen(false); }} className="mt-6 bg-primary hover:bg-blue-800 text-white font-bold py-2.5 px-6 rounded-xl text-sm transition-colors shadow-md">Shop Now</button>
             </div>
           ) : (

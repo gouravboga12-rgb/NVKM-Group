@@ -11,7 +11,7 @@ const PRODUCTS_DATA = [
     shortDesc: "Natural banana powder rich in nutrients and energy. Ideal for baby foods, smoothies, baking, and protein shakes.",
     longDesc: "NVKM GROUP's Premium Banana Powder is manufactured using high-grade, naturally ripened bananas. Through careful processing, we retain the natural sweetness, vitamins, and minerals without adding any artificial preservatives, sweeteners, or colors. Perfect for wellness seekers, mothers preparing nutritious baby food, or fitness enthusiasts looking for a clean, natural energy source.",
     benefits: [
-      "100% Pure & Organic Cavendish Bananas",
+      "Pure Cavendish Bananas",
       "Excellent source of Potassium, Dietary Fiber, and Vitamin B6",
       "Natural energy booster & highly digestible for infants",
       "Gluten-free, vegan-friendly, and zero artificial preservatives"
@@ -35,17 +35,17 @@ const PRODUCTS_DATA = [
   },
   {
     id: "moringa-powder",
-    name: "Organic Moringa Powder",
+    name: "Moringa Powder",
     category: "Moringa Powder",
     shortDesc: "Healthy moringa powder packed with vitamins and antioxidants. Perfect for daily nutrition and wellness.",
     longDesc: "Our Moringa Powder is sourced from selected organic Moringa Oleifera leaves, hand-picked and gently ground under strict quality standards. Dubbed the 'Miracle Tree', Moringa leaf powder is one of the most nutrient-dense botanicals on earth, offering a concentrated dose of vitamins, amino acids, and vital antioxidants to supercharge your health and immune system.",
     benefits: [
-      "100% Pure Organic Moringa Oleifera leaf powder",
+      "Pure Moringa Oleifera leaf powder",
       "Rich in Antioxidants, Vitamin A, Vitamin C, Iron, and Calcium",
       "Supports immune system defense, skin health, and energy levels",
       "Natural anti-inflammatory and detoxifying properties"
     ],
-    ingredients: "100% Pure Organic Dried Moringa Leaves",
+    ingredients: "Pure Dried Moringa Leaves",
     usage: "Take 1 teaspoon (approx 3-5g) daily. Mix in warm water, herbal teas, smoothies, fruit juices, or stir into soups and salad dressings.",
     image: "https://images.unsplash.com/photo-1515694346937-94d85e41e6f0?auto=format&fit=crop&w=600&q=80",
     rating: 4.9,
@@ -58,7 +58,7 @@ const PRODUCTS_DATA = [
       { weight: "1kg", price: 1500, discountPrice: 1200 }
     ],
     reviews: [
-      { name: "Ramesh Reddy", rating: 5, date: "2026-04-20", comment: "Truly organic, very fine powder. I drink it with warm water every morning, definitely boosts my stamina." },
+      { name: "Ramesh Reddy", rating: 5, date: "2026-04-20", comment: "Truly pure, very fine powder. I drink it with warm water every morning, definitely boosts my stamina." },
       { name: "Anjali J.", rating: 5, date: "2026-05-10", comment: "Top quality packaging, and the leaf powder smells genuine and grassy. Great natural supplement." }
     ]
   },
@@ -101,7 +101,7 @@ const PRODUCTS_DATA = [
       "Perfect for enrichment of batters, doughs, and soup broths",
       "100% Vegan, Gluten-free, and Non-GMO"
     ],
-    ingredients: "Dehydrated Spinach, Carrot, Beetroot, and Organic Wheatgrass Powders",
+    ingredients: "Dehydrated Spinach, Carrot, Beetroot, and Wheatgrass Powders",
     usage: "Stir 1-2 teaspoons into your soup, gravy, chapati dough, idli batter, or blend with fruit juice for a nutritious green drink.",
     image: "https://images.unsplash.com/photo-1574316071802-0d684efa7bf5?auto=format&fit=crop&w=600&q=80",
     rating: 4.6,
@@ -148,7 +148,7 @@ const PRODUCTS_DATA = [
     name: "Pure Neem & Tulsi Herbal Powder",
     category: "Natural Powders",
     shortDesc: "Pure and natural powders without preservatives or artificial colors. Made for healthy living.",
-    longDesc: "Our Neem and Tulsi Herbal Powder is an exceptional double-purified blend that acts as a natural purifier. Sourced from organic fields, it is processed at low temperatures to ensure the active bitters and healing volatile oils remain intact. Ideal for blood purification, digestive health, or external skin/hair applications.",
+    longDesc: "Our Neem and Tulsi Herbal Powder is an exceptional double-purified blend that acts as a natural purifier. Sourced from green fields, it is processed at low temperatures to ensure the active bitters and healing volatile oils remain intact. Ideal for blood purification, digestive health, or external skin/hair applications.",
     benefits: [
       "Double purified Neem leaves and Sacred Tulsi leaves",
       "Promotes blood detoxification and clear, healthy skin",
@@ -484,7 +484,7 @@ function renderCartDrawer() {
       <div class="h-full flex flex-col items-center justify-center text-center py-12">
         <i class="fa-solid fa-basket-shopping text-6xl text-slate-200 mb-4"></i>
         <p class="font-heading font-semibold text-lg text-slate-500">Your basket is empty!</p>
-        <p class="text-sm text-slate-400 mt-1 max-w-[280px]">Add organic powders to start healthy living.</p>
+        <p class="text-sm text-slate-400 mt-1 max-w-[280px]">Add healthy powders to start healthy living.</p>
         <button onclick="navigate('shop'); toggleCartDrawer(false);" class="mt-6 bg-primary hover:bg-blue-800 text-white font-bold py-2.5 px-6 rounded-xl text-sm transition-colors shadow-md">
           Shop Now
         </button>

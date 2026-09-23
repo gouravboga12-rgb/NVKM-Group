@@ -43,7 +43,7 @@ export default function ProductCard({ product }) {
     setActiveImgIdx((prev) => (prev === imagesList.length - 1 ? 0 : prev + 1));
   };
 
-  const waUrl = `https://wa.me/9014274293?text=Hello%20NVKM%20GROUP,%20I%20am%20interested%20in%20purchasing%20your%20natural%20powder:%20${encodeURIComponent(product.name)}%20(${defaultVar.weight}%20size).%20Please%20provide%20rates.`;
+  const waUrl = `https://wa.me/9014274293?text=Hello%20NVKM%20GROUP,%20I%20am%20interested%20in%20purchasing%20your%20product:%20${encodeURIComponent(product.name)}%20(${defaultVar.weight}%20size).%20Please%20provide%20rates.`;
 
   return (
     <div className="product-card glass-premium rounded-[20px] sm:rounded-[32px] overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col justify-between" data-aos="fade-up">

@@ -21,7 +21,7 @@ export default function Footer({ settings }) {
             />
             <span className="font-heading font-extrabold text-xl sm:text-2xl md:text-3xl text-white">NVKM <span className="text-secondary">GROUP</span></span>
           </div>
-          <p className="text-xs text-slate-400 leading-relaxed max-w-sm">NVKM GROUP manufactures premium natural fruit & vegetable powders. 100% organic, preservative-free, and nutrient-rich for healthy living.</p>
+          <p className="text-xs text-slate-400 leading-relaxed max-w-sm">NVKM GROUP manufactures premium dehydrated fruit &amp; vegetable powders. Pure, preservative-free, and nutrient-rich for healthy living.</p>
           <div className="flex space-x-3 mt-4">
             {[
               ['fa-facebook-f', 'https://www.facebook.com/profile.php?id=61562290895044'],
@@ -65,9 +65,9 @@ export default function Footer({ settings }) {
             <ul className="space-y-2.5 sm:space-y-3 text-xs font-semibold">
               <li><span className="text-slate-400">Tomato Powder</span></li>
               <li><span className="text-slate-400">Banana Powder</span></li>
+              <li><span className="text-slate-400">Carrot Powder</span></li>
               <li><span className="text-slate-400">Moringa Powder</span></li>
               <li><span className="text-slate-400">Beetroot Powder</span></li>
-              <li><Link to="/shop?category=Pooja+Accessories" className="text-slate-400 hover:text-secondary transition-colors">Pooja Accessories</Link></li>
             </ul>
           </div>
         </div>
@@ -101,7 +101,7 @@ export default function Footer({ settings }) {
         <div className="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between text-xs text-slate-500 gap-2 font-semibold">
           <span>© {new Date().getFullYear()} NVKM GROUP. All rights reserved.</span>
           <span>Developed by <a href="https://www.codtechitsolutions.com/" target="_blank" rel="noopener noreferrer" className="text-slate-450 hover:text-secondary transition-colors font-bold">CODTECH IT SOLUTION</a></span>
-          <span>Premium Natural Powder Products | Made with <i className="fa-solid fa-heart text-red-500 text-[10px] animate-pulse"></i> in India</span>
+          <span>Premium Dehydrated Powder Products | Made with <i className="fa-solid fa-heart text-red-500 text-[10px] animate-pulse"></i> in India</span>
         </div>
       </div>
     </footer>

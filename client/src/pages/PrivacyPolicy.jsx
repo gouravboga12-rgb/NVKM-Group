@@ -4,7 +4,7 @@ export default function PrivacyPolicy() {
   return (
     <div className="max-w-4xl mx-auto px-4 py-8 sm:py-12 space-y-6 page-transition">
       <SEO 
-        title="Privacy Policy | NVKM GROUP - Pure Natural Powders"
+        title="Privacy Policy | NVKM GROUP - Pure Dehydrated Powders"
         description="Read NVKM GROUP privacy policy. Learn how we handle your personal data securely for contact and shipping purposes."
         keywords="privacy policy, data collection, data security, customer rights, packaging safety, bathalapalli AP"
       />

@@ -91,7 +91,7 @@ export default function InvoicePrint() {
               <span className="font-heading font-black text-2xl text-slate-900 leading-none">NVKM <span className="text-blue-600">GROUP</span></span>
             </div>
             <p className="text-xs font-bold text-slate-400 mt-2 leading-relaxed uppercase tracking-wider">
-              Natural Organic Powder Manufacturer
+              Dehydrated Fruit &amp; Vegetable Powder Manufacturer
             </p>
             <p className="text-xs text-slate-500 mt-1 leading-relaxed">
               Near bypass Anantapur Road, Bathalapalli,<br />
@@ -187,7 +187,7 @@ export default function InvoicePrint() {
 
         {/* Terms and Bottom Notes */}
         <div className="mt-16 pt-8 border-t border-slate-200 text-center text-[10px] text-slate-400 font-semibold leading-relaxed">
-          <p className="text-slate-500 font-bold mb-1">Thank you for supporting sustainable farming & natural health!</p>
+          <p className="text-slate-500 font-bold mb-1">Thank you for supporting sustainable farming &amp; healthy living!</p>
           <p>This is a computer-generated invoice and requires no physical signature or seal.</p>
           <p className="mt-1">For return queries or bulk quotations, write to us at Navakiranamgroup@gmail.com or WhatsApp +91 9014274293.</p>
         </div>

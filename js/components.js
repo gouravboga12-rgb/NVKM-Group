@@ -114,7 +114,7 @@ function renderHomeView() {
   // Unique category listing
   const categories = [
     { name: "Banana Powder", icon: "fa-solid fa-banana", color: "from-amber-100 to-yellow-100", text: "Rich in energy & nutrients, ideal for infants & baking." },
-    { name: "Moringa Powder", icon: "fa-solid fa-leaf", color: "from-blue-100 to-sky-100", text: "Organic leaves superfood filled with minerals & antioxidants." },
+    { name: "Moringa Powder", icon: "fa-solid fa-leaf", color: "from-blue-100 to-sky-100", text: "Nutrient-rich superfood filled with minerals & antioxidants." },
     { name: "Fruit Powders", icon: "fa-solid fa-lemon", color: "from-orange-100 to-red-100", text: "100% natural fruit powders for refreshments & culinary." },
     { name: "Vegetable Powders", icon: "fa-solid fa-carrot", color: "from-sky-100 to-blue-100", text: "Nutrient-packed dehydrated vegetables for healthy cooking." },
     { name: "Health Powders", icon: "fa-solid fa-mortar-pestle", color: "from-blue-100 to-cyan-100", text: "Immunity adaptogens designed for vitality and active life." },
@@ -149,13 +149,13 @@ function renderHomeView() {
         
         <div class="lg:col-span-7 space-y-6 text-left" data-aos="fade-right">
           <span class="inline-flex items-center gap-2 bg-blue-800/60 border border-blue-700/50 px-3 py-1 rounded-full text-xs font-semibold tracking-wider text-secondary shadow-sm">
-            <i class="fa-solid fa-leaf"></i> 100% Pure, Organic & Chemical-Free
+            <i class="fa-solid fa-leaf"></i> Pure & Preservative-Free
           </span>
           <h1 class="font-heading font-extrabold text-4xl sm:text-5xl lg:text-6xl leading-[1.1] tracking-tight">
             Premium Natural Fruit & <span class="text-gradient bg-gradient-to-r from-secondary to-accent bg-clip-text text-transparent">Vegetable Powders</span>
           </h1>
           <p class="text-sm sm:text-base text-slate-200 max-w-xl font-light leading-relaxed">
-            NVKM GROUP manufactures nutrient-rich powders for daily wellness. Sourced from natural harvests and processed under strict hygienic standards. Healthy, organic, and preservative-free nutrition for retail & wholesale buyers.
+            NVKM GROUP manufactures nutrient-rich powders for daily wellness. Sourced from natural harvests and processed under strict hygienic standards. Pure, healthy, and preservative-free nutrition for retail & wholesale buyers.
           </p>
           <div class="flex flex-wrap gap-3 pt-2">
             <button onclick="navigate('shop')" class="bg-accent hover:bg-accentHover text-white font-bold px-7 py-3.5 rounded-2xl shadow-lg shadow-accent/25 hover:shadow-accent/40 transform hover:scale-[1.02] active:scale-[0.98] transition-all flex items-center gap-2 text-sm">
@@ -173,7 +173,7 @@ function renderHomeView() {
             <img src="https://images.unsplash.com/photo-1515694346937-94d85e41e6f0?auto=format&fit=crop&w=600&q=80" alt="Moringa powder visual" class="w-full h-56 object-cover rounded-2xl shadow-md bg-white">
             <div class="mt-4 flex items-center justify-between">
               <div>
-                <h3 class="font-heading font-bold text-lg text-white">Organic Moringa Powder</h3>
+                <h3 class="font-heading font-bold text-lg text-white">Moringa Powder</h3>
                 <span class="text-xs text-secondary font-semibold">Bestseller Leaf Powder</span>
               </div>
               <div class="bg-secondary/20 border border-secondary/30 px-3 py-1 rounded-xl text-secondary text-sm font-extrabold shadow-sm">
@@ -198,7 +198,7 @@ function renderHomeView() {
         <div class="bg-white p-8 rounded-3xl border border-slate-100 shadow-sm hover:shadow-md transition-shadow" data-aos="fade-up" data-aos-delay="100">
           <div class="w-12 h-12 rounded-2xl bg-blue-50 text-primary flex items-center justify-center text-xl mb-6"><i class="fa-solid fa-certificate"></i></div>
           <h3 class="font-heading font-bold text-lg text-darkText">100% Pure & Natural</h3>
-          <p class="text-xs text-slate-500 mt-2.5 leading-relaxed">No added preservatives, artificial flavorings, MSG, colorants, or binding fillers. You experience only pure organic nutrients directly from nature.</p>
+          <p class="text-xs text-slate-500 mt-2.5 leading-relaxed">No added preservatives, artificial flavorings, MSG, colorants, or binding fillers. You experience only wholesome nutrients directly from farm-fresh harvests.</p>
         </div>
         <div class="bg-white p-8 rounded-3xl border border-slate-100 shadow-sm hover:shadow-md transition-shadow" data-aos="fade-up" data-aos-delay="200">
           <div class="w-12 h-12 rounded-2xl bg-blue-50 text-primary flex items-center justify-center text-xl mb-6"><i class="fa-solid fa-dna"></i></div>
@@ -285,7 +285,7 @@ function renderHomeView() {
       <div class="grid grid-cols-1 md:grid-cols-5 gap-6">
         <div class="bg-white p-6 rounded-3xl border border-slate-100 text-center flex flex-col items-center shadow-sm" data-aos="fade-up" data-aos-delay="100">
           <div class="w-10 h-10 rounded-xl bg-blue-50 text-primary flex items-center justify-center text-lg mb-4"><i class="fa-solid fa-seedling"></i></div>
-          <h4 class="font-heading font-bold text-sm text-darkText">100% Organic</h4>
+          <h4 class="font-heading font-bold text-sm text-darkText">Purity Guaranteed</h4>
           <p class="text-[11px] text-slate-400 mt-2">Purity direct from green farm harvests.</p>
         </div>
         <div class="bg-white p-6 rounded-3xl border border-slate-100 text-center flex flex-col items-center shadow-sm" data-aos="fade-up" data-aos-delay="200">
@@ -367,7 +367,7 @@ function renderHomeView() {
       <div class="text-center max-w-2xl mx-auto space-y-2 mb-10" data-aos="fade-up">
         <span class="text-xs font-bold text-accent tracking-widest uppercase">Healthy Inspirations</span>
         <h2 class="font-heading font-extrabold text-3xl text-darkText">Social Proof & Lifestyle</h2>
-        <p class="text-xs sm:text-sm text-slate-500 leading-relaxed">Follow our organic manufacturing steps and see how health experts use natural powders.</p>
+        <p class="text-xs sm:text-sm text-slate-500 leading-relaxed">Follow our clean dehydration process and see how health experts use natural powders.</p>
       </div>
 
       <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
@@ -419,7 +419,7 @@ function renderShopView() {
   return `
     <div class="py-6">
       <div class="text-left space-y-1 mb-8" data-aos="fade-right">
-        <h1 class="font-heading font-extrabold text-3xl text-darkText">Shop Organic Powders</h1>
+        <h1 class="font-heading font-extrabold text-3xl text-darkText">Shop Powders</h1>
         <p class="text-xs text-slate-500">Search and filter our natural, nutrient-dense manufacturing powder stock.</p>
       </div>
 

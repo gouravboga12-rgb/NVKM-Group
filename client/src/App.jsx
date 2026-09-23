@@ -126,7 +126,7 @@ function App() {
             Need Help? Chat on WhatsApp
           </div>
           <a 
-            href={`https://wa.me/${(settings?.whatsapp_phone_1 || DEFAULT_SETTINGS.whatsapp_phone_1).replace(/[^0-9]/g, '')}?text=${encodeURIComponent('Hello, I am interested in your natural powder products.')}`} 
+            href={`https://wa.me/${(settings?.whatsapp_phone_1 || DEFAULT_SETTINGS.whatsapp_phone_1).replace(/[^0-9]/g, '')}?text=${encodeURIComponent('Hello, I am interested in your dehydrated powder products.')}`} 
             target="_blank" 
             rel="noreferrer" 
             className="w-14 h-14 bg-blue-600 hover:bg-blue-700 text-white rounded-full flex items-center justify-center shadow-2xl relative hover:scale-110 transition-transform duration-300" 

@@ -34,7 +34,7 @@ export default function QuickViewModal() {
   };
 
   const handleWhatsApp = () => {
-    const msg = `Hello NVKM GROUP, I am interested in purchasing your natural powder:\n- Product: ${product.name}\n- Packaging Weight: ${activeWeight}\n- Quantity: ${qty}\nCould you please provide bulk wholesale rates and retail delivery details for my pincode?`;
+    const msg = `Hello NVKM GROUP, I am interested in purchasing your dehydrated powder:\n- Product: ${product.name}\n- Packaging Weight: ${activeWeight}\n- Quantity: ${qty}\nCould you please provide bulk wholesale rates and retail delivery details for my pincode?`;
     window.open(`https://wa.me/9014274293?text=${encodeURIComponent(msg)}`, '_blank');
   };
 

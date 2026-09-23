@@ -29,7 +29,7 @@ export default function Contact({ settings }) {
     setFormData(prev => ({ ...prev, [name]: value }));
   };
 
-  const GENERAL_WA_MSG = 'Hello NVKM GROUP, I am interested in your natural powder products. Please provide details.';
+  const GENERAL_WA_MSG = 'Hello NVKM GROUP, I am interested in your dehydrated powder products. Please provide details.';
 
   const contactDetails = [
     {
@@ -76,7 +76,7 @@ export default function Contact({ settings }) {
 
   const faqs = [
     { q: 'Do you offer wholesale pricing?', a: 'Yes! We offer tiered wholesale pricing for bulk orders above 5 kg with up to 40% discount. Contact us on WhatsApp for a custom quote.' },
-    { q: 'Are your powders organic and preservative-free?', a: 'Absolutely. All NVKM GROUP powders are 100% natural — no artificial preservatives, colorants, MSG, or fillers of any kind.' },
+    { q: 'Are your powders pure and preservative-free?', a: 'Absolutely. All NVKM GROUP powders are pure — no artificial preservatives, colorants, MSG, or fillers of any kind.' },
     { q: 'How do I place a bulk order?', a: `You can place bulk orders directly through our website or contact us via WhatsApp at ${s.whatsapp_phone_1} for personalized B2B support and pricing.` },
     { q: 'Do you ship across India?', a: 'Yes, we ship PAN India with express delivery options. We also offer physical store pickup from our factory in Bathalapalli, Andhra Pradesh.' }
   ];

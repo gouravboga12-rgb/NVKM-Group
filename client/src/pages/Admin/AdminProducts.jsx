@@ -290,7 +290,7 @@ export default function AdminProducts() {
         <div className="bg-white border border-slate-100 rounded-3xl p-12 text-center">
           <i className="fa-solid fa-boxes-stacked text-slate-350 text-4xl mb-4" />
           <h4 className="font-heading font-black text-slate-700 text-base">Inventory is Empty</h4>
-          <p className="text-[11px] text-slate-400 mt-1">Add your first organic powder or puja accessory to populate the shop catalog.</p>
+          <p className="text-[11px] text-slate-400 mt-1">Add your first powder product to populate the shop catalog.</p>
         </div>
       ) : (
         <div className="bg-white border border-slate-100 rounded-3xl overflow-hidden shadow-sm">
@@ -421,7 +421,7 @@ export default function AdminProducts() {
                     name="name"
                     value={formData.name}
                     onChange={handleInputChange}
-                    placeholder="e.g., Organic Beetroot Powder"
+                    placeholder="e.g., Beetroot Powder 250 Grams"
                     className="w-full bg-slate-50 border border-slate-200 p-3 rounded-xl text-xs font-semibold focus:outline-none focus:border-blue-500 transition-all"
                   />
                 </div>
