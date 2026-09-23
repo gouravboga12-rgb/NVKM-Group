@@ -15,7 +15,7 @@ export default function Header({ settings }) {
   const navigate = useNavigate();
 
   const navLinks = [
-    { path: '/', label: 'Home' },
+    { path: '/home', label: 'Home' },
     { path: '/shop', label: 'Products' },
     { path: '/about', label: 'About Us' },
     { path: '/contact', label: 'Contact' }

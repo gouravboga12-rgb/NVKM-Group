@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { Routes, Route, useLocation } from 'react-router-dom';
+import { Routes, Route, useLocation, Navigate } from 'react-router-dom';
 import api, { DEFAULT_SETTINGS } from './api/api';
 import Header from './components/Header';
 
@@ -96,7 +96,8 @@ function App() {
 
       <main className={isAdminPath ? "min-h-screen overflow-x-hidden bg-slate-50" : "min-h-screen pt-20 pb-12 overflow-x-hidden"}>
         <Routes>
-          <Route path="/" element={<Home settings={settings} />} />
+          <Route path="/" element={<Navigate to="/shop" replace />} />
+          <Route path="/home" element={<Home settings={settings} />} />
           <Route path="/shop" element={<Shop />} />
           <Route path="/products/:slug" element={<ProductDetail />} />
           <Route path="/about" element={<About />} />

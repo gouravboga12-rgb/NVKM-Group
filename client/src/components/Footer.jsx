@@ -48,7 +48,7 @@ export default function Footer({ settings }) {
           <div className="md:col-span-2">
             <h3 className="font-heading font-extrabold text-white text-xs uppercase tracking-wider mb-4 sm:mb-5">Quick Links</h3>
             <ul className="space-y-2.5 sm:space-y-3 text-xs font-semibold">
-              <li><Link to="/" className="text-slate-400 hover:text-secondary transition-colors">Home</Link></li>
+              <li><Link to="/home" className="text-slate-400 hover:text-secondary transition-colors">Home</Link></li>
               <li><Link to="/shop" className="text-slate-400 hover:text-secondary transition-colors">Shop Products</Link></li>
               <li><Link to="/about" className="text-slate-400 hover:text-secondary transition-colors">About NVKM GROUP</Link></li>
               <li><Link to="/contact" className="text-slate-400 hover:text-secondary transition-colors">Contact Us</Link></li>

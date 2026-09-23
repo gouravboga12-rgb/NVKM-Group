@@ -174,7 +174,7 @@ const PRODUCTS_DATA = [
 
 // --- Global Application State ---
 let state = {
-  currentView: "home",
+  currentView: "shop",
   selectedProductId: null,
   searchQuery: "",
   selectedCategory: "All",
