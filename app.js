@@ -8,16 +8,16 @@ const PRODUCTS_DATA = [
     id: "banana-powder",
     name: "Premium Banana Powder",
     category: "Banana Powder",
-    shortDesc: "Natural banana powder rich in nutrients and energy. Ideal for baby foods, smoothies, baking, and protein shakes.",
-    longDesc: "NVKM GROUP's Premium Banana Powder is manufactured using high-grade, naturally ripened bananas. Through careful processing, we retain the natural sweetness, vitamins, and minerals without adding any artificial preservatives, sweeteners, or colors. Perfect for wellness seekers, mothers preparing nutritious baby food, or fitness enthusiasts looking for a clean, natural energy source.",
+    shortDesc: "Pure banana powder rich in nutrients and energy. Ideal for baby foods, smoothies, baking, and protein shakes.",
+    longDesc: "NVKM GROUP's Premium Banana Powder is manufactured using high-grade ripened bananas. Through careful processing, we retain the wholesome sweetness, vitamins, and minerals without adding any artificial preservatives, sweeteners, or colors. Perfect for wellness seekers, mothers preparing nutritious baby food, or fitness enthusiasts looking for a clean energy source.",
     benefits: [
       "Pure Cavendish Bananas",
       "Excellent source of Potassium, Dietary Fiber, and Vitamin B6",
-      "Natural energy booster & highly digestible for infants",
+      "Pure energy booster & highly digestible for infants",
       "Gluten-free, vegan-friendly, and zero artificial preservatives"
     ],
-    ingredients: "100% Pure Dehydrated Cavendish Bananas",
-    usage: "Add 1-2 tablespoons to milk, smoothies, oatmeal, protein shakes, or use in baking recipes (muffins, pancakes, cakes) as a natural sweetener and nutrient pack.",
+    ingredients: "Pure Dehydrated Cavendish Bananas",
+    usage: "Add 1-2 tablespoons to milk, smoothies, oatmeal, protein shakes, or use in baking recipes (muffins, pancakes, cakes) as a wholesome sweetener and nutrient pack.",
     image: "https://images.unsplash.com/photo-1571771894821-ce9b6c11b08e?auto=format&fit=crop&w=600&q=80",
     rating: 4.8,
     reviewsCount: 34,
@@ -30,7 +30,7 @@ const PRODUCTS_DATA = [
     ],
     reviews: [
       { name: "Suresh K.", rating: 5, date: "2026-04-12", comment: "Excellent product! Smells so fresh and mixability is perfect. My kids love it in their milkshakes." },
-      { name: "Priya M.", rating: 4, date: "2026-05-02", comment: "Very natural sweetness, no artificial smell. Highly recommend for infants as a healthy porridge mix." }
+      { name: "Priya M.", rating: 4, date: "2026-05-02", comment: "Very pure sweetness, no artificial smell. Highly recommend for infants as a healthy porridge mix." }
     ]
   },
   {
@@ -38,12 +38,12 @@ const PRODUCTS_DATA = [
     name: "Moringa Powder",
     category: "Moringa Powder",
     shortDesc: "Healthy moringa powder packed with vitamins and antioxidants. Perfect for daily nutrition and wellness.",
-    longDesc: "Our Moringa Powder is sourced from selected organic Moringa Oleifera leaves, hand-picked and gently ground under strict quality standards. Dubbed the 'Miracle Tree', Moringa leaf powder is one of the most nutrient-dense botanicals on earth, offering a concentrated dose of vitamins, amino acids, and vital antioxidants to supercharge your health and immune system.",
+    longDesc: "Our Moringa Powder is sourced from selected Moringa Oleifera leaves, hand-picked and gently ground under strict quality standards. Dubbed the 'Miracle Tree', Moringa leaf powder is one of the most nutrient-dense botanicals on earth, offering a concentrated dose of vitamins, amino acids, and vital antioxidants to supercharge your health and immune system.",
     benefits: [
       "Pure Moringa Oleifera leaf powder",
       "Rich in Antioxidants, Vitamin A, Vitamin C, Iron, and Calcium",
       "Supports immune system defense, skin health, and energy levels",
-      "Natural anti-inflammatory and detoxifying properties"
+      "Potent anti-inflammatory and detoxifying properties"
     ],
     ingredients: "Pure Dried Moringa Leaves",
     usage: "Take 1 teaspoon (approx 3-5g) daily. Mix in warm water, herbal teas, smoothies, fruit juices, or stir into soups and salad dressings.",
@@ -59,17 +59,17 @@ const PRODUCTS_DATA = [
     ],
     reviews: [
       { name: "Ramesh Reddy", rating: 5, date: "2026-04-20", comment: "Truly pure, very fine powder. I drink it with warm water every morning, definitely boosts my stamina." },
-      { name: "Anjali J.", rating: 5, date: "2026-05-10", comment: "Top quality packaging, and the leaf powder smells genuine and grassy. Great natural supplement." }
+      { name: "Anjali J.", rating: 5, date: "2026-05-10", comment: "Top quality packaging, and the leaf powder smells genuine and grassy. Great pure supplement." }
     ]
   },
   {
     id: "fruit-powders-mix",
     name: "Premium Mixed Fruit Powder",
     category: "Fruit Powders",
-    shortDesc: "Premium fruit powders made from selected natural fruits. Suitable for healthy drinks and food products.",
-    longDesc: "A vibrant blend of spray-dried natural fruit powders including Mango, Pineapple, Papaya, and Pomegranate. This natural fruit powder mix provides an incredible burst of flavor and a massive dose of Vitamin C. Perfect for food processing, ice creams, healthy juice formulations, or direct family consumption.",
+    shortDesc: "Premium fruit powders made from selected fresh fruits. Suitable for healthy drinks and food products.",
+    longDesc: "A vibrant blend of spray-dried fruit powders including Mango, Pineapple, Papaya, and Pomegranate. This fruit powder mix provides an incredible burst of flavor and a massive dose of Vitamin C. Perfect for food processing, ice creams, healthy juice formulations, or direct family consumption.",
     benefits: [
-      "Blend of natural, fresh tropical fruits",
+      "Blend of fresh tropical fruits",
       "No added sugars, artificial preservatives, or chemical carriers",
       "Instant water solubility with refreshing fruity taste",
       "Packed with active enzymes and Vitamin C"
@@ -93,13 +93,13 @@ const PRODUCTS_DATA = [
     id: "vegetable-powders-mix",
     name: "Fresh Green Vegetable Powder",
     category: "Vegetable Powders",
-    shortDesc: "Natural vegetable powders with rich nutrients and freshness. Perfect for cooking and health supplements.",
+    shortDesc: "Premium vegetable powders with rich nutrients and freshness. Perfect for cooking and health supplements.",
     longDesc: "Retain your vegetable nutrition with our Green Vegetable Powder Mix. Composed of premium dehydrated Spinach, Beetroot, Carrot, and Wheatgrass. Specially processed to maintain raw chlorophyll, mineral profiles, and fiber, this powder adds nutrition and color to your culinary dishes or morning super-green smoothies.",
     benefits: [
       "Dehydrated Spinach, Carrot, Beetroot, and Wheatgrass blend",
       "High concentration of plant iron, minerals, and chlorophyll",
       "Perfect for enrichment of batters, doughs, and soup broths",
-      "100% Vegan, Gluten-free, and Non-GMO"
+      "Vegan, Gluten-free, and Non-GMO"
     ],
     ingredients: "Dehydrated Spinach, Carrot, Beetroot, and Wheatgrass Powders",
     usage: "Stir 1-2 teaspoons into your soup, gravy, chapati dough, idli batter, or blend with fruit juice for a nutritious green drink.",
@@ -125,7 +125,7 @@ const PRODUCTS_DATA = [
     benefits: [
       "Balanced combination of Ashwagandha, Amla (Gooseberry), and Shatavari",
       "Promotes stress relief, sleep quality, and biological immunity",
-      "Naturally rich in Vitamin C, Adaptogens, and energy-renewing herbs",
+      "Rich in Vitamin C, Adaptogens, and energy-renewing herbs",
       "Triple tested for heavy metals and purity standards"
     ],
     ingredients: "Pure Ashwagandha Root, Dried Amla Fruit, and Shatavari Root Powders",
@@ -144,11 +144,11 @@ const PRODUCTS_DATA = [
     ]
   },
   {
-    id: "natural-powders-herbs",
+    id: "botanical-powders-herbs",
     name: "Pure Neem & Tulsi Herbal Powder",
-    category: "Natural Powders",
-    shortDesc: "Pure and natural powders without preservatives or artificial colors. Made for healthy living.",
-    longDesc: "Our Neem and Tulsi Herbal Powder is an exceptional double-purified blend that acts as a natural purifier. Sourced from green fields, it is processed at low temperatures to ensure the active bitters and healing volatile oils remain intact. Ideal for blood purification, digestive health, or external skin/hair applications.",
+    category: "Botanical Powders",
+    shortDesc: "Pure dehydrated powders without preservatives or artificial colors. Made for healthy living.",
+    longDesc: "Our Neem and Tulsi Herbal Powder is an exceptional double-purified blend that acts as a botanical purifier. Sourced from green fields, it is processed at low temperatures to ensure the active bitters and healing volatile oils remain intact. Ideal for blood purification, digestive health, or external skin/hair applications.",
     benefits: [
       "Double purified Neem leaves and Sacred Tulsi leaves",
       "Promotes blood detoxification and clear, healthy skin",
@@ -188,7 +188,7 @@ let state = {
 // --- WhatsApp Settings ---
 const CONTACT_PHONES = ["9014274293", "7075604700"];
 const WHATSAPP_PRIMARY = "9014274293";
-const GENERAL_WA_MSG = "Hello, I am interested in your natural powder products.";
+const GENERAL_WA_MSG = "Hello, I am interested in your powder products.";
 
 // --- Initialize App State from LocalStorage ---
 function initAppState() {
@@ -813,7 +813,7 @@ function submitQvWhatsAppInquiry(productId) {
   const selectedWeight = document.querySelector('input[name="qv-weight"]:checked').value;
   const quantity = parseInt(document.getElementById("qv-qty-label").textContent);
   
-  const textMsg = `Hello NVKM GROUP, I am interested in purchasing your natural powder:\n- Product: ${product.name}\n- Packaging Weight: ${selectedWeight}\n- Quantity: ${quantity}\nCould you please provide bulk wholesale rates and retail delivery details for my pincode?`;
+  const textMsg = `Hello NVKM GROUP, I am interested in purchasing your powder:\n- Product: ${product.name}\n- Packaging Weight: ${selectedWeight}\n- Quantity: ${quantity}\nCould you please provide bulk wholesale rates and retail delivery details for my pincode?`;
   const encText = encodeURIComponent(textMsg);
   
   window.open(`https://wa.me/${WHATSAPP_PRIMARY}?text=${encText}`, "_blank");

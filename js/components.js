@@ -91,7 +91,7 @@ function createProductCardHtml(product) {
               <button onclick="addToCart('${product.id}', '${defaultVar.weight}', 1, true); toggleCartDrawer(true);" class="bg-[#2563EB] hover:bg-[#1D4ED8] text-white font-bold text-xs py-2.5 px-3 rounded-xl transition-all duration-300 flex items-center justify-center gap-1.5 shadow-md shadow-accent/10">
                 <i class="fa-solid fa-bolt"></i> Buy Now
               </button>
-              <button onclick="window.open('https://wa.me/9014274293?text=Hello%20NVKM%20GROUP,%20I%20am%20interested%20in%2520purchasing%2520your%2520natural%2520powder:%20${encodeURIComponent(product.name)}%2520(${defaultVar.weight}%2520size).%20Please%20provide%20rates.', '_blank')" class="bg-blue-50/60 hover:bg-blue-600 hover:text-white text-blue-800 border border-blue-100 hover:border-transparent font-bold text-xs py-2.5 px-3 rounded-xl transition-all duration-300 flex items-center justify-center gap-1.5">
+              <button onclick="window.open('https://wa.me/9014274293?text=Hello%20NVKM%20GROUP,%20I%20am%20interested%20in%2520purchasing%2520your%2520powder:%20${encodeURIComponent(product.name)}%2520(${defaultVar.weight}%2520size).%20Please%20provide%20rates.', '_blank')" class="bg-blue-50/60 hover:bg-blue-600 hover:text-white text-blue-800 border border-blue-100 hover:border-transparent font-bold text-xs py-2.5 px-3 rounded-xl transition-all duration-300 flex items-center justify-center gap-1.5">
                 <i class="fa-brands fa-whatsapp text-sm"></i> Inquire
               </button>
             </div>
@@ -115,10 +115,10 @@ function renderHomeView() {
   const categories = [
     { name: "Banana Powder", icon: "fa-solid fa-banana", color: "from-amber-100 to-yellow-100", text: "Rich in energy & nutrients, ideal for infants & baking." },
     { name: "Moringa Powder", icon: "fa-solid fa-leaf", color: "from-blue-100 to-sky-100", text: "Nutrient-rich superfood filled with minerals & antioxidants." },
-    { name: "Fruit Powders", icon: "fa-solid fa-lemon", color: "from-orange-100 to-red-100", text: "100% natural fruit powders for refreshments & culinary." },
+    { name: "Fruit Powders", icon: "fa-solid fa-lemon", color: "from-orange-100 to-red-100", text: "Pure fruit powders for refreshments & culinary." },
     { name: "Vegetable Powders", icon: "fa-solid fa-carrot", color: "from-sky-100 to-blue-100", text: "Nutrient-packed dehydrated vegetables for healthy cooking." },
     { name: "Health Powders", icon: "fa-solid fa-mortar-pestle", color: "from-blue-100 to-cyan-100", text: "Immunity adaptogens designed for vitality and active life." },
-    { name: "Natural Powders", icon: "fa-solid fa-spa", color: "from-blue-50 to-blue-100", text: "Preservative-free botanical powders for wellness & body care." }
+    { name: "Botanical Powders", icon: "fa-solid fa-spa", color: "from-blue-50 to-blue-100", text: "Preservative-free botanical powders for wellness & body care." }
   ];
 
   let categoriesHtml = "";
@@ -152,10 +152,10 @@ function renderHomeView() {
             <i class="fa-solid fa-leaf"></i> Pure & Preservative-Free
           </span>
           <h1 class="font-heading font-extrabold text-4xl sm:text-5xl lg:text-6xl leading-[1.1] tracking-tight">
-            Premium Natural Fruit & <span class="text-gradient bg-gradient-to-r from-secondary to-accent bg-clip-text text-transparent">Vegetable Powders</span>
+            Premium Dehydrated Fruit & <span class="text-gradient bg-gradient-to-r from-secondary to-accent bg-clip-text text-transparent">Vegetable Powders</span>
           </h1>
           <p class="text-sm sm:text-base text-slate-200 max-w-xl font-light leading-relaxed">
-            NVKM GROUP manufactures nutrient-rich powders for daily wellness. Sourced from natural harvests and processed under strict hygienic standards. Pure, healthy, and preservative-free nutrition for retail & wholesale buyers.
+            NVKM GROUP manufactures nutrient-rich powders for daily wellness. Sourced from trusted harvests and processed under strict hygienic standards. Pure, healthy, and preservative-free nutrition for retail & wholesale buyers.
           </p>
           <div class="flex flex-wrap gap-3 pt-2">
             <button onclick="navigate('shop')" class="bg-accent hover:bg-accentHover text-white font-bold px-7 py-3.5 rounded-2xl shadow-lg shadow-accent/25 hover:shadow-accent/40 transform hover:scale-[1.02] active:scale-[0.98] transition-all flex items-center gap-2 text-sm">
@@ -186,18 +186,18 @@ function renderHomeView() {
       </div>
     </section>
 
-    <!-- Natural Benefits Section -->
+    <!-- Benefits Section -->
     <section class="py-12 mt-8">
       <div class="text-center max-w-2xl mx-auto space-y-2 mb-10" data-aos="fade-up">
         <span class="text-xs font-bold text-accent tracking-widest uppercase">Healthy & Nutritious</span>
-        <h2 class="font-heading font-extrabold text-3xl text-darkText">Benefits of Natural Powders</h2>
-        <p class="text-xs sm:text-sm text-slate-500 leading-relaxed">Our powders are produced from chosen natural produce, containing high nutrition concentration to enrich your daily diet.</p>
+        <h2 class="font-heading font-extrabold text-3xl text-darkText">Benefits of Dehydrated Powders</h2>
+        <p class="text-xs sm:text-sm text-slate-500 leading-relaxed">Our powders are produced from chosen fresh produce, containing high nutrition concentration to enrich your daily diet.</p>
       </div>
 
       <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
         <div class="bg-white p-8 rounded-3xl border border-slate-100 shadow-sm hover:shadow-md transition-shadow" data-aos="fade-up" data-aos-delay="100">
           <div class="w-12 h-12 rounded-2xl bg-blue-50 text-primary flex items-center justify-center text-xl mb-6"><i class="fa-solid fa-certificate"></i></div>
-          <h3 class="font-heading font-bold text-lg text-darkText">100% Pure & Natural</h3>
+          <h3 class="font-heading font-bold text-lg text-darkText">Pure & Preservative-Free</h3>
           <p class="text-xs text-slate-500 mt-2.5 leading-relaxed">No added preservatives, artificial flavorings, MSG, colorants, or binding fillers. You experience only wholesome nutrients directly from farm-fresh harvests.</p>
         </div>
         <div class="bg-white p-8 rounded-3xl border border-slate-100 shadow-sm hover:shadow-md transition-shadow" data-aos="fade-up" data-aos-delay="200">
@@ -324,7 +324,7 @@ function renderHomeView() {
           <div class="flex items-center space-x-1 mb-4 text-amber-400">
             <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
           </div>
-          <p class="text-xs text-slate-600 leading-relaxed italic">"NVKM's Banana Powder has become a staple for my baby's daily meals. It's completely natural and is very easy to prepare. Excellent texture!"</p>
+          <p class="text-xs text-slate-600 leading-relaxed italic">"NVKM's Banana Powder has become a staple for my baby's daily meals. It's completely pure and is very easy to prepare. Excellent texture!"</p>
           <div class="mt-4 border-t pt-3 border-slate-50 flex items-center gap-3">
             <div class="w-9 h-9 rounded-full bg-blue-100 flex items-center justify-center font-bold text-primary text-xs">P</div>
             <div>
@@ -367,7 +367,7 @@ function renderHomeView() {
       <div class="text-center max-w-2xl mx-auto space-y-2 mb-10" data-aos="fade-up">
         <span class="text-xs font-bold text-accent tracking-widest uppercase">Healthy Inspirations</span>
         <h2 class="font-heading font-extrabold text-3xl text-darkText">Social Proof & Lifestyle</h2>
-        <p class="text-xs sm:text-sm text-slate-500 leading-relaxed">Follow our clean dehydration process and see how health experts use natural powders.</p>
+        <p class="text-xs sm:text-sm text-slate-500 leading-relaxed">Follow our clean dehydration process and see how health experts use dehydrated powders.</p>
       </div>
 
       <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
@@ -420,7 +420,7 @@ function renderShopView() {
     <div class="py-6">
       <div class="text-left space-y-1 mb-8" data-aos="fade-right">
         <h1 class="font-heading font-extrabold text-3xl text-darkText">Shop Powders</h1>
-        <p class="text-xs text-slate-500">Search and filter our natural, nutrient-dense manufacturing powder stock.</p>
+        <p class="text-xs text-slate-500">Search and filter our pure, nutrient-dense manufacturing powder stock.</p>
       </div>
 
       <!-- Search, Sorting & Categories Toolbar -->
@@ -833,7 +833,7 @@ function submitPdWhatsAppInquiry(productId) {
   const selectedWeight = document.querySelector('input[name="pd-weight"]:checked').value;
   const quantity = parseInt(document.getElementById("pd-qty-label").textContent);
   
-  const textMsg = `Hello NVKM GROUP, I am interested in purchasing your natural powder:\n- Product: ${product.name}\n- Packaging Weight: ${selectedWeight}\n- Quantity: ${quantity}\nCould you please provide bulk wholesale rates and retail delivery details for my pincode?`;
+  const textMsg = `Hello NVKM GROUP, I am interested in purchasing your powder:\n- Product: ${product.name}\n- Packaging Weight: ${selectedWeight}\n- Quantity: ${quantity}\nCould you please provide bulk wholesale rates and retail delivery details for my pincode?`;
   const encText = encodeURIComponent(textMsg);
   
   window.open(`https://wa.me/9014274293?text=${encText}`, "_blank");
@@ -936,7 +936,7 @@ function renderAboutView() {
       <div class="text-center max-w-2xl mx-auto space-y-2 mb-10" data-aos="fade-up">
         <span class="text-xs font-bold text-accent tracking-widest uppercase">Our Heritage</span>
         <h1 class="font-heading font-extrabold text-3xl sm:text-4xl text-darkText">About NVKM GROUP</h1>
-        <p class="text-xs sm:text-sm text-slate-500 leading-relaxed">Providing high-quality natural fruit and vegetable nutrition powders for retail & wholesale wellness customers.</p>
+        <p class="text-xs sm:text-sm text-slate-500 leading-relaxed">Providing high-quality fruit and vegetable nutrition powders for retail & wholesale wellness customers.</p>
       </div>
 
       <!-- Founder & Story Grid -->
@@ -980,7 +980,7 @@ function renderAboutView() {
           <div class="w-10 h-10 rounded-xl bg-white/10 flex items-center justify-center text-secondary mb-6"><i class="fa-solid fa-eye text-lg"></i></div>
           <h3 class="font-heading font-bold text-xl mb-3">Our Vision</h3>
           <p class="text-xs md:text-sm text-slate-200 leading-relaxed font-light">
-            To provide healthy and natural nutrition products to customers worldwide through premium quality fruit, vegetable, and herbal powders, cultivating a toxicant-free natural lifestyle.
+            To provide healthy nutrition products to customers worldwide through premium quality fruit, vegetable, and botanical powders, cultivating a clean, vibrant lifestyle.
           </p>
         </div>
         
@@ -988,7 +988,7 @@ function renderAboutView() {
           <div class="w-10 h-10 rounded-xl bg-blue-50 flex items-center justify-center text-primary mb-6"><i class="fa-solid fa-bullseye text-lg"></i></div>
           <h3 class="font-heading font-bold text-xl mb-3">Our Mission</h3>
           <p class="text-xs md:text-sm text-slate-500 leading-relaxed">
-            To manufacture and deliver high-quality, pure natural powders while maintaining complete freshness, high nutrition value, affordable retail-wholesale pricing, and total customer satisfaction.
+            To manufacture and deliver high-quality, pure powders while maintaining complete freshness, high nutrition value, affordable retail-wholesale pricing, and total customer satisfaction.
           </p>
         </div>
       </div>
@@ -1004,8 +1004,8 @@ function renderAboutView() {
           </div>
           <div class="bg-white border border-slate-100 p-6 rounded-3xl text-center shadow-sm" data-aos="fade-up" data-aos-delay="200">
             <div class="w-10 h-10 rounded-xl bg-blue-50 text-primary flex items-center justify-center text-base mb-4 mx-auto"><i class="fa-solid fa-seedling"></i></div>
-            <h4 class="font-heading font-bold text-sm text-darkText">Natural Content</h4>
-            <p class="text-[10px] text-slate-400 mt-2">100% preservative-free powders.</p>
+            <h4 class="font-heading font-bold text-sm text-darkText">Pure Content</h4>
+            <p class="text-[10px] text-slate-400 mt-2">Preservative-free pure powders.</p>
           </div>
           <div class="bg-white border border-slate-100 p-6 rounded-3xl text-center shadow-sm" data-aos="fade-up" data-aos-delay="300">
             <div class="w-10 h-10 rounded-xl bg-blue-50 text-primary flex items-center justify-center text-base mb-4 mx-auto"><i class="fa-solid fa-heart-pulse"></i></div>
@@ -1217,7 +1217,7 @@ function renderLoginView() {
         <!-- 2. REGISTRATION FORM -->
         <div id="auth-form-register" class="hidden space-y-4">
           <h2 class="font-heading font-extrabold text-lg text-darkText">Create An Account</h2>
-          <p class="text-xs text-slate-500">Sign up in seconds to start shopping and tracking your natural powders.</p>
+          <p class="text-xs text-slate-500">Sign up in seconds to start shopping and tracking your orders.</p>
           
           <form id="register-form-el" class="space-y-4">
             <div>
@@ -1456,7 +1456,7 @@ function renderFooter() {
             <span class="font-heading font-extrabold text-2xl tracking-tight text-white">NVKM <span class="text-secondary">GROUP</span></span>
           </a>
           <p class="text-xs text-slate-400 leading-relaxed font-light max-w-sm">
-            NVKM GROUP manufactures healthy, natural, nutrient-rich fruit and vegetable powders under modern hygiene standards. Experience premium wellness food supplements for both retail and wholesale volumes.
+            NVKM GROUP manufactures healthy, pure, nutrient-rich fruit and vegetable powders under modern hygiene standards. Experience premium wellness food supplements for both retail and wholesale volumes.
           </p>
           <div class="flex items-center space-x-3 text-sm">
             <a href="https://wa.me/9014274293" target="_blank" class="w-8 h-8 rounded-full bg-[#0B253F] border border-blue-800 text-slate-300 hover:text-white hover:bg-blue-850 flex items-center justify-center transition-colors"><i class="fa-brands fa-whatsapp"></i></a>
