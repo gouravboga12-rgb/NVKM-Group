@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { createPortal } from 'react-dom';
 import { useSearchParams } from 'react-router-dom';
 import api from '../../api/api';
 import { useToast } from '../../context/ToastContext';
@@ -389,11 +390,11 @@ export default function AdminProducts() {
       )}
 
       {/* ── ADD/EDIT PRODUCT MODAL ── */}
-      {showModal && (
-        <div className="fixed inset-0 z-50 overflow-y-auto p-4 sm:p-6 flex items-start justify-center pt-14 sm:pt-20 pb-12">
+      {showModal && createPortal(
+        <div className="fixed inset-0 z-[999] overflow-y-auto p-4 sm:p-6 flex items-start justify-center pt-8 sm:pt-14 pb-8">
           <div onClick={() => setShowModal(false)} className="fixed inset-0 bg-slate-900/60 backdrop-blur-sm animate-[fadeIn_0.2s_ease-out]"></div>
           
-          <div className="relative bg-white w-full max-w-3xl rounded-[24px] sm:rounded-3xl shadow-2xl overflow-hidden max-h-[82vh] flex flex-col animate-[scaleIn_0.25s_ease-out] z-10 border border-slate-100">
+          <div className="relative bg-white w-full max-w-3xl rounded-[24px] sm:rounded-3xl shadow-2xl overflow-hidden max-h-[85vh] flex flex-col animate-[scaleIn_0.25s_ease-out] z-10 border border-slate-100">
             {/* Modal Header */}
             <div className="p-5 border-b bg-slate-50 flex items-center justify-between shrink-0">
               <div>
@@ -746,7 +747,8 @@ export default function AdminProducts() {
 
             </form>
           </div>
-        </div>
+        </div>,
+        document.body
       )}
 
     </div>

@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { createPortal } from 'react-dom';
 import api from '../../api/api';
 import { useToast } from '../../context/ToastContext';
 
@@ -198,9 +199,9 @@ export default function AdminCategories() {
       )}
 
       {/* ── ADD CATEGORY MODAL ── */}
-      {showAddModal && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
-          <div onClick={() => setShowAddModal(false)} className="absolute inset-0 bg-slate-900/60 backdrop-blur-sm animate-[fadeIn_0.2s_ease-out]"></div>
+      {showAddModal && createPortal(
+        <div className="fixed inset-0 z-[999] overflow-y-auto p-4 sm:p-6 flex items-start justify-center pt-16 sm:pt-24 pb-8">
+          <div onClick={() => setShowAddModal(false)} className="fixed inset-0 bg-slate-900/60 backdrop-blur-sm animate-[fadeIn_0.2s_ease-out]"></div>
           
           <div className="relative bg-white w-full max-w-md rounded-[24px] shadow-2xl overflow-hidden flex flex-col animate-[scaleIn_0.25s_ease-out] z-10 border border-slate-100">
             <div className="p-5 border-b bg-slate-50 flex items-center justify-between">
@@ -246,7 +247,8 @@ export default function AdminCategories() {
               </div>
             </form>
           </div>
-        </div>
+        </div>,
+        document.body
       )}
 
       {/* ── EDIT CATEGORY MODAL ── */}
