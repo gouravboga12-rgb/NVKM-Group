@@ -390,17 +390,18 @@ export default function AdminProducts() {
 
       {/* ── ADD/EDIT PRODUCT MODAL ── */}
       {showModal && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
-          <div onClick={() => setShowModal(false)} className="absolute inset-0 bg-slate-900/60 backdrop-blur-sm animate-[fadeIn_0.2s_ease-out]"></div>
+        <div className="fixed inset-0 z-50 overflow-y-auto p-4 sm:p-6 flex items-start justify-center pt-14 sm:pt-20 pb-12">
+          <div onClick={() => setShowModal(false)} className="fixed inset-0 bg-slate-900/60 backdrop-blur-sm animate-[fadeIn_0.2s_ease-out]"></div>
           
-          <div className="relative bg-white w-full max-w-3xl rounded-[24px] sm:rounded-3xl shadow-2xl overflow-hidden max-h-[92vh] flex flex-col animate-[scaleIn_0.25s_ease-out] z-10 border border-slate-100">
+          <div className="relative bg-white w-full max-w-3xl rounded-[24px] sm:rounded-3xl shadow-2xl overflow-hidden max-h-[82vh] flex flex-col animate-[scaleIn_0.25s_ease-out] z-10 border border-slate-100">
             {/* Modal Header */}
-            <div className="p-5 border-b bg-slate-50 flex items-center justify-between">
+            <div className="p-5 border-b bg-slate-50 flex items-center justify-between shrink-0">
               <div>
                 <h3 className="font-heading font-black text-slate-900 text-base">{isEditing ? 'Modify Product Specifications' : 'Catalog New Product Entry'}</h3>
                 <p className="text-[10px] text-slate-400 font-bold uppercase tracking-wider mt-0.5">{isEditing ? 'Edit existing item properties' : 'Create a brand new catalog product'}</p>
               </div>
               <button
+                type="button"
                 onClick={() => setShowModal(false)}
                 className="p-2 bg-slate-100 hover:bg-slate-200 rounded-full text-slate-500 cursor-pointer transition-colors"
               >
@@ -409,7 +410,7 @@ export default function AdminProducts() {
             </div>
 
             {/* Modal Scroll Body */}
-            <form onSubmit={handleSubmit} className="overflow-y-auto p-6 space-y-6 flex-1 text-slate-700">
+            <form onSubmit={handleSubmit} className="overflow-y-auto min-h-0 p-6 space-y-6 flex-1 text-slate-700">
               
               {/* Row 1: Name and Category */}
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
