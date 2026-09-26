@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { createPortal } from 'react-dom';
 import { useNavigate } from 'react-router-dom';
 import api from '../../api/api';
 import { useToast } from '../../context/ToastContext';
@@ -15,6 +16,7 @@ export default function AdminOrders() {
   const [endDate, setEndDate] = useState('');
   const [searchQuery, setSearchQuery] = useState('');
   const [updatingId, setUpdatingId] = useState(null);
+  const [orderToDelete, setOrderToDelete] = useState(null);
 
   // Edit Modal States
   const [showEditModal, setShowEditModal] = useState(false);
@@ -189,9 +191,7 @@ export default function AdminOrders() {
     }
   };
 
-  const handleDeleteOrder = async (orderId) => {
-    if (!window.confirm(`Are you absolutely sure you want to delete order ${orderId} permanently? This action cannot be undone.`)) return;
-    
+  const confirmDeleteOrder = async (orderId) => {
     try {
       setUpdatingId(orderId);
       try {
@@ -217,6 +217,7 @@ export default function AdminOrders() {
       }
 
       showToast('Order deleted successfully!');
+      setOrderToDelete(null);
       fetchOrders();
     } catch (err) {
       showToast(err.response?.data?.message || 'Failed to delete order.', 'error');
@@ -454,7 +455,7 @@ export default function AdminOrders() {
                         <i className="fa-solid fa-file-invoice-dollar"></i> Invoice
                       </button>
                       <button
-                        onClick={() => handleDeleteOrder(ord.orderId)}
+                        onClick={() => setOrderToDelete(ord.orderId)}
                         disabled={updatingId === ord.orderId}
                         className="inline-flex items-center gap-1.5 bg-red-50 hover:bg-red-100 text-red-500 border border-red-200 px-3 py-1.5 rounded-xl text-[10px] font-extrabold cursor-pointer transition-colors shadow-sm disabled:opacity-50"
                       >
@@ -471,9 +472,9 @@ export default function AdminOrders() {
       )}
 
       {/* ── EDIT ORDER MODAL ── */}
-      {showEditModal && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
-          <div onClick={() => setShowEditModal(false)} className="absolute inset-0 bg-slate-900/60 backdrop-blur-sm animate-[fadeIn_0.2s_ease-out]"></div>
+      {showEditModal && createPortal(
+        <div className="fixed inset-0 z-[999] overflow-y-auto p-4 sm:p-6 flex items-start justify-center pt-16 sm:pt-24 pb-8">
+          <div onClick={() => setShowEditModal(false)} className="fixed inset-0 bg-slate-900/60 backdrop-blur-sm animate-[fadeIn_0.2s_ease-out]"></div>
           
           <div className="relative bg-white w-full max-w-md rounded-[24px] shadow-2xl overflow-hidden flex flex-col animate-[scaleIn_0.25s_ease-out] z-10 border border-slate-100">
             {/* Modal Header */}
@@ -553,7 +554,59 @@ export default function AdminOrders() {
               </div>
             </form>
           </div>
-        </div>
+        </div>,
+        document.body
+      )}
+
+      {/* ── DELETE ORDER CONFIRMATION MODAL ── */}
+      {orderToDelete && createPortal(
+        <div className="fixed inset-0 z-[999] flex items-center justify-center p-4">
+          <div 
+            onClick={() => { if (!updatingId) setOrderToDelete(null); }} 
+            className="fixed inset-0 bg-slate-900/60 backdrop-blur-sm animate-[fadeIn_0.2s_ease-out]"
+          />
+          
+          <div className="relative bg-white w-full max-w-sm rounded-[24px] shadow-2xl p-6 sm:p-7 flex flex-col items-center text-center animate-[scaleIn_0.25s_ease-out] z-10 border border-slate-100">
+            <div className="w-14 h-14 rounded-2xl bg-red-50 text-red-500 flex items-center justify-center text-2xl mb-4 border border-red-100 shadow-sm">
+              <i className="fa-solid fa-trash-can text-red-500"></i>
+            </div>
+            
+            <h3 className="font-heading font-black text-slate-900 text-base mb-1.5">Delete Order Confirmation</h3>
+            <p className="text-xs text-slate-500 leading-relaxed mb-6 font-medium">
+              Are you sure you want to delete order <span className="font-mono font-bold text-slate-800 bg-slate-100 px-2 py-0.5 rounded text-[11px]">{orderToDelete}</span> permanently? This action cannot be undone.
+            </p>
+
+            <div className="flex items-center gap-3 w-full">
+              <button
+                type="button"
+                disabled={updatingId === orderToDelete}
+                onClick={() => setOrderToDelete(null)}
+                className="flex-1 py-3 rounded-xl border border-slate-200 text-slate-600 font-extrabold text-xs hover:bg-slate-50 transition-colors cursor-pointer disabled:opacity-50"
+              >
+                Cancel
+              </button>
+              <button
+                type="button"
+                disabled={updatingId === orderToDelete}
+                onClick={() => confirmDeleteOrder(orderToDelete)}
+                className="flex-1 py-3 rounded-xl bg-red-600 hover:bg-red-700 text-white font-extrabold text-xs transition-all shadow-md shadow-red-600/20 cursor-pointer disabled:opacity-50 flex items-center justify-center gap-2"
+              >
+                {updatingId === orderToDelete ? (
+                  <>
+                    <div className="w-3.5 h-3.5 border-2 border-white/20 border-t-white rounded-full animate-spin" />
+                    <span>Deleting...</span>
+                  </>
+                ) : (
+                  <>
+                    <i className="fa-solid fa-trash-can text-xs"></i>
+                    <span>OK, Delete</span>
+                  </>
+                )}
+              </button>
+            </div>
+          </div>
+        </div>,
+        document.body
       )}
 
     </div>
