@@ -12,11 +12,11 @@ export default function About() {
   ];
 
   const timeline = [
-    { year: '2020', event: 'NVKM GROUP founded in Bathalapalli by Janagonda Naveen with a vision for pure dehydrated powders.', icon: 'fa-flag' },
-    { year: '2021', event: 'Launched Banana Powder — quickly became a bestseller for infant and health food consumers.', icon: 'fa-seedling' },
-    { year: '2022', event: 'Expanded to Moringa Powder, Fruit Powders, and Vegetable Powder product lines.', icon: 'fa-leaf' },
-    { year: '2023', event: 'Started B2B wholesale supply to food manufacturers, bakeries, and nutrition brands.', icon: 'fa-handshake' },
-    { year: '2024', event: 'Achieved 500+ satisfied customers and expanded to online direct ordering platform.', icon: 'fa-trophy' }
+    { year: '2026', event: 'NVKM GROUP founded in Bathalapalli by Janagonda Naveen with a vision for pure dehydrated powders.', icon: 'fa-flag' },
+    { year: '2026', event: 'Launched Banana Powder — quickly became a bestseller for infant and health food consumers.', icon: 'fa-seedling' },
+    { year: '2026', event: 'Expanded to Moringa Powder, Fruit Powders, and Vegetable Powder product lines.', icon: 'fa-leaf' },
+    { year: '2026', event: 'Started B2B wholesale supply to food manufacturers, bakeries, and nutrition brands.', icon: 'fa-handshake' },
+    { year: '2026', event: 'Achieved 500+ satisfied customers and expanded to online direct ordering platform.', icon: 'fa-trophy' }
   ];
 
   return (

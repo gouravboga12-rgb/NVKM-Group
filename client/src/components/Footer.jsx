@@ -1,8 +1,19 @@
+import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { DEFAULT_SETTINGS } from '../api/api';
+import api from '../api/api';
 
 export default function Footer({ settings }) {
   const s = settings || DEFAULT_SETTINGS;
+  const [categories, setCategories] = useState([]);
+
+  useEffect(() => {
+    api.get('/products/categories')
+      .then(res => {
+        if (res.data && res.data.length > 0) setCategories(res.data);
+      })
+      .catch(() => { /* silently ignore on failure */ });
+  }, []);
 
   return (
     <footer className="bg-[#05111E] text-slate-300 font-light border-t border-blue-950/40 relative overflow-hidden">
@@ -59,15 +70,29 @@ export default function Footer({ settings }) {
             </ul>
           </div>
 
-          {/* Categories */}
+          {/* Categories — dynamic */}
           <div className="md:col-span-3">
             <h3 className="font-heading font-extrabold text-white text-xs uppercase tracking-wider mb-4 sm:mb-5">Categories</h3>
             <ul className="space-y-2.5 sm:space-y-3 text-xs font-semibold">
-              <li><span className="text-slate-400">Tomato Powder</span></li>
-              <li><span className="text-slate-400">Banana Powder</span></li>
-              <li><span className="text-slate-400">Carrot Powder</span></li>
-              <li><span className="text-slate-400">Moringa Powder</span></li>
-              <li><span className="text-slate-400">Beetroot Powder</span></li>
+              {categories.length === 0 ? (
+                // Skeleton while loading
+                [...Array(4)].map((_, i) => (
+                  <li key={i}>
+                    <span className="block h-3 bg-white/10 rounded animate-pulse w-3/4" />
+                  </li>
+                ))
+              ) : (
+                categories.map(cat => (
+                  <li key={cat.id || cat.name}>
+                    <Link
+                      to={`/shop?category=${encodeURIComponent(cat.name)}`}
+                      className="text-slate-400 hover:text-secondary transition-colors"
+                    >
+                      {cat.name}
+                    </Link>
+                  </li>
+                ))
+              )}
             </ul>
           </div>
         </div>

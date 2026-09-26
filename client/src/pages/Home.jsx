@@ -76,13 +76,24 @@ const FALLBACK_PRODUCTS = [
   }
 ];
 
-const categories = [
-  { name: 'Tomato Powder', icon: 'fa-solid fa-apple-whole', color: 'from-red-100 to-orange-100', text: 'Rich in lycopene & Vitamin C, perfect for culinary bases.' },
-  { name: 'Banana Powder', icon: 'fa-solid fa-seedling', color: 'from-amber-100 to-yellow-100', text: 'Rich in potassium & fiber, ideal for infants & baking.' },
-  { name: 'Carrot Powder', icon: 'fa-solid fa-carrot', color: 'from-orange-100 to-amber-100', text: 'Rich in beta-carotene & Vitamin A for daily wellness.' },
-  { name: 'Beetroot Powder', icon: 'fa-solid fa-heart-pulse', color: 'from-pink-100 to-red-100', text: 'Loaded with nitrates & iron for stamina and active life.' },
-  { name: 'Moringa Powder', icon: 'fa-solid fa-leaf', color: 'from-sky-100 to-blue-100', text: 'Nutrient-rich superfood leaf powder filled with minerals & antioxidants.' }
-];
+// Map category keywords → icon + color so dynamic categories look great
+const getCategoryStyle = (name = '') => {
+  const n = name.toLowerCase();
+  if (n.includes('tomato'))    return { icon: 'fa-solid fa-apple-whole',  color: 'from-red-100 to-orange-100' };
+  if (n.includes('banana'))    return { icon: 'fa-solid fa-seedling',      color: 'from-amber-100 to-yellow-100' };
+  if (n.includes('carrot'))    return { icon: 'fa-solid fa-carrot',        color: 'from-orange-100 to-amber-100' };
+  if (n.includes('beetroot') || n.includes('beet')) return { icon: 'fa-solid fa-heart-pulse', color: 'from-pink-100 to-red-100' };
+  if (n.includes('moringa'))   return { icon: 'fa-solid fa-leaf',          color: 'from-sky-100 to-blue-100' };
+  if (n.includes('spinach') || n.includes('green')) return { icon: 'fa-solid fa-leaf', color: 'from-green-100 to-emerald-100' };
+  if (n.includes('fruit'))     return { icon: 'fa-solid fa-apple-whole',   color: 'from-orange-100 to-pink-100' };
+  if (n.includes('vegetable') || n.includes('veggie')) return { icon: 'fa-solid fa-seedling', color: 'from-lime-100 to-green-100' };
+  if (n.includes('health') || n.includes('herbal')) return { icon: 'fa-solid fa-heart-pulse', color: 'from-sky-100 to-cyan-100' };
+  if (n.includes('botanical') || n.includes('neem') || n.includes('tulsi')) return { icon: 'fa-solid fa-spa', color: 'from-teal-100 to-green-100' };
+  if (n.includes('pooja') || n.includes('cotton') || n.includes('agarbatti')) return { icon: 'fa-solid fa-fire-flame-curved', color: 'from-yellow-100 to-amber-100' };
+  if (n.includes('spice'))     return { icon: 'fa-solid fa-pepper-hot',    color: 'from-red-100 to-rose-100' };
+  // generic fallback
+  return { icon: 'fa-solid fa-box-open', color: 'from-blue-100 to-slate-100' };
+};
 
 // Counter component for animated stats counting
 function Counter({ target, suffix, duration = 1500 }) {
@@ -145,24 +156,25 @@ function Counter({ target, suffix, duration = 1500 }) {
 export default function Home({ settings }) {
   const [featuredProducts, setFeaturedProducts] = useState(FALLBACK_PRODUCTS);
   const [loading, setLoading] = useState(false);
+  const [categories, setCategories] = useState([]);
   const navigate = useNavigate();
 
   useEffect(() => {
+    // Fetch live products
     api.get('/products')
       .then(res => {
-        const featuredSlugs = [
-          'tomato-powder-250g', 
-          'raw-banana-powder-250g', 
-          'moringa-powder-250-grams', 
-          'moringa-powder-250g', 
-          'carrot-powder-250g', 
-          'beetroot-powder-250g'
-        ];
-        const featured = res.data.filter(p => featuredSlugs.includes(p.id));
-        if (featured.length > 0) setFeaturedProducts(featured);
+        const liveProducts = res.data.slice(0, 8);
+        setFeaturedProducts(liveProducts);
       })
-      .catch(() => {/* silently use fallback */ })
+      .catch(() => { /* keep FALLBACK_PRODUCTS on network failure */ })
       .finally(() => setLoading(false));
+
+    // Fetch live categories (public endpoint, no auth needed)
+    api.get('/products/categories')
+      .then(res => {
+        if (res.data && res.data.length > 0) setCategories(res.data);
+      })
+      .catch(() => { /* hide section silently on failure */ });
   }, []);
 
   const handleCategoryClick = (catName) => {
@@ -301,28 +313,44 @@ export default function Home({ settings }) {
           <h2 className="font-heading font-extrabold text-3xl md:text-4xl text-[#111827]">Product Categories</h2>
           <p className="text-xs sm:text-sm text-slate-500 leading-relaxed">We manufacture a diverse range of fruit, vegetable, health, and botanical powders catering to all nutritional needs.</p>
         </div>
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-3 sm:gap-5">
-          {categories.map((cat, index) => (
-            <div
-              key={index}
-              onClick={() => handleCategoryClick(cat.name)}
-              className="group bg-white border border-slate-100 p-4 sm:p-6 rounded-[20px] sm:rounded-[30px] hover:border-[#38BDF8] hover:shadow-xl transition-all duration-300 cursor-pointer flex flex-col justify-between shadow-sm"
-              data-aos="zoom-in"
-              data-aos-delay={index * 50}
-            >
-              <div className={`w-12 h-12 rounded-2xl bg-gradient-to-tr ${cat.color} flex items-center justify-center text-[#0F2942] text-xl group-hover:scale-110 transition-transform duration-300 shadow-sm border border-black/5`}>
-                <i className={cat.icon} />
+        {categories.length === 0 ? (
+          // Skeleton placeholders while loading
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-3 sm:gap-5">
+            {[...Array(5)].map((_, i) => (
+              <div key={i} className="bg-white border border-slate-100 p-4 sm:p-6 rounded-[20px] sm:rounded-[30px] shadow-sm animate-pulse">
+                <div className="w-12 h-12 rounded-2xl bg-slate-100" />
+                <div className="mt-5 h-4 bg-slate-100 rounded w-3/4" />
+                <div className="mt-2 h-3 bg-slate-50 rounded w-full" />
+                <div className="mt-5 h-3 bg-slate-100 rounded w-1/3" />
               </div>
-              <div className="mt-5">
-                <h3 className="font-heading font-extrabold text-sm md:text-base text-[#111827] group-hover:text-[#0F2942] transition-colors">{cat.name}</h3>
-                <p className="text-[10px] text-slate-400 mt-2.5 leading-relaxed font-semibold">{cat.text}</p>
-              </div>
-              <span className="text-xs font-bold text-[#0F2942] flex items-center gap-1.5 mt-5 group-hover:translate-x-1.5 transition-all">
-                Shop Now <i className="fa-solid fa-arrow-right text-[9px]" />
-              </span>
-            </div>
-          ))}
-        </div>
+            ))}
+          </div>
+        ) : (
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-3 sm:gap-5">
+            {categories.map((cat, index) => {
+              const { icon, color } = getCategoryStyle(cat.name);
+              return (
+                <div
+                  key={cat.id || index}
+                  onClick={() => handleCategoryClick(cat.name)}
+                  className="group bg-white border border-slate-100 p-4 sm:p-6 rounded-[20px] sm:rounded-[30px] hover:border-[#38BDF8] hover:shadow-xl transition-all duration-300 cursor-pointer flex flex-col justify-between shadow-sm"
+                  data-aos="zoom-in"
+                  data-aos-delay={index * 50}
+                >
+                  <div className={`w-12 h-12 rounded-2xl bg-gradient-to-tr ${color} flex items-center justify-center text-[#0F2942] text-xl group-hover:scale-110 transition-transform duration-300 shadow-sm border border-black/5`}>
+                    <i className={icon} />
+                  </div>
+                  <div className="mt-5">
+                    <h3 className="font-heading font-extrabold text-sm md:text-base text-[#111827] group-hover:text-[#0F2942] transition-colors">{cat.name}</h3>
+                  </div>
+                  <span className="text-xs font-bold text-[#0F2942] flex items-center gap-1.5 mt-5 group-hover:translate-x-1.5 transition-all">
+                    Shop Now <i className="fa-solid fa-arrow-right text-[9px]" />
+                  </span>
+                </div>
+              );
+            })}
+          </div>
+        )}
       </section>
  
       {/* ── FEATURED PRODUCTS ── */}

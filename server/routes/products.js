@@ -48,6 +48,41 @@ const transformProduct = (p) => ({
   }))
 });
 
+// @route   GET /api/categories
+// @desc    Get all categories (public — used by home page & shop page)
+// @access  Public
+router.get('/categories', async (req, res) => {
+  try {
+    if (!supabase.isConfigured) {
+      const categories = readData('categories.json');
+      return res.json(categories);
+    }
+
+    const { data, error } = await supabase
+      .from('categories')
+      .select('*')
+      .order('name', { ascending: true });
+
+    // If categories table doesn't exist yet, derive from products
+    if (error && error.code === 'PGRST205') {
+      const { data: products, error: prodErr } = await supabase
+        .from('products')
+        .select('category');
+      if (prodErr) throw prodErr;
+      const uniqueNames = [...new Set(products.map(p => p.category).filter(Boolean))].sort();
+      return res.json(uniqueNames.map(name => ({
+        id: name.toLowerCase().replace(/[^a-z0-9]+/g, '-'),
+        name
+      })));
+    }
+
+    if (error) throw error;
+    res.json(data);
+  } catch (error) {
+    res.status(500).json({ message: 'Server error: ' + error.message });
+  }
+});
+
 // @route   GET /api/products
 // @desc    Get all products with variations and reviews (optional filtering)
 // @access  Public
